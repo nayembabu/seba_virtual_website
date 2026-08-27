@@ -1,0 +1,4 @@
+[20-Jun-2026 03:59:49 UTC] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/eservice/public_html/app/Http/Controllers/Auth/BkashController.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/eservice/public_html/app/Http/Controllers/Auth/BkashController.php on line 25

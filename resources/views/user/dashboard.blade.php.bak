@@ -1,0 +1,131 @@
+@extends('user.layouts.app')
+@section('title') @lang('Home') @endsection
+
+@section('content')
+<style>
+    body { background-color: #0f172a !important; color: white; }
+
+    /* বাইরের বড় ডার্ক বক্স */
+    .outer-dark-box {
+        background: #1e293b;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        position: relative;
+        overflow: hidden; 
+    }
+
+    /* অ্যানিমেটেড লাইন */
+    .animated-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #4f46e5, #06b6d4, #4f46e5);
+        background-size: 200% 100%;
+        animation: move-line 1s linear infinite;
+    }
+    @keyframes move-line {
+        0% { background-position: 150% 0; }
+        100% { background-position: -100% 0; }
+    }
+
+    /* সিস্টেম আপডেট লেখা আসা-যাওয়া (Fade) করবে */
+    .fade-text {
+        animation: fadeEffect 3s infinite alternate;
+    }
+    @keyframes fadeEffect {
+        0% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+
+    /* ভেতরের ছোট আপডেট বক্স */
+    .inner-update-box { background: #334155; padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px solid #475569; }
+
+    /* অন্যান্য স্টাইল */
+    .balance-box { background: #ffffff; color: #1e293b; border-radius: 10px; padding: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: transform 0.3s ease; height: 100%; border: 1px solid #e2e8f0; }
+    .balance-box:hover { transform: translateY(-10px); }
+    .custom-card { background: #1e293b; border-radius: 10px; padding: 25px; color: white; border: 1px solid #334155; }
+    .btn-custom { border-radius: 5px; padding: 12px; font-weight: 600; flex: 1; text-align: center; text-decoration: none; display: block; }
+</style>
+
+<div class="container-fluid">
+    
+    <div class="outer-dark-box">
+        <div style="position: relative; text-align: center;">
+            <h5 style="color: #ffffff; margin: 0; display: inline-block; font-weight: 600;">Latest Updates</h5>
+            <div style="position: absolute; right: 0; top: 0;">
+                <span class="badge" style="background: #dc3545; color: white; padding: 5px 12px; display: flex; align-items: center;">
+                    <span style="height: 8px; width: 8px; background-color: #fff; border-radius: 50%; margin-right: 6px;"></span>
+                    LIVE
+                </span>
+            </div>
+        </div>
+        
+        <div class="animated-line"></div>
+        
+        <div class="inner-update-box">
+            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" style="padding: 15px; color: #fff; font-size: 16px;">
+                        <i class="fas fa-circle text-danger blink" style="font-size: 10px;"></i>
+                        সিস্টেম আপগ্রেড চলছ, এখনো সাইটের কাজ অনেক বাকি আছে। বিস্তারিত জানতে ভিজিট করুন:https://e-serviceportal.com/ &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        <i class="fas fa-circle text-danger blink" style="font-size: 10px;"></i>
+                        নতুন আপডেট: স্মার্ট কার্ড NID সার্ভিস এখন উপলব্ধ &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        <i class="fas fa-circle text-danger blink" style="font-size: 10px;"></i>
+                        সিস্টেম আপগ্রেড চলছে, আরও নতুন ফিচার আসছে
+                    </marquee>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="balance-box">
+                <i class="fa fa-wallet fa-2x" style="color: #4f46e5;"></i>
+                <h2 style="font-weight: 800; margin-top: 15px;">৳ <span id="balance-counter" data-target="{{ (float)$user->balance }}">0</span></h2>
+                <p class="text-muted">My Balance • Active</p>
+                <div class="d-flex gap-2 mt-4">
+                    <a href="{{ route('user.recharge') }}" class="btn btn-primary btn-custom">+ Add Funds</a>
+                    <a href="{{ route('user.transactions') }}" class="btn btn-light btn-custom" style="background: #e2e8f0; color: #1e293b;">History</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="custom-card" style="height: 100%;">
+                <h5><i class="fa fa-key"></i> Passkey Security</h5>
+                <p style="color: #94a3b8; font-size: 14px;">Sign in with biometrics — no password needed</p>
+                <a href="#" style="color: #60a5fa;">Manage all passkeys →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="custom-card d-flex justify-content-between align-items-center">
+                <div>
+                    <h5><i class="fa fa-shield-alt"></i> Sign in faster with a Passkey</h5>
+                    <p style="color: #94a3b8; font-size: 14px;">Use biometrics to log in instantly.</p>
+                </div>
+                <a href="#" class="btn btn-primary" style="background: #4f46e5; border-radius: 5px; padding: 10px 20px; border: none;">Set Up Passkey</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const counter = document.getElementById('balance-counter');
+    const target = parseFloat(counter.getAttribute('data-target'));
+    let count = 0;
+    const update = () => {
+        count += target / 50;
+        if(count < target) {
+            counter.innerText = Math.floor(count).toLocaleString();
+            setTimeout(update, 30);
+        } else {
+            counter.innerText = target.toLocaleString(undefined, {minimumFractionDigits: 2});
+        }
+    };
+    update();
+</script>
+@endsection

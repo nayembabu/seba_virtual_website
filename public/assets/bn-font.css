@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'SolaimanLipi';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/SolaimanLipi.woff2') format('woff2'),
+         url('/fonts/SolaimanLipi.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SolaimanLipi';
+    font-style: normal;
+    font-weight: bold;
+    src: url('/fonts/SolaimanLipi.woff2') format('woff2'),
+         url('/fonts/SolaimanLipi.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Solaiman Lipi';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/SolaimanLipi.woff2') format('woff2'),
+         url('/fonts/SolaimanLipi.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Solaiman Lipi';
+    font-style: normal;
+    font-weight: bold;
+    src: url('/fonts/SolaimanLipi.woff2') format('woff2'),
+         url('/fonts/SolaimanLipi.ttf') format('truetype');
+}

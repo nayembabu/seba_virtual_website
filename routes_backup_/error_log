@@ -1,0 +1,24 @@
+[20-Jun-2026 04:09:36 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/eservice/public_html/routes/web.php:56
+Stack trace:
+#0 {main}
+  thrown in /home/eservice/public_html/routes/web.php on line 56
+[20-Jun-2026 04:09:40 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/eservice/public_html/routes/web.php:56
+Stack trace:
+#0 {main}
+  thrown in /home/eservice/public_html/routes/web.php on line 56
+[20-Jun-2026 04:09:46 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/eservice/public_html/routes/auth.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/eservice/public_html/routes/auth.php on line 13
+[20-Jun-2026 04:09:49 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/eservice/public_html/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/eservice/public_html/routes/console.php on line 17
+[20-Jun-2026 04:09:50 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/eservice/public_html/routes/auth.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/eservice/public_html/routes/auth.php on line 13
+[20-Jun-2026 04:09:52 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/eservice/public_html/routes/api.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/eservice/public_html/routes/api.php on line 10

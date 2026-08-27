@@ -1,0 +1,145 @@
+<style>
+    /* ── AdminLTE Core Header Alignment ─────────────────── */
+    .main-header {
+        position: fixed;
+        top: 0;
+        right: 0 !important;
+        height: 80px;
+        display: flex;
+        background: #fff;
+        border-bottom: 1px solid #dee2e6;
+        z-index: 1034;
+        width: 100%;
+    }
+
+    @media (min-width: 992px) {
+        .main-header {
+            left: 250px;
+            right: 250px;
+            width: auto;
+        }
+    }
+
+    /* Fixed Layout adjustments for components inside AdminLTE top bar */
+    .main-header .nav-link {
+        color: #495057 !important;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .main-header .nav-link:hover {
+        color: #007bff !important;
+    }
+
+    .navbar-search-form .customize-input {
+        position: relative;
+    }
+
+    .navbar-search-form .form-control {
+        border-radius: 20px;
+        padding-right: 35px;
+        background-color: #f4f6f9;
+        font-size: 0.9rem;
+    }
+
+    .navbar-search-form .form-control-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #6c757d;
+        pointer-events: none;
+    }
+
+    /* ── পারফেক্ট মিডিয়াম সাইজ লোগো কোড (মেনুবার ক্লিয়ার থাকবে) ── */
+    .brand-link {
+        height: 80px !important;
+        padding: 5px 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden !important; /* মেনুবারের উপর যেন উপচে না পড়ে */
+    }
+
+    .brand-link .brand-image, 
+    .brand-link img,
+    [class*="sidebar-"] .brand-link img {
+        height: 60px !important; /* একদম স্ট্যান্ডার্ড মিডিয়াম হাইট */
+        max-height: 60px !important;
+        width: auto !important;
+        max-width: 100% !important;
+        transform: none !important; /* ফালতু জুম বাতিল */
+        margin-top: 0 !important;
+        margin-left: 5px !important;
+        opacity: 1 !important;
+        float: none !important;
+    }
+
+    /* মোবাইল স্ক্রিনের জন্য মিডিয়াম এডজাস্টমেন্ট */
+    @media (max-width: 767.98px) {
+        .brand-link {
+            height: 60px !important;
+        }
+        .brand-link .brand-image, 
+        .brand-link img {
+            height: 42px !important;
+            max-height: 42px !important;
+            margin-left: 2px !important;
+        }
+    }
+</style>
+
+<header class="main-header navbar navbar-expand navbar-white navbar-light shadow-sm">
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" id="sidebarToggle" data-widget="pushmenu" href="javascript:void(0)" role="button">
+                <i class="fas fa-bars"></i>
+            </a>
+        </li>
+
+        <li class="nav-item d-inline-flex align-items-center ml-3">
+            <span class="text-success font-weight-bold d-inline-flex align-items-center">
+                <i class="fas fa-coins mr-1"></i>
+                <span class="d-inline-block">{{ inum(Auth::guard('web')->user()->balance) }}</span>
+            </span>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="text-dark font-weight-normal" style="font-size: 0.9rem;">
+                    @lang('Hello ') <strong class="text-dark">{{ Auth::User()->name }}</strong>
+                </span>
+                <i data-feather="chevron-down" class="svg-icon ml-1" style="width: 16px; height: 16px;"></i>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right shadow border-0 animated flipInY" style="min-width: 180px; margin-top: 8px;">
+                <a class="dropdown-item d-flex align-items-center py-2" href="{{ route('user.profile') }}">
+                    <i class="svg-icon mr-2 text-muted icon-user" data-feather="user" style="width: 16px; height: 16px;"></i>
+                    <span>@lang('Profile')</span>
+                </a>
+
+                <a class="dropdown-item d-flex align-items-center py-2" href="{{ route('user.updatePassword') }}">
+                    <i class="svg-icon mr-2 text-muted icon-settings" data-feather="settings" style="width: 16px; height: 16px;"></i>
+                    <span>@lang('Password')</span>
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item d-flex align-items-center py-2 text-danger" href="{{ route('user.logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i data-feather="power" class="svg-icon mr-2" style="width: 16px; height: 16px;"></i>
+                    <span>{{ __('Logout') }}</span>
+                </a>
+
+                <form id="logout-form" action="{{ route('user.logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+        </li>
+
+    </ul>
+</header>

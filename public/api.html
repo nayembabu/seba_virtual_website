@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>পিডিএফ জেনারেশন ডেমো</title>
+    <style>
+        body {
+            font-family: 'SolaimanLipi', 'Kalpurush', 'Nikosh', Arial, sans-serif;
+            margin: 40px;
+            color: #333333;
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #0056b3;
+            margin: 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin: 5px 0 0 0;
+            color: #666;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .info-table td {
+            padding: 8px;
+            vertical-align: top;
+        }
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .content-table th, .content-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .content-table th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .text-right {
+            text-align: right !important;
+        }
+        .total-section {
+            margin-top: 20px;
+            float: right;
+            width: 300px;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="invoice-box">
+    <!-- হেডার সেকশন -->
+    <div class="header">
+        <h1>শিখুন ডট কম (Sikhun.com)</h1>
+        <p>অনলাইন শিক্ষা ও প্রশিক্ষণ কেন্দ্র</p>
+    </div>
+
+    <!-- তথ্য টেবিল -->
+    <table class="info-table">
+        <tr>
+            <td>
+                <strong>গ্রাহকের তথ্য:</strong><br>
+                নাম: মো: আরিফুল ইসলাম<br>
+                ইমেইল: arif@example.com<br>
+                মোবাইল: ০১৭০০০০০০০০
+            </td>
+            <td class="text-right">
+                <strong>রশিদ বিবরণ:</strong><br>
+                রশিদ নং: #INV-২০২৬-৮৯৪<br>
+                তারিখ: ১৩ জুলাই, ২০২৬<br>
+                অবস্থা: <span style="color: green; font-weight: bold;">পরিশোধিত</span>
+            </td>
+        </tr>
+    </table>
+
+    <!-- মেইন কন্টেন্ট টেবিল -->
+    <table class="content-table">
+        <thead>
+        <tr>
+            <th>কোর্সের নাম</th>
+            <th class="text-right">মূল্য</th>
+            <th class="text-right">ডিসকাউন্ট</th>
+            <th class="text-right">মোট</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>লারাভেল ওয়েব ডেভেলপমেন্ট (Mastering Laravel)</td>
+            <td class="text-right">৳ ৫,০০০</td>
+            <td class="text-right">৳ ৫ Stack</td>
+            <td class="text-right">৳ ৪,৫০০</td>
+        </tr>
+        <tr>
+            <td>অ্যাডভান্সড পিএইচপি এবং ওওপি (Advanced PHP & OOP)</td>
+            <td class="text-right">৳ ৩,০০০</td>
+            <td class="text-right">৳ ০</td>
+            <td class="text-right">৳ ৩,০০০</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- হিসাব সেকশন -->
+    <div class="total-section">
+        <table class="info-table">
+            <tr>
+                <td>Sub-Total:</td>
+                <td class="text-right">৳ ৭,৫০০</td>
+            </tr>
+            <tr>
+                <td>ভ্যাট (৫%):</td>
+                <td class="text-right">৳ ৩৭৫</td>
+            </tr>
+            <tr style="font-weight: bold; border-top: 1px solid #333;">
+                <td>সর্বমোট:</td>
+                <td class="text-right" style="color: #0056b3;">৳ ৭,৮৭৫</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="clear: both;"></div>
+
+    <!-- ফুটার সেকশন -->
+    <div class="footer">
+        <p>আমাদের সেবার ওপর আস্থা রাখার জন্য আপনাকে ধন্যবাদ।</p>
+        <p>এটি একটি স্বয়ংক্রিয়ভাবে তৈরি পিডিএফ রশিদ, কোনো স্বাক্ষরের প্রয়োজন নেই।</p>
+    </div>
+</div>
+
+</body>
+</html>

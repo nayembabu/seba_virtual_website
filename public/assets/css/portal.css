@@ -1,0 +1,212 @@
+
+
+html {
+    height: 100%;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+label {
+    cursor: auto;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a.current {
+    background-color: #35bdb2;
+    border-color: #35bdb2;
+    border-radius: .25rem;
+}
+
+
+.error {
+    color: red;
+    font-size: .8em;
+    max-width: none;
+}
+
+.custom-search-pad {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.input-custom-search {
+    font-weight: 400;
+    text-align: center;
+    width: 12%;
+    font-size: unset;
+    height: 30px;
+}
+
+.select-custom-search {
+    text-align: center;
+    text-transform: uppercase;
+    margin-right: .5em;
+    height: 30px;
+}
+
+.btn-custom-search {
+    text-transform: uppercase;
+    font-size: smaller;
+    font-weight: bold;
+    color: white;
+    margin-top: -0.05em;
+    background: #2B72D5;
+    margin-left: .5em;
+    height: 30px;
+}
+
+.label-custom-search {
+    font-size: medium;
+    margin-right: .25em;
+}
+
+.form-group.required label:after {
+    content: "*";
+    color: red;
+}
+
+/*main-navbar*/
+.navbar {
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.dropdown .dropdown-menu {
+    border-radius: 2px;
+}
+
+.nid2-navbar {
+    background: #064475;
+    margin-bottom: 0;
+}
+
+.nid2-navbar a:hover {
+    color: white;
+}
+
+.dropdown-menu a:hover {
+    background-color: #064475;
+}
+
+.text-color-white {
+    color: white;
+}
+
+
+/* Medium devices (tablets, 768px and up)
+The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+        border-radius: 0;
+    }
+}
+
+/*home.jsp*/
+.img-item {
+    background: #DCDCDC;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 15px;
+}
+
+.img-item:hover {
+    background-color: #064475;
+}
+
+.img-link {
+    color: #064475;
+}
+
+.home-row {
+    /*max-width: 800px;*/
+    margin: 100px auto 0 auto !important;
+}
+
+/*secondary-navbar*/
+.nid2-secondary-nav {
+    margin-bottom: 1rem;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 1px;
+}
+
+.nid2-secondary-nav a.active {
+    border-bottom: 3px solid #f7941d;
+    font-weight: 600;
+}
+
+.secondary-nav-item {
+    margin-right: 100px;
+}
+
+.nav-link {
+    padding-left: 0 !important;
+}
+
+/*Pages*/
+.btn-create {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: gray;
+    background: #DCDCDC;
+}
+
+#slaContainer {
+    padding-top: 20px;
+}
+
+#roleContainer {
+    padding-top: 20px;
+}
+
+#filterCategory {
+    border-color: #3787fb;
+}
+
+/*Add a down up/arrow for bootstrap accordion*/
+.mb-0 > a {
+    display: block;
+    position: relative;
+}
+
+.mb-0 > a:after {
+    content: url("/cms-portal/resources/images/triangle-down-4131c7d5f42f5352293ef3faa70574c7.svg");
+    float: right;
+    transition: all 0.5s;
+}
+
+.mb-0 > a[aria-expanded="true"]:after {
+    content: url("/cms-portal/resources/images/triangle-up-db4d420d99cf9e361f54b0aefa5daadd.svg");
+    float: right;
+    transition: all 0.5s;
+    /*-webkit-transform: rotate(180deg);*/
+    /*-moz-transform: rotate(180deg);*/
+    /*transform: rotate(180deg);*/
+}
+
+.top-buffer { margin-top:20px; }
+
+.dt-margin-top {
+    margin-top: 0.7rem !important;
+}
+
+.underline-header{
+    border-bottom: 2px solid rgba(33,37,41,0.28);
+    width: 100%;
+    display: block
+}
+
+.button-yellow {
+    background: #f7941d;
+    color: white;
+}
+
+a.word-break{
+    word-break: break-all;
+}

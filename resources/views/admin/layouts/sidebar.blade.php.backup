@@ -1,0 +1,227 @@
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h3><i class="fas fa-cog"></i> Admin Panel</h3>
+        <p>Control Dashboard</p>
+    </div>
+    <ul class="sidebar-menu">
+        <li>
+            <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+       
+         <li>
+            <a href="{{ route('admin.sign-copy-orders.index') }}" class="{{ request()->routeIs('admin.sign-copy-orders.*') ? 'active' : '' }}">
+                <i class="fas fa-headset"></i>
+                <span>Sign Copy Order</span>
+                @php
+                    $pendingCount = \App\Models\SignCopyOrder::where('status', 0)->count();
+                @endphp
+                @if($pendingCount > 0)
+                    <span class="badge-notification">{{ $pendingCount }}</span>
+                @endif
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.id-card-orders.index') }}" class="{{ request()->routeIs('admin.id-card-orders.*') ? 'active' : '' }}">
+                <i class="fas fa-id-card"></i>
+                <span>ID Card Orders</span>
+                @php
+                    $idCardPendingCount = \App\Models\NidOrder::where('status', 0)->count();
+                @endphp
+                @if($idCardPendingCount > 0)
+                    <span class="badge-notification">{{ $idCardPendingCount }}</span>
+                @endif
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.passport-orders.index') }}" class="{{ request()->routeIs('admin.passport-orders.*') ? 'active' : '' }}">
+                <i class="fas fa-passport"></i>
+                <span>Passport Orders</span>
+                @php
+                    $passportPendingCount = \App\Models\PassportOrder::where('status', 0)->count();
+                @endphp
+                @if($passportPendingCount > 0)
+                    <span class="badge-notification">{{ $passportPendingCount }}</span>
+                @endif
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.sim-conversions.index') }}" class="{{ request()->routeIs('admin.sim-conversions.*') ? 'active' : '' }}">
+                <i class="fas fa-sim-card"></i>
+                <span>SIM Biometric Orders</span>
+                @php
+                    $simPendingCount = \App\Models\SimConversion::where('status', 0)->count();
+                @endphp
+                @if($simPendingCount > 0)
+                    <span class="badge-notification">{{ $simPendingCount }}</span>
+                @endif
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.sim-network-orders.index') }}" class="{{ request()->routeIs('admin.sim-network-orders.*') ? 'active' : '' }}">
+                <i class="fas fa-network-wired"></i>
+                <span>SIM Network Orders</span>
+                @php
+                    $simNetworkPendingCount = \App\Models\SimNetworkOrder::where('status', 0)->count();
+                @endphp
+                @if($simNetworkPendingCount > 0)
+                    <span class="badge-notification">{{ $simNetworkPendingCount }}</span>
+                @endif
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.tin-orders.index') }}" class="{{ request()->routeIs('admin.tin-orders.*') ? 'active' : '' }}">
+                <i class="fas fa-file-invoice"></i>
+                <span>TIN Orders</span>
+                @php
+                    $tinPendingCount = \App\Models\TinOrder::where('status', 0)->count();
+                @endphp
+                @if($tinPendingCount > 0)
+                    <span class="badge-notification">{{ $tinPendingCount }}</span>
+                @endif
+            </a>
+        </li>
+        {{-- <li>
+            <a href="{{ route('admin.cost.index') }}" class="{{ request()->routeIs('admin.cost.*') ? 'active' : '' }}">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Order Charge </span>
+            </a>
+        </li> --}}
+        <li>
+            <a href="{{ route('admin.service-charges.index') }}" class="{{ request()->routeIs('admin.service-charges.*') ? 'active' : '' }}">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Service Charge </span>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+<style>
+    /* ...existing code... */
+    
+    .badge-notification {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 24px;
+        height: 24px;
+        padding: 0 6px;
+        margin-left: auto;
+        background: #ff4757;
+        color: white;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+        }
+        50% {
+            box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+        }
+    }
+    
+    .sidebar-menu a {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        color: rgba(255,255,255,0.8);
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+    
+    /* ...existing code... */
+</style>
+
+<style>
+    /* Sidebar Styles */
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 260px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px 0;
+        z-index: 1000;
+        overflow-y: auto;
+        transition: all 0.3s;
+    }
+    .sidebar-header {
+        padding: 20px;
+        text-align: center;
+        color: white;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        margin-bottom: 20px;
+    }
+    .sidebar-header h3 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .sidebar-header p {
+        font-size: 12px;
+        opacity: 0.8;
+    }
+    .sidebar-menu {
+        list-style: none;
+        padding: 0 10px;
+    }
+    .sidebar-menu li {
+        margin-bottom: 5px;
+    }
+    .sidebar-menu a {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        color: rgba(255,255,255,0.8);
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+    .sidebar-menu a:hover,
+    .sidebar-menu a.active {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        transform: translateX(5px);
+    }
+    .sidebar-menu a i {
+        margin-right: 12px;
+        font-size: 18px;
+        width: 20px;
+        text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+        .sidebar {
+            left: -260px;
+        }
+        .sidebar.active {
+            left: 0;
+        }
+    }
+</style>
+
+<script>
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('active');
+    }
+
+    // Active menu highlighting
+    document.querySelectorAll('.sidebar-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+            if (!this.classList.contains('active')) {
+                document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+    });
+</script>

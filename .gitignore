@@ -1,0 +1,19 @@
+/vendor
+/node_modules
+.env
+/.env.local
+/.env.production
+/.env.example
+/public/storage
+/storage/*.key
+/storage
+/support
+.vscode.zip
+/help
+/merged_print_template
+composer.lock
+.all backup.zip
+/public/nid_cards
+public/uploads
+public/pdf
+public/passport_pdfs

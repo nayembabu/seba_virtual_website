@@ -1,0 +1,217 @@
+@extends('user.layouts.app')
+
+@section('title')
+    @lang('Recharge')
+@endsection
+@push('style')
+    <style>
+        .gateway-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .gateway-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .gateway-item {
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        .gateway-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+            border-color: #0056b3;
+        }
+
+        .gateway-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .table-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            background-color: #343a40;
+            color: white;
+            border: none;
+            font-weight: 500;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .table tbody td {
+            padding: 12px;
+            vertical-align: middle;
+            font-size: 14px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .gateway-grid {
+                justify-content: center;
+            }
+
+            .table {
+                font-size: 13px;
+            }
+
+            .table thead th,
+            .table tbody td {
+                padding: 8px;
+            }
+        }
+    </style>
+@endpush
+@section('content')
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3"><i class="icon-user"></i> @lang('Recharge')</h4>
+
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
+
+                        <div class="gateway-section text-center">
+                            <div class="section-title">Select Payment Method</div>
+                            <div class="gateway-grid">
+                                <a href="{{ route('user.bkash') }}" class="gateway-item">
+                                    <img src="https://freelogopng.com/images/all_img/1656227753bkash-logo-png-download.png" alt="bKash" />
+                                </a>
+
+                                <a href="{{ route('user.zinipay') }}" class="gateway-item">
+                                    <img src="https://zinipay.com/zini-pay-logo-new.jpg" alt="ZiniPay" />
+                                </a>
+
+                                @foreach ($gateways as $gateway)
+                                    <a href="{{ route('user.recharge-form', $gateway->id) }}" class="gateway-item">
+                                        <img src="{{ url('storage/uploads/' . $gateway->logo) }}" alt="{{ $gateway->name }}" />
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <h3 class="card-title mt-4 mb-3">Recharge History</h3>
+
+                        <div class="table-wrapper">
+                            <table class="table table-hover table-striped table-bordered">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">@lang('No.')</th>
+                                    <th scope="col">@lang('Amount')</th>
+                                    <th scope="col">@lang('Gateway')</th>
+                                    <th scope="col">@lang('From No.')</th>
+                                    <th scope="col">@lang('TXID')</th>
+                                    <th scope="col">@lang('Status')</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @forelse($recharges as $key=> $recharge)
+                                    <tr>
+                                        <td data-label="@lang('No.')">{{ $key + 1 }}</td>
+                                        <td data-label="@lang('Amount')">{{ $recharge->amount }}</td>
+                                        <td data-label="@lang('Gateway')">{{ @$recharge->gateway->name }}</td>
+                                        <td data-label="@lang('From')">{{ @$recharge->from }}</td>
+                                        <td data-label="@lang('TXID')">{{ @$recharge->txid }}</td>
+                                        <td data-label="@lang('Status')">
+                                            @if ($recharge->status == '0')
+                                                <span class="status-badge status-pending">Pending</span>
+                                            @endif
+                                            @if ($recharge->status == '1')
+                                                <span class="status-badge status-success">Success</span>
+                                            @endif
+                                            @if ($recharge->status == '2')
+                                                <span class="status-badge status-rejected">Rejected</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td class="text-center text-danger" colspan="6">@lang('No Data')</td>
+                                    </tr>
+                                @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-3">
+                            {{ $recharges->appends(@$_GET)->links('partials.pagination') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection

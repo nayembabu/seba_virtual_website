@@ -1,0 +1,221 @@
+body {
+    font-family: 'Solaiman Lipi', Arial, sans-serif;
+    margin: auto;
+    padding: 0;
+    background-color: #f4f4f9;
+    width: 210mm;
+    height: 297mm;
+}
+
+@page {
+    size: 210mm 297mm;
+}
+
+
+.container {
+    margin: auto;
+    background: white;
+    border: 1px solid green;
+}
+
+
+.section-title {
+    font-size: 17px;
+    background: #bbe6ed;
+    color: black;
+    padding: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+colgroup col {
+    width: 35%;
+}
+
+colgroup col:last-child {
+    width: 65%;
+}
+
+table,
+th,
+td {
+    border: 1px solid #EAEAEA;
+}
+
+th,
+td {
+    padding: 6px;
+    text-align: left;
+}
+
+table td:first-child {
+    color: #000;
+}
+
+#footer_english {
+    text-align: center;
+    margin-top: -16px;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: Arial;
+    letter-spacing: -0.2px;
+}
+
+
+.header_top {
+    text-align: center;
+    position: relative;
+    margin-top: -20px;
+}
+
+p.text {
+    line-height: 10px;
+}
+
+img#user_img {
+    width: 110px;
+    margin-top: 1px;
+    border-radius: 7px;
+}
+
+.name {
+    padding: 1px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.user_photo {
+    text-align: center;
+    margin-top: -10px;
+    background: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 2px;
+}
+
+.flex {
+    padding: 60px;
+    display: flex;
+    background: #FBFBFB;
+    padding-bottom: 30px;
+    margin: 1px;
+}
+
+.user {
+    width: 25%;
+    padding: 10px;
+}
+
+.sub_container {
+    width: 75%;
+    padding: 0px;
+    background-color: #ffffff;
+    /* Optional background */
+}
+
+button.button_top {
+    background: #007AFF;
+    border: none;
+    color: white;
+    position: absolute;
+    top: 7px;
+    right: 6px;
+    padding: 6px;
+    font-size: 13px;
+    border-radius: 3px;
+}
+
+.input_group {
+    width: 224px;
+    font-size: 15px;
+    text-align: left;
+    margin-left: 318px;
+    transform: scale(0.8);
+    margin-top: -15px;
+    line-height: 20px;
+}
+
+p.text__one {
+    font-size: 16px;
+    color: rgb(255, 47, 161);
+    font-weight: bold;
+    padding-top: 9px;
+}
+
+#qr_img {
+    margin-top: 10px;
+}
+
+label.nid_vuter_label {
+    color: rgb(8, 121, 4);
+}
+
+label.form_num_label {
+    color: rgb(7, 119, 184);
+}
+
+.header_line {
+    width: 400px;
+    height: 1px;
+    background: #eaeaea;
+    margin: auto;
+}
+
+.search {
+    margin-top: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-left: -75px;
+}
+
+span#nid_lavel {
+    font-size: 13px;
+    color: rgb(252, 0, 0);
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+input#nid_input {
+    outline: none;
+    box-shadow: 0px 0px 1px 1px #bfb4b4;
+    border: none;
+    padding: 4px;
+    margin-top: 2px;
+    width: 120px;
+}
+
+bttton.submit_btn {
+    background: #27A844;
+    border: none;
+    color: white;
+    position: absolute;
+    padding: 6px;
+    font-size: 13px;
+    border-radius: 3px;
+    margin-left: 20px;
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+        width: 210mm;
+        height: 297mm;
+    }
+
+
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+
+    .section {
+        page-break-inside: avoid;
+    }
+}

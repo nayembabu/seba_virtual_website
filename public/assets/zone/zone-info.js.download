@@ -1,0 +1,4271 @@
+// zone-info.js
+// The key format is "District_Thana" 
+// Note: Ensure the District and Thana names match exactly with district-thana.js
+
+const taxZoneMapping = {
+    // --- MYMENSINGH ---
+    "Mymensingh_Mymensingh Sadar": {
+        circle: "Circle-013 (Mymensingh Salary)",
+        zone: "Mymensingh",
+        address: "928, Gaital, Kishoreganj",
+        phone: "0941-61897"
+    },
+        "Mymensingh_Bhaluka": {
+        circle: "Circle-017 (Bhaluka)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-62634"
+    },
+    "Mymensingh_Dhobaura": {
+        circle: "Circle-005 (Fulpur)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-65576"
+    },
+     "Mymensingh_Fulbaria": {
+        circle: "Circle-006 (Muktagacha)",
+        zone: "Mymensingh",
+        address: "Paora Super Market (2nd Floor) KB Ismail Road, Mymensingh",
+        phone: "091-67010"
+    },
+     "Mymensingh_Fulpur": {
+        circle: "Circle-005 (Fulpur)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-65576"
+    },
+     "Mymensingh_Gafargaon": {
+        circle: "Circle-016 (Gafargaon)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-66523"
+    },
+      "Mymensingh_Gouripur": {
+        circle: "Circle-002 (Companies)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-67071"
+    },
+    "Mymensingh_Haluaghat": {
+        circle: "Circle-005 (Fulpur)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-65576"
+    },
+"Mymensingh_Ishwarganj": {
+        circle: "Circle-002 (Companies)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-67071"
+    },
+    "Mymensingh_Muktagacha": {
+        circle: "Circle-006 (Muktagacha)",
+        zone: "Mymensingh",
+        address: "Paora Super Market (2nd Floor) KB Ismail Road, Mymensingh",
+        phone: "091-67010"
+    },
+    
+    "Mymensingh_Nandail": {
+        circle: "Circle-016 (Gafargaon)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-66523"
+    },
+    
+    "Mymensingh_Tarakanda": {
+        circle: "Circle-005 (Fulpur)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-65576"
+    },
+    
+    "Mymensingh_Trishal": {
+        circle: "Circle-017 (Bhaluka)",
+        zone: "Mymensingh",
+        address: "Adiba Anowar Nibas, 22 Amrito Babu Road, Mymensingh",
+        phone: "091-62634"
+    },
+    
+    //---Bagerhat---
+    "Bagerhat_Bagerhat Sadar": {
+        circle: "Circle-13 (Bagerhat)",
+        zone: "Khulna",
+        address: "Prodip Nibas, Moddokatiya, Satkhira",
+        phone: "02477740062"
+        
+    },
+      "Bagerhat_Chitalmari": {
+        circle: "Circle-16 (Fakirhat)",
+        zone: "Khulna",
+        address: "Purbo Narayanpur, Kaliganj, Satkhira",
+        phone: "02477744890"
+        
+    },
+     
+     "Bagerhat_Fakirhat": {
+        circle: "Circle-16 (Fakirhat)",
+        zone: "Khulna",
+        address: "Purbo Narayanpur, Kaliganj, Satkhira",
+        phone: "02477744890"
+        
+    },
+    
+       "Bagerhat_Kachua": {
+        circle: "Circle-13 (Bagerhat)",
+        zone: "Khulna",
+        address: " Prodip Nibas, Moddokatiya, Satkhira",
+        phone: "02477740062"
+        
+    },
+    
+     "Bagerhat_Mollahat": {
+        circle: "Circle-16 (Fakirhat)",
+        zone: "Khulna",
+        address: "Purbo Narayanpur, Kaliganj, Satkhira",
+        phone: "02477744890"
+        
+    },
+    
+       "Bagerhat_Mongla": {
+        circle: "Circle-14 (Mongla)",
+        zone: "Khulna",
+        address: "Das Para More, Basabati, Bagarhat",
+        phone: "02477751553"
+        
+    },
+    
+     "Bagerhat_Morrelganj": {
+        circle: "Circle-15 (Rampal)",
+        zone: "Khulna",
+        address: "Hamida Monjil. 3rd Floor, Aladatpur, Naril",
+        phone: "02477773019"
+        
+    },
+      "Bagerhat_Rampal": {
+        circle: "Circle-15 (Rampal)",
+        zone: "Khulna",
+        address: "Hamida Monjil. 3rd Floor, Aladatpur, Naril",
+        phone: "02477773019"
+        
+    },
+
+     "Bagerhat_Sarankhola": {
+        circle: "Circle-15 (Rampal)",
+        zone: "Khulna",
+        address: "Hamida Monjil. 3rd Floor, Aladatpur, Naril",
+        phone: "02477773019"
+        
+    },
+    
+    
+    
+    //bandarban
+    
+    "Bandarban_Bandarban Sadar": {
+        circle: "Circle-039 (Salary)",
+        zone: "02, Chattogram",
+        address: "Tamim Centre, Dohazari Pourashova (Main Road), Chandanish, Chattogram",
+        phone: ""
+        
+    },
+    
+    "Bandarban_Alikadam": {
+        circle: "Circle-039 (Salary)",
+        zone: "02, Chattogram",
+        address: "Tamim Centre, Dohazari Pourashova (Main Road), Chandanish, Chattogram",
+        phone: ""
+        
+    },
+    
+    "Bandarban_Lama": {
+        circle: "Circle-039 (Salary)",
+        zone: "02, Chattogram",
+        address: "Tamim Centre, Dohazari Pourashova (Main Road), Chandanish, Chattogram",
+        phone: ""
+        
+    },
+    
+    
+    
+    "Bandarban_Naikhongchhari": {
+        circle: "Circle-039 (Salary)",
+        zone: "02, Chattogram",
+        address: "Tamim Centre, Dohazari Pourashova (Main Road), Chandanish, Chattogram",
+        phone: ""
+        
+    },
+    
+    
+    "Bandarban_Rowangchhari": {
+        circle: "Circle-039 (Salary)",
+        zone: "02, Chattogram",
+        address: "Tamim Centre, Dohazari Pourashova (Main Road), Chandanish, Chattogram",
+        phone: ""
+        
+    },
+    
+    "Bandarban_Ruma": {
+        circle: "Circle-039 (Salary)",
+        zone: "02, Chattogram",
+        address: "Tamim Centre, Dohazari Pourashova (Main Road), Chandanish, Chattogram",
+        phone: ""
+        
+    },
+    
+    
+    "Bandarban_Thanchi": {
+        circle: "Circle-039 (Salary)",
+        zone: "02, Chattogram",
+        address: "Tamim Centre, Dohazari Pourashova (Main Road), Chandanish, Chattogram",
+        phone: ""
+        
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //barguna
+    
+     
+    "Barguna_Barguna Sadar": {
+        circle: "Circle-015",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Feroza Bhaban (2nd floor), Char Coloni Main Road, Barguna",
+        phone: "0247-8885283"
+        
+    },
+    
+    
+     "Barguna_Amtali": {
+        circle: "Circle-015",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Feroza Bhaban (2nd floor), Char Coloni Main Road, Barguna",
+        phone: "0247-8885283"
+        
+    },
+    
+    
+     "Barguna_Bamna": {
+        circle: "Circle-015",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Feroza Bhaban (2nd floor), Char Coloni Main Road, Barguna",
+        phone: "0247-8885283"
+        
+    },
+    
+    
+     "Barguna_Betagi": {
+        circle: "Circle-015",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Feroza Bhaban (2nd floor), Char Coloni Main Road, Barguna",
+        phone: "0247-8885283"
+        
+    },
+    
+    
+     "Barguna_Patharghata": {
+        circle: "Circle-015",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Feroza Bhaban (2nd floor), Char Coloni Main Road, Barguna",
+        phone: "0247-8885283"
+        
+    },
+    
+    
+    "Barguna_Taltali": {
+        circle: "Circle-015",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Feroza Bhaban (2nd floor), Char Coloni Main Road, Barguna",
+        phone: "0247-8885283"
+        
+    },
+    
+    //barishal
+    
+    "Barishal_Agoiljhara": {
+        circle: "Circle-009",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Lachin Bhaban (Ground floor), Alekanda Road, Barishal ",
+        phone: " 0247-8861109"
+        
+    },
+    
+       "Barishal_Babuganj": {
+        circle: "Circle-003",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Lachin Bhaban (Ground floor), Alekanda Road, Barishal ",
+        phone: " 0247-8861109"
+        
+    },
+    
+     "Barishal_Banaripara": {
+        circle: "Circle-022",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Lachin Bhaban (4th floor), Alekanda Road, Barishal",
+        phone: "0247-8861651"
+        
+    },
+    
+     "Barishal_Bakerganj": {
+        circle: "Circle-007 (Salary)",
+        zone: "Barishal",
+        address: " Office of the Deputy Commissioner of Taxes, Lachin Bhaban (1st floor) Alekanda Road, Barishal",
+        phone: "0247-8861421"
+        
+    },
+    
+     "Barishal_Gaurnadi": {
+        circle: "Circle-009",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Lachin Bhaban (Ground floor), Alekanda Road, Barishal ",
+        phone: " 0247-8861109"
+        
+    },
+    
+        "Barishal_Hizla": {
+        circle: "Circle-008",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Lachin Bhaban (Ground floor), Alekanda Road, Barishal",
+        phone: "0247-8861199"
+        
+    },
+    
+     "Barishal_Barishal Sadar": {
+        circle: "Circle-013 (Salary)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Lachin Bhaban (1st floor) Alikanda Road, Barishal",
+        phone: "0247-8861210"
+    },
+    
+    
+    
+     "Barishal_Mehendiganj": {
+        circle: "Circle-013 (Salary)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Lachin Bhaban (1st floor) Alikanda Road, Barishal",
+        phone: "0247-8861210"
+    },
+    
+    
+    
+        "Barishal_Muladi": {
+        circle: "Circle-008",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Lachin Bhaban (Ground floor), Alekanda Road, Barishal",
+        phone: "0247-8861199"
+        
+    },
+    
+     "Barishal_Wazirpur": {
+        circle: "Circle-004",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Lachin Bhaban (3rd floor) Alekanda Road, Barishal",
+        phone: "0247-8861097"
+        
+    },
+
+
+
+      //Bhola
+      
+      "Bhola_Bhola Sadar": {
+        circle: "Circle-010",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Momotaj Complex (1st Floor), Elisha Road, Bhola",
+        phone: "0247-8893917"
+        
+    },
+      
+      
+      "Bhola_Burhanuddin": {
+        circle: "Circle-010",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Momotaj Complex (1st Floor), Elisha Road, Bhola",
+        phone: "0247-8893917"
+        
+    },
+    
+      "Bhola_Char Fasson": {
+        circle: "Circle-016 (Lalmohon)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Taher Plaza (1st floor), Lalmohon Bazar",
+        phone: "0247-8895400"
+        
+    },
+    
+    
+    "Bhola_Daulatkhan": {
+        circle: "Circle-011",
+        zone: "Barishal",
+        address: "Elisha Road, Bhola",
+        phone: "0491-61361"
+        
+    },
+    
+    
+     "Bhola_Lalmohan": {
+        circle: "Circle-016 (Lalmohon)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Taher Plaza (1st floor), Lalmohon Bazar",
+        phone: "0247-8895400"
+        
+    },
+      
+      "Bhola_Manpura": {
+        circle: "Circle-016 (Lalmohon)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Taher Plaza (1st floor), Lalmohon Bazar",
+        phone: "0247-8895400"
+        
+    },
+    
+     "Bhola_Tazumuddin": {
+        circle: "Circle-011",
+        zone: "Barishal",
+        address: "Elisha Road, Bhola",
+        phone: "0491-61361"
+        
+    },
+      
+      
+      
+      // --- BOGURA ---
+      
+      
+    "Bogura_Bogura Sadar": {
+        circle: "Circle-003 (Salary)",
+        zone: "Bogura",
+        address: "House No-13, Road No-01, Upashahar, Bogura",
+        phone: "02589902918"
+    },
+      
+         
+    "Bogura_Adamdighi": {
+        circle: "Circle-017 (Santahar)",
+        zone: "Bogura",
+        address: "Khandakar Complex, 172/2, Main Road Shantahar, Bogura",
+        phone: "02588887544"
+    },
+    
+    "Bogura_Dhunat": {
+        circle: "Circle-006 (Sherpur)",
+        zone: "Bogura",
+        address: "Ulipur, College Road, Sherpur, Bogura",
+        phone: "0502977050"
+    },
+    
+    
+     "Bogura_Dhupchanchia": {
+        circle: "Circle-017 (Santahar)",
+        zone: "Bogura",
+        address: "Khandakar Complex, 172/2, Main Road Shantahar, Bogura",
+        phone: "02588887544"
+    },
+    
+        "Bogura_Gabtali": {
+        circle: "Circle-015",
+        zone: "Bogura",
+        address: "House No-09, Road No-20,Upashahar, Bogura",
+        phone: "05167906"
+    },
+    
+    
+        "Bogura_Kahaloo": {
+        circle: "Circle-004",
+        zone: "Bogura",
+        address: "House No-09, Road No-20,Upashahar, Bogura",
+        phone: "05165284"
+    },
+    
+    
+        "Bogura_Nandigram": {
+        circle: "Circle-014",
+        zone: "Bogura",
+        address: "House No-09, Road No-20,Upashahar, Bogura",
+        phone: "05167906"
+    },
+    
+     "Bogura_Sariakandi": {
+        circle: "Circle-015",
+        zone: "Bogura",
+        address: "House No-09, Road No-20,Upashahar, Bogura",
+        phone: "05167906"
+    },
+    
+    
+    "Bogura_Shajahanpur": {
+        circle: "Circle-004",
+        zone: "Bogura",
+        address: "House No-09, Road No-20,Upashahar, Bogura",
+        phone: "05165284"
+    },
+    
+    
+    "Bogura_Sherpur": {
+        circle: "Circle-004",
+        zone: "Bogura",
+        address: "House No-09, Road No-20,Upashahar, Bogura",
+        phone: "05165284"
+    },
+    
+     "Bogura_Shibganj": {
+        circle: "Circle-016",
+        zone: "Bogura",
+        address: "House No-13, Road No-01, Upashahar, Bogura",
+        phone: "02589903100"
+    },
+    
+    
+    "Bogura_Sonatala": {
+        circle: "Circle-016",
+        zone: "Bogura",
+        address: "House No-13, Road No-01, Upashahar, Bogura",
+        phone: "02589903100"
+    },
+    
+    
+    
+    
+    //Brahmanbaria
+    
+    "Brahmanbaria_Akhaura": {
+        circle: "Circle-021 (Akhaura)",
+        zone: "Cumilla",
+        address: "Munir Plaza, 1208, Narayanpur, Akhaura, Brahmanbaria",
+        phone: "01705401721"
+    },
+    
+    
+    "Brahmanbaria_Ashuganj": {
+        circle: "Circle-017 (Hajiganj)",
+        zone: "Cumilla",
+        address: "Sheikh Bhaban, Aliganj, Hajiganj, Chandpur",
+        phone: "02334432086"
+    },
+    
+    
+       
+    "Brahmanbaria_Bancharampur": {
+        circle: "Circle-022 (Nabinagar)",
+        zone: "Cumilla",
+        address: "537/3, Govt College Road, Nabinagar, Brahmanbaria",
+        phone: "02334407487"
+    },
+    
+    
+    "Brahmanbaria_Bijoynagar": {
+        circle: "Circle-018 (Brahmanbaria Sadar)",
+        zone: "Cumilla",
+        address: "1047, Shah Bhavan, D.C-S.P Road College Para, Brahmanbaria",
+        phone: "02334485478"
+    },
+    
+    
+    
+    "Brahmanbaria_Brahmanbaria Sadar": {
+        circle: "Circle-018 (Brahmanbaria Sadar)",
+        zone: "Cumilla",
+        address: "1047, Shah Bhavan, D.C-S.P Road College Para, Brahmanbaria",
+        phone: "02334485478"
+    },
+    
+    
+    
+     "Brahmanbaria_Kasba": {
+        circle: "Circle-021 (Akhaura)",
+        zone: "Cumilla",
+        address: "Munir Plaza, 1208, Narayanpur, Akhaura, Brahmanbaria",
+        phone: "01705401721"
+    },
+    
+    
+    "Brahmanbaria_Nabinagar": {
+        circle: "Circle-022 (Nabinagar)",
+        zone: "Cumilla",
+        address: "537/3, Govt College Road, Nabinagar, Brahmanbaria",
+        phone: "02334407487"
+    },
+    
+    
+    
+    "Brahmanbaria_Nasirnagar": {
+        circle: "Circle-018 (Brahmanbaria Sadar)",
+        zone: "Cumilla",
+        address: "1047, Shah Bhavan, D.C-S.P Road College Para, Brahmanbaria",
+        phone: "02334485478"
+    },
+    
+    
+    "Brahmanbaria_Sarail": {
+        circle: "Circle-018 (Brahmanbaria Sadar)",
+        zone: "Cumilla",
+        address: "1047, Shah Bhavan, D.C-S.P Road College Para, Brahmanbaria",
+        phone: "02334485478"
+    },
+    
+    
+    
+    //chandpur
+    
+    "Chandpur_Chandpur Sadar": {
+        circle: "Circle-013 (Chandpur Sadar)",
+        zone: "Cumilla",
+        address: "Bhuiyan Estate, Stadium Road, Chandpur Sadar, Chandpur",
+        phone: "032161108"
+    },
+    
+    "Chandpur_Faridganj": {
+        circle: "Circle-013 (Chandpur Sadar)",
+        zone: "Cumilla",
+        address: "Bhuiyan Estate, Stadium Road, Chandpur Sadar, Chandpur",
+        phone: "032161108"
+    },
+    
+    
+     "Chandpur_Haimchar": {
+        circle: "Circle-016 (Chandpur Salary)",
+        zone: "Cumilla",
+        address: "Bhuiyan Estate, Stadium Road, Chandpur Sadar, Chandpur",
+        phone: "08163499"
+    },
+    
+    
+    "Chandpur_Hajiganj": {
+        circle: "Circle-017 (Hajiganj)",
+        zone: "Cumilla",
+        address: "Sheikh Bhaban, Aliganj, Hajiganj, Chandpur",
+        phone: "02334432086"
+    },
+    
+    
+    "Chandpur_Kachua": {
+        circle: "Circle-015 (Kachua)",
+        zone: "Cumilla",
+        address: "Sultan Bhuiyan Complex, 353, Haspital Road, Kachua South Baza , Kachua, Chandpur ",
+        phone: "02334432086"
+    },
+    
+    
+    
+    "Chandpur_Matlab Dakshin": {
+        circle: "Circle-014 (Matlab South)",
+        zone: "Cumilla",
+        address: "Hossen Monjil, Matlab-Chandpur Road, Matlab South, Chandpur",
+        phone: "032163357"
+    },
+    
+     
+    "Chandpur_Matlab Uttar": {
+        circle: "Circle-014 (Matlab South)",
+        zone: "Cumilla",
+        address: "Hossen Monjil, Matlab-Chandpur Road, Matlab South, Chandpur",
+        phone: "032163357"
+    },
+    
+    "Chandpur_Shahrasti": {
+        circle: "Circle-017 (Hajiganj)",
+        zone: "Cumilla",
+        address: "Sheikh Bhaban, Aliganj, Hajiganj, Chandpur",
+        phone: "02334432086"
+    },
+    
+    
+    
+    
+    //Chattogram
+    
+    
+    "Chattogram_Banshkhali": {
+        circle: "Circle-109 (Banshkhali)",
+        zone: "05, Chattogram",
+        address: "Palikan Mehjabin Bhaban (1st floor), House#227, Road No.-2, CDA R/A, Agrabad, Chattogram",
+        phone: "031-724566"
+    },
+    
+    
+    "Chattogram_Anwara": {
+        circle: "Circle-065 (Anwara)",
+        zone: "03, Chattogram",
+        address: "Palikan Mehjabin Bhaban (1st floor), House#227, Road No.-2, CDA R/A, Agrabad, Chattogram",
+        phone: "031-724566"
+    },
+    
+    
+    "Chattogram_Boalkhali": {
+        circle: "Circle-043 (Boalkhali)",
+        zone: "02, Chattogram",
+        address: "Pelican Mahajabeen (PHP Bhaban), Road No. 2, C.D.A R/A, Agrabad, Chattogram",
+        phone: "02333326733"
+    },
+    
+    "Chattogram_Chandanaish": {
+        circle: "Circle-082",
+        zone: "04, Chattogram",
+        address: "PELIKAN MEHJABIN, 1ST FLOOR, HOUSE # 227 & 228, Road # 2, CDA R/A, AGRABAD, CHATTOGRAM",
+        phone: "02333312888"
+    },
+    
+     "Chattogram_Fatikchhari": {
+        circle: "Circle-131 (Fatikchhari)",
+        zone: "06, Chattogram",
+        address: "PHP Buiding (13th Floor), House-227/228, Road No-02, CDA, Agrabad, Chattogram",
+        phone: "02333312888"
+    },
+    
+     "Chattogram_Hathazari": {
+        circle: "Circle-126 (Hathazari)",
+        zone: "06, Chattogram",
+        address: "PHP Buiding (13th Floor), House-227/228, Road No-02, CDA, Agrabad, Chattogram",
+        phone: "02333312888"
+    },
+    
+     "Chattogram_Karnafuli": {
+        circle: "Circle-038 (Karnaphuli)",
+        zone: "02, Chattogram",
+        address: "Pelican Mahajabeen (PHP Bhaban), Road No. 2, C.D.A R/A, Agrabad, Chattogram",
+        phone: "02333320966"
+    },
+    
+     "Chattogram_Lohagara": {
+        circle: "Circle-104 (Lohagara)",
+        zone: "05, Chattogram",
+        address: "Pelican Mahajabeen (PHP Bhaban), Road No. 2, C.D.A R/A, Agrabad, Chattogram",
+        phone: "02333320966"
+    },
+    
+    "Chattogram_Mirsharai": {
+        circle: "Circle-016 (Mirsharai)",
+        zone: "01, Chattogram",
+        address: "HOUSE NO. 420, 4TH FLOOR, ROAD-11, CDA R/A., AGRABAD, CHATTOGRAM",
+        phone: "02333326220"
+    },
+    
+    "Chattogram_Patiya": {
+        circle: "Circle-060 (Patiya)",
+        zone: "03, Chattogram",
+        address: "PalikanMehjabinBhaban (9th floor), House#227, Road No.-2, CDA R/A, Agrabad, Chattogram",
+        phone: "031-724166"
+    },
+    
+    
+    "Chattogram_Rangunia": {
+        circle: "Circle-98 (Rangunia)",
+        zone: "05, Chattogram",
+        address: "Palikan Mehjabin Bhaban (9th floor), House#227, Road No.-2, CDA R/A, Agrabad, Chattogram",
+        phone: "031-724166"
+    },
+    
+     "Chattogram_Raozan": {
+        circle: "Circle-120 (Raozan)",
+        zone: "06, Chattogram",
+        address: "PHP Buiding (13th Floor), House-227/228, Road No-02, CDA, Agrabad, Chattogram",
+        phone: "031-724166"
+    },
+    
+    "Chattogram_Sandwip": {
+        circle: "Circle-016 (Mirsharai)",
+        zone: "01, Chattogram",
+        address: "HOUSE NO. 420, 4TH FLOOR, ROAD-11, CDA R/A., AGRABAD, CHATTOGRAM",
+        phone: "02333326220"
+    },
+    
+    "Chattogram_Satkania": {
+        circle: "Circle-087 (Technaf)",
+        zone: "04, Chattogram",
+        address: "ZAKARIA MENSION(2ND FLOOR), ISLAMABAD, BGB ROAD, TEKNAF, COX'S BAZAR",
+        phone: "0341-64297"
+    },
+    
+    "Chattogram_Sitakunda": {
+        circle: "Circle-021 (Sitakunda)",
+        zone: "01, Chattogram",
+        address: "PELICAN MAHAJABEEN, 3RD FLOOR, ROAD-2, CDA R/A., AGRABAD, CHATTOGRAM",
+        phone: "02333323971"
+    },
+    
+    "Chattogram_Panchlaish": {
+        circle: "Circle-113",
+        zone: "06, Chattogram",
+        address: "PHP Buiding (13th Floor), House-227/228, Road No-02, CDA, Agrabad, Chattogram",
+        phone: "031-651586"
+    },
+    
+    "Chattogram_Double Mooring": {
+        circle: "Circle-113",
+        zone: "06, Chattogram",
+        address: "PHP Buiding (13th Floor), House-227/228, Road No-02, CDA, Agrabad, Chattogram",
+        phone: "031-651586"
+    },
+    
+    "Chattogram_Kotwali": {
+        circle: "Circle-038 (Karnaphuli)",
+        zone: "02, Chattogram",
+        address: "Pelican Mahajabeen (PHP Bhaban), Road No. 2, C.D.A R/A, Agrabad, Chattogram",
+        phone: "02333320966"
+    },
+    
+     "Chattogram_Bakalia": {
+        circle: "Circle-058",
+        zone: "03, Chattogram",
+        address: "PalikanMehjabinBhaban (8th floor), House#227, Road No.-2, CDA R/A, Agrabad, Chattogram",
+        phone: "02333320966"
+    },
+
+    "Chattogram_Halishahar": {
+        circle: "Circle-014",
+        zone: "01, Chattogram",
+        address: "HOUSE NO. 420, 3RD FLOOR, ROAD-11, CDA R/A., AGRABAD, CHATTOGRAM",
+        phone: "02333316475"
+    },
+    
+    "Chattogram_Pahartali": {
+        circle: "Circle-033",
+        zone: "02, Chattogram",
+        address: "Pelican Mahajabeen (PHP Bhaban), Road No. 2, C.D.A R/A, Agrabad, Chattogram",
+        phone: "02333323515"
+    },
+    
+     "Chattogram_EPZ": {
+        circle: "Circle-033",
+        zone: "02, Chattogram",
+        address: "Pelican Mahajabeen (PHP Bhaban), Road No. 2, C.D.A R/A, Agrabad, Chattogram",
+        phone: "02333323515"
+    },
+    
+    "Chattogram_Patenga": {
+        circle: "Circle-014",
+        zone: "01, Chattogram",
+        address: "HOUSE NO. 420, 3RD FLOOR, ROAD-11, CDA R/A., AGRABAD, CHATTOGRAM",
+        phone: "02333316475"
+    },
+    
+    
+    "Chattogram_Akbar Shah": {
+        circle: "Circle-058",
+        zone: "03, Chattogram",
+        address: "PalikanMehjabinBhaban (8th floor), House#227, Road No.-2, CDA R/A, Agrabad, Chattogram",
+        phone: "02333320966"
+    },
+    
+     "Chattogram_Bayazid Bostami": {
+        circle: "Circle-113",
+        zone: "06, Chattogram",
+        address: "PHP Buiding (13th Floor), House-227/228, Road No-02, CDA, Agrabad, Chattogram",
+        phone: "031-651586"
+    },
+    
+    
+    
+    //Chuadanga
+    
+    
+     "Chuadanga_Alamdanga": {
+        circle: "Circle-15 (Alamdanga)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    "Chuadanga_Chuadanga Sadar": {
+        circle: "Circle-13 (Chuadanga Sadar)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+     "Chuadanga_Damurhuda": {
+        circle: "Circle-14 (Darshana)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    "Chuadanga_Jibannagar": {
+        circle: "Circle-16 (Jibannagar)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    
+    //Cox's Bazar
+    
+    "Cox's Bazar_Chakaria": {
+        circle: "Circle-15 (Chakaria-1)",
+        zone: "Cox's Bazar",
+        address: "201, SK Tower, Khurushkul Road, Taraboniarchora, Cox's Bazar",
+        phone: ""
+    },
+    
+    "Cox's Bazar_Cox's Bazar Sadar": {
+        circle: "Circle-05",
+        zone: "Cox's Bazar",
+        address: "201, SK Tower, Khurushkul Road, Taraboniarchora, Cox's Bazar",
+        phone: ""
+    },
+    
+     "Cox's Bazar_Kutubdia": {
+        circle: "Circle-20 (Kutubdia)",
+        zone: "Cox's Bazar",
+        address: "201, SK Tower, Khurushkul Road, Taraboniarchora, Cox's Bazar",
+        phone: ""
+    },
+    
+    "Cox's Bazar_Maheshkhali": {
+        circle: "Circle-03 (Moheskhali)",
+        zone: "Cox's Bazar",
+        address: "201, SK Tower, Khurushkul Road, Taraboniarchora, Cox's Bazar",
+        phone: ""
+    },
+    
+     "Cox's Bazar_Pekua": {
+        circle: "Circle-04 (Pekua)",
+        zone: "Cox's Bazar",
+        address: "201, SK Tower, Khurushkul Road, Taraboniarchora, Cox's Bazar",
+        phone: ""
+    },
+    
+    "Cox's Bazar_Ramu": {
+        circle: "Circle-08 (Ramu)",
+        zone: "Cox's Bazar",
+        address: "201, SK Tower, Khurushkul Road, Taraboniarchora, Cox's Bazar",
+        phone: ""
+    },
+    
+    "Cox's Bazar_Teknaf": {
+        circle: "Circle-21 (Teknaf-1)",
+        zone: "Cox's Bazar",
+        address: "201, SK Tower, Khurushkul Road, Taraboniarchora, Cox's Bazar",
+        phone: ""
+    },
+    
+     "Cox's Bazar_Ukhiya": {
+        circle: "Circle-09 (Ukhiya)",
+        zone: "Cox's Bazar",
+        address: "201, SK Tower, Khurushkul Road, Taraboniarchora, Cox's Bazar",
+        phone: ""
+    },
+    
+    
+    
+    //Cumilla
+    
+     "Cumilla_Barura": {
+        circle: "Circle-006 (Sadar South)",
+        zone: "Cumilla",
+        address: "Shahid Samsul Hoque Road, Jhawtala, Adarsha Sadar, Cumilla",
+        phone: "02334408381"
+    },
+    
+    "Cumilla_Brahmanpara": {
+        circle: "Circle-002 (Cumilla Sadar)",
+        zone: "Cumilla",
+        address: "Shahid Samsul Hoque Road, Jhawtala, Adarsha Sadar, Cumilla",
+        phone: "08168467"
+    },
+    
+    "Cumilla_Burichang": {
+        circle: "Circle-002 (Cumilla Sadar)",
+        zone: "Cumilla",
+        address: "Shahid Samsul Hoque Road, Jhawtala, Adarsha Sadar, Cumilla",
+        phone: "08168467"
+    },
+    
+    "Cumilla_Chandina": {
+        circle: "Circle-006 (Sadar South)",
+        zone: "Cumilla",
+        address: "Shahid Samsul Hoque Road, Jhawtala, Adarsha Sadar, Cumilla",
+        phone: "02334408381"
+    },
+    
+     "Cumilla_Chauddagram": {
+        circle: "Circle-004 (Chauddagram)",
+        zone: "Cumilla",
+        address: "Chauddagram Bazar, Chauddagram, Cumilla",
+        phone: "02334427639"
+    },
+    
+     "Cumilla_Daudkandi": {
+        circle: "Circle-005 (Daudkandi)",
+        zone: "Cumilla",
+        address: "House No-1047, Shah Bhaban, D.C-S.P Road, College Para, Brahmanbaria",
+        phone: "02334428362"
+    },
+    
+    "Cumilla_Debidwar": {
+        circle: "Circle-011 (Muradnagar)",
+        zone: "Cumilla",
+        address: "Hazi Kashem Miar Bari, Near Palli Bidyut Office, Muradnagar, Cumilla",
+        phone: "02334493037"
+    },
+    
+    "Cumilla_Homna": {
+        circle: "Circle-012 (Homna)",
+        zone: "Cumilla",
+        address: "Anowar Master Tower, Homna Pourashava, Homna, Cumilla",
+        phone: "02334494632"
+    },
+    
+     "Cumilla_Laksam": {
+        circle: "Circle-010 (Laksam)",
+        zone: "Cumilla",
+        address: "Arshad Nibash (1st Floor), Holding-436, Pourashava Road, Laksham, Cumilla",
+        phone: "02334441679"
+    },
+    
+    "Cumilla_Lalmai": {
+        circle: "Circle-006 (Sadar South)",
+        zone: "Cumilla",
+        address: "Shahid Samsul Hoque Road, Jhawtala, Adarsha Sadar, Cumilla",
+        phone: "02334408381"
+    },
+    
+    "Cumilla_Meghna": {
+        circle: "Circle-012 (Homna)",
+        zone: "Cumilla",
+        address: "Anowar Master Tower, Homna Pourashava, Homna, Cumilla",
+        phone: "02334494632"
+    },
+    
+     "Cumilla_Monohargonj": {
+        circle: "Circle-010 (Laksam)",
+        zone: "Cumilla",
+        address: "Arshad Nibash (1st Floor), Holding-436, Pourashava Road, Laksham, Cumilla",
+        phone: "02334441679"
+    },
+    
+    "Cumilla_Muradnagar": {
+        circle: "Circle-011 (Muradnagar)",
+        zone: "Cumilla",
+        address: "Hazi Kashem Miar Bari, Near Palli Bidyut Office, Muradnagar, Cumilla",
+        phone: "02334493037"
+    },
+    
+    "Cumilla_Nangalkot": {
+        circle: "Circle-004 (Chauddagram)",
+        zone: "Cumilla",
+        address: "Chauddagram Bazar, Chauddagram, Cumilla",
+        phone: "02334427639"
+    },
+    
+   "Cumilla_Cumilla Sadar": {
+        circle: "Circle-002 (Cumilla Sadar)",
+        zone: "Cumilla",
+        address: "Shahid Samsul Hoque Road, Jhawtala, Adarsha Sadar, Cumilla",
+        phone: "08168467"
+    },
+    
+    "Cumilla_Cumilla Sadar Dakshin": {
+        circle: "Circle-003 (Cumilla Salary)",
+        zone: "Cumilla",
+        address: "Shahid Samsul Hoque Road, Jhawtala, Adarsha Sadar, Cumilla",
+        phone: "081-65311"
+    },
+    
+    "Cumilla_Titas": {
+        circle: "Circle-012 (Homna)",
+        zone: "Cumilla",
+        address: "Anowar Master Tower, Homna Pourashava, Homna, Cumilla",
+        phone: "02334494632"
+    },
+    
+
+    // --- DHAKA ZONES ---
+    
+    
+    "Dhaka_Adabor": {
+        circle: "Circle-215",
+        zone: "10, Dhaka",
+        address: "40, Segunbagicha, Dhaka",
+        phone: "8391207"
+    },
+    
+    "Dhaka_Badda": {
+        circle: "Circle-414",
+        zone: "19, Dhaka",
+        address: "116, Purana Paltan, Hossain Tower, Dhaka-1000",
+        phone: "02-47116533"
+    },
+    
+    "Dhaka_Banani": {
+        circle: "Circle-158",
+        zone: "08, Dhaka",
+        address: "12/1, Bijoynagar, Dhaka ",
+        phone: "223357408"
+    },
+    
+    "Dhaka_Bangsal": {
+        circle: "Circle-144",
+        zone: "07, Dhaka",
+        address: "9, Topkhana Road (9th Floor), Segunbagicha, Dhaka",
+        phone: "223357408"
+    },
+    
+    "Dhaka_Cantonment": {
+        circle: "Circle-153",
+        zone: "07, Dhaka",
+        address: "9, Topkhana Road (9th Floor), Segunbagicha, Dhaka",
+        phone: "223357408"
+    },
+    
+    "Dhaka_Dakshinkhan": {
+        circle: "Circle-471",
+        zone: "22, Dhaka",
+        address: "Plot No-107/A, Mascot Plaza (11thfloor), Sonargaon Janapath Road, Sector-7, Uttara, Dhaka-1230",
+        phone: "02223352880"
+    },
+    
+    "Dhaka_Darus Salam": {
+        circle: "Circle-224",
+        zone: "11, Dhaka",
+        address: "9 Topkhana Road (1st Floor), Segunbagicha, Dhaka",
+        phone: "02223352880"
+    },
+    
+    "Dhaka_Dhanmondi": {
+        circle: "Circle-116",
+        zone: "06, Dhaka",
+        address: "209/A-B Shahid Syed Nazrul Islam Sharani, Purana Paltan, Dhaka-1000",
+        phone: "02-55112419"
+    },
+    
+    "Dhaka_Gulshan": {
+        circle: "Circle-163",
+        zone: "08, Dhaka",
+        address: "12/1, Bijoynagar, Dhaka",
+        phone: "223355235"
+    },
+    
+    "Dhaka_Hazaribagh": {
+        circle: "Circle-246",
+        zone: "12, Dhaka",
+        address: "3/4 Purana Paltan, Modina Tower (7th Floor), Dhaka",
+        phone: "02-47116533"
+    },
+    
+    "Dhaka_Jatrabari": {
+        circle: "Circle-427",
+        zone: "20, Dhaka",
+        address: "Bashati Basharee, 63, West Agargaon, Dhaka",
+        phone: "02-47116533"
+    },
+    
+     "Dhaka_Kafrul": {
+        circle: "Circle-304",
+        zone: "14, Dhaka",
+        address: "12/1, At-Tarick Tower, Bijoynagar, Dhaka",
+        phone: "7117401"
+    },
+    
+    "Dhaka_Kamrangirchar": {
+        circle: "Circle-544",
+        zone: "25, Dhaka",
+        address: "12/1, At-Tarick Tower, Bijoynagar, Dhaka",
+        phone: "7117401"
+    },
+    
+    "Dhaka_Keraniganj": {
+        circle: "Circle-378",
+        zone: "18, Dhaka",
+        address: "Anjuman J.R. Tower (7th Floor), 42-Anjuman Mufidul Islam Road, Kakrail, Dhaka-1000",
+        phone: "7117401"
+    },
+    
+    "Dhaka_Khilgaon": {
+        circle: "Circle-015",
+        zone: "01, Dhaka",
+        address: "Sarika Tower (9th Floor), 8, Topkhana Road, Segunbagicha, Dhaka",
+        phone: "223388352"
+    },
+    
+    "Dhaka_Khilkhet": {
+        circle: "Circle-444",
+        zone: "21, Dhaka",
+        address: "MH Tower, 42/43, Purana Paltan, Dhaka",
+        phone: "223388352"
+    },
+    
+    "Dhaka_Kotwali": {
+        circle: "Circle-061",
+        zone: "03, Dhaka",
+        address: "New Horizon Tower (1st Floor), 15/A, Purana Palton, Dhaka-1000",
+        phone: "223352664"
+    },
+    
+     "Dhaka_Lalbagh": {
+        circle: "Circle-070",
+        zone: "04, Dhaka",
+        address: "Old National Board of Revenue Bhaban, Segunbagicha, Dhaka-1000",
+        phone: "223359059"
+    },
+    
+    "Dhaka_Mirpur": {
+        circle: "Circle-126",
+        zone: "06, Dhaka",
+        address: "209/A-B Shahid Syed Nazrul Islam Sharani, Purana Paltan, Dhaka-1000",
+        phone: "02-55112429"
+    },
+    
+    "Dhaka_Mohammadpur": {
+        circle: "Circle-489",
+        zone: "23, Dhaka",
+        address: "1, Purana Paltan, F A Tower, Dhaka",
+        phone: "02-55112429"
+    },
+    
+    "Dhaka_Motijheel": {
+        circle: "Circle-329",
+        zone: "15, Dhaka",
+        address: "Ridge Ahmed Square (8th Floor), 50/1, VIP Road, Naya Paltan, Dhaka-1000",
+        phone: "48318429"
+    },
+    
+    "Dhaka_Nawabganj": {
+        circle: "Circle-137",
+        zone: "07, Dhaka",
+        address: "9, Topkhana Road (7th Floor), Segunbagicha, Dhaka",
+        phone: "223389407"
+    },
+    
+    
+        "Dhaka_Palton": {
+        circle: "Circle-236",
+        zone: "11, Dhaka",
+        address: "9 Topkhana Road (4th Floor), Segunbagicha, Dhaka",
+        phone: "02223352881"
+    },
+    
+    
+    "Dhaka_Pallabi": {
+        circle: "Circle-062",
+        zone: "03, Dhaka",
+        address: "2nd 12 storied Government Office Building (6th Floor), Segunbagicha, Dhaka-1000",
+        phone: "223380908"
+    },
+    
+    "Dhaka_Ramna": {
+        circle: "Circle-018",
+        zone: "01, Dhaka",
+        address: "Sarika Tower (7th Floor), 8, Topkhana Road, Segunbagicha, Dhaka",
+        phone: "41050082"
+    },
+    
+    "Dhaka_Rampura": {
+        circle: "Circle-340",
+        zone: "16, Dhaka",
+        address: "Scout Shatabdi Bhaban, 60, Anjuman Mofidul Islam Sharak, Kakrail, Dhaka 1000",
+        phone: "41050082"
+    },
+    
+    "Dhaka_Sabujbagh": {
+        circle: "Circle-106",
+        zone: "05, Dhaka",
+        address: "Navana Obaied Enternia,Plot/A, 29/B, Kakrail,Dhaka",
+        phone: "48313444"
+    },
+    
+     "Dhaka_Savar": {
+        circle: "Circle-260 (Savar-1)",
+        zone: "12, Dhaka",
+        address: "31/2, Anjuman Villa, Rajbari, Genda Road, Savar, Dhaka",
+        phone: "02-9588254"
+    },
+    
+    "Dhaka_Shah Ali": {
+        circle: "Circle-237",
+        zone: "11, Dhaka",
+        address: "9 Topkhana Road (4th Floor), Segunbagicha, Dhaka",
+        phone: "02223352877"
+    },
+    
+    "Dhaka_Shahbagh": {
+        circle: "Circle-172",
+        zone: "08, Dhaka",
+        address: "8, Segunbagicha, Dhaka",
+        phone: "223352005"
+    },
+    
+    "Dhaka_Sher-e-Bangla Nagar": {
+        circle: "Circle-121",
+        zone: "06, Dhaka",
+        address: "209/A-B Shahid Syed Nazrul Islam Sharani, Purana Paltan, Dhaka-1000",
+        phone: "02-55112424"
+    },
+    
+    "Dhaka_Shyampur": {
+        circle: "Circle-488",
+        zone: "23, Dhaka",
+        address: "1, Purana Paltan, F A Tower, Dhaka",
+        phone: "02-55112424"
+    },
+    
+    "Dhaka_Sutrapur": {
+        circle: "Circle-062",
+        zone: "03, Dhaka",
+        address: "2nd 12 storied Government Office Building (6th Floor), Segunbagicha, Dhaka-1000",
+        phone: "223380908"
+    },
+    
+    "Dhaka_Tejgaon": {
+        circle: "Circle-344",
+        zone: "16, Dhaka",
+        address: "Scout Shatabdi Bhaban, 60, Anjuman Mofidul Islam Sharak, Kakrail, Dhaka 1000",
+        phone: "223380908"
+    },
+    
+
+    "Dhaka_Uttara": {
+        circle: "Circle-188",
+        zone: "09, Dhaka",
+        address: "House-5 (2th floor), Road-13, Sector-10, Uttara, Dhaka",
+        phone: "02-55092311"
+    },
+    
+    
+     "Dhaka_Uttar Khan": {
+        circle: "Circle-483 (Salary)",
+        zone: "22, Dhaka",
+        address: "Plot No-107/A, Mascot Plaza (9thfloor), Sonargaon Janapath Road, Sector-7, Uttara, Dhaka-1230",
+        phone: "02-55092311"
+    },
+    
+    "Dhaka_Dhamrai": {
+        circle: "Circle-524 (Dhamrai)",
+        zone: "24, Dhaka",
+        address: "Hazi Abdur Rashid Mansion, Holding No-A/126, Lakuria, Dhamrai, Dhaka",
+        phone: "223358734"
+    },
+    
+    "Dhaka_Dohar": {
+        circle: "Circle-075 (Dohar)",
+        zone: "04, Dhaka",
+        address: "Haridia Complex, Kadamtali, Keraniganj, Dhaka-1310",
+        phone: "223358734"
+    },
+    
+    
+    //Dinajpur
+    
+    "Dinajpur_Birampur": {
+        circle: "Circle-03 (Nawabganj)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    "Dinajpur_Birganj": {
+        circle: "Circle-08 (Birol)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    "Dinajpur_Biral": {
+        circle: "Circle-08 (Birol)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    "Dinajpur_Bochaganj": {
+        circle: "Circle-10 (Bochaganj)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    "Dinajpur_Chirirbandar": {
+        circle: "Circle-11 (Chirirbandar)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+     "Dinajpur_Fulbari": {
+        circle: "Circle-04 (Fulbari)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    
+     "Dinajpur_Ghoraghat": {
+        circle: "Circle-09 (Ghoraghat)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    "Dinajpur_Hakimpur": {
+        circle: "Circle-09 (Ghoraghat)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+     "Dinajpur_Kaharole": {
+        circle: "Circle-08 (Birol)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    "Dinajpur_Khansama": {
+        circle: "Circle-11 (Chirirbandar)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    
+    "Dinajpur_Dinajpur Sadar": {
+        circle: "Circle-02",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+     "Dinajpur_Nawabganj": {
+        circle: "Circle-03 (Nawabganj)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    "Dinajpur_Parbatipur": {
+        circle: "Circle-05 (Parbotipur)",
+        zone: "Dinajpur",
+        address: " Nimnagar, Balubari, Dinajpur ",
+        phone: "223358734"
+    },
+    
+    
+    
+    //Faridpur
+    
+    "Faridpur_Alfadanga": {
+        circle: "Circle-09 (Boalmari)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Faridpur_Bhanga": {
+        circle: "Circle-04 (Bhanga)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Faridpur_Boalmari": {
+        circle: "Circle-09 (Boalmari)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+     "Faridpur_Charbhadrasan": {
+        circle: "Circle-02 (Faridpur Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Faridpur_Faridpur Sadar": {
+        circle: "Circle-02 (Faridpur Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+     "Faridpur_Madhukhali": {
+        circle: "Circle-05 (Madhukhali)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Faridpur_Nagarkanda": {
+        circle: "Circle-10 (Nagarkanda)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+     "Faridpur_Sadarpur": {
+        circle: "Circle-04 (Bhanga)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    "Faridpur_Saltha": {
+        circle: "Circle-10 (Nagarkanda)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+   
+
+     //Feni
+     
+     
+     
+     "Feni_Chhagalnaiya": {
+        circle: "Circle-13 (Feni Sadar)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+
+     "Feni_Daganbhuiyan": {
+        circle: "Circle-16 (Daganbhuiyan)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    "Feni_Feni Sadar": {
+        circle: "Circle-13 (Feni Sadar)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    "Feni_Parshuram": {
+        circle: "Circle-15 (Parshuram)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    
+    "Feni_Phulgazi": {
+        circle: "Circle-15 (Parshuram)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+
+      "Feni_Sonagazi": {
+        circle: "Circle-14 (Sonagazi)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+
+
+   
+   //Gaibandha
+   
+   "Gaibandha_Phulchhari": {
+        circle: "Circle-015 (Gaibandha Sadar)",
+        zone: "Rangpur",
+        address: "Mission More, College Road, Lalmonirhat",
+        phone: "02589986771"
+    },
+
+     "Gaibandha_Gaibandha Sadar": {
+        circle: "Circle-019",
+        zone: "Bogura",
+        address: "Modern Hospital Road, Gaibandha",
+        phone: "02589986771"
+    },
+
+    
+    "Gaibandha_Gobindaganj": {
+        circle: "Circle-016 (Gobindaganj)",
+        zone: "Rangpur",
+        address: "Upazilla Parishod Road, Badarganj",
+        phone: "02589976225"
+    },
+
+    
+    
+    "Gaibandha_Palashbari": {
+        circle: "Circle-016 (Gobindaganj)",
+        zone: "Rangpur",
+        address: "Upazilla Parishod Road, Badarganj",
+        phone: "02589976225"
+    },
+    
+    
+    "Gaibandha_Sadullapur": {
+        circle: "Circle-017 (Sundarganj)",
+        zone: "Rangpur",
+        address: "Upazilla Campus, Ulipur, Kurigram",
+        phone: "02589950442"
+    },
+   
+   
+   
+    "Gaibandha_Saghata": {
+        circle: "Circle-015 (Gaibandha Sadar)",
+        zone: "Rangpur",
+        address: "Mission More, College Road, Lalmonirhat",
+        phone: "02589986771"
+    },
+
+
+    "Gaibandha_Sundarganj": {
+        circle: "Circle-017 (Sundarganj)",
+        zone: "Rangpur",
+        address: "Upazilla Campus, Ulipur, Kurigram",
+        phone: "02589950442"
+    },
+
+        
+        
+        //Gazipur
+        
+        
+
+        "Gazipur_Gazipur Sadar": {
+        circle: "Circle-016",
+        zone: "Gazipur",
+        address: "G-157/1, Rajdhighir West Side, Gazipur Sadar, Gazipur",
+        phone: "02-49262962"
+    },
+
+
+        "Gazipur_Kaliakair": {
+        circle: "Circle-012 (Kaliakoir)",
+        zone: "Gazipur",
+        address: "Mir tower, 3rd Floor, Shofipur, kaliakoir, Gazipur",
+        phone: "02-49262448"
+    },
+
+
+        "Gazipur_Kaliganj": {
+        circle: "Circle-017 (Kaligonj)",
+        zone: "Gazipur",
+        address: "North Badarthi, Bazar Road (Baipass Moor) Kaligonj, Gazipur",
+        phone: "02-49262998"
+    },
+
+
+        "Gazipur_Kapasia": {
+        circle: "Circle-006 (Kapasia)",
+        zone: "Gazipur",
+        address: "Chairman market, College road, Banarhoula, kapasia, Gazipur",
+        phone: "02-9208363"
+    }, 
+    
+    
+    "Gazipur_Sreepur": {
+        circle: "Circle-006 (Kapasia)",
+        zone: "Gazipur",
+        address: "Chairman market, College road, Banarhoula, kapasia, Gazipur",
+        phone: "02-9208363"
+    },
+
+        
+        
+        //Gopalgonj
+        
+        "Gopalganj_Gopalganj Sadar": {
+        circle: "Circle-18 (Gopalganj Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+        
+        "Gopalganj_Kashiani": {
+        circle: "Circle-21 (Kashiani)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    "Gopalganj_Kotalipara": {
+        circle: "Circle-19 (Tungipara)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+     "Gopalganj_Muksudpur": {
+        circle: "Circle-20 (Muksudpur)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    "Gopalganj_Tungipara": {
+        circle: "Circle-19 (Tungipara)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    
+    // Hobiganj
+    
+    "Habiganj_Ajmiriganj": {
+        circle: "Circle-016 (Hobigonj)",
+        zone: "Sylhet",
+        address: "Haque Vila, Rajnagar, Hobigonj",
+        phone: "0831-62513"
+    },
+    
+    "Habiganj_Bahubal": {
+        circle: "Circle-022 (Nabigonj)",
+        zone: "Sylhet",
+        address: "Haque Vila, Rajnagar, Hobigonj",
+        phone: "0831-62513"
+    },
+    
+    "Habiganj_Baniachang": {
+        circle: "Circle-016 (Hobigonj)",
+        zone: "Sylhet",
+        address: "Haque Vila, Rajnagar, Hobigonj",
+        phone: "0831-62513"
+    },
+    
+    
+     "Habiganj_Chunarughat": {
+        circle: "Circle-017 (Madhobpur)",
+        zone: "Sylhet",
+        address: "Haque Vila, Rajnagar, Hobigonj",
+        phone: "0831-62513"
+    },
+    
+    
+    "Habiganj_Habiganj Sadar": {
+        circle: "Circle-016 (Hobigonj)",
+        zone: "Sylhet",
+        address: "Haque Vila, Rajnagar, Hobigonj",
+        phone: "0831-62513"
+    },
+    
+    
+     "Habiganj_Lakhai": {
+        circle: "Circle-016 (Hobigonj)",
+        zone: "Sylhet",
+        address: "Haque Vila, Rajnagar, Hobigonj",
+        phone: "0831-62513"
+    },
+    
+    
+    "Habiganj_Madhabpur": {
+        circle: "Circle-017 (Madhobpur)",
+        zone: "Sylhet",
+        address: "Haque Vila, Rajnagar, Hobigonj",
+        phone: "0831-62513"
+    },
+    
+    
+    "Habiganj_Nabiganj": {
+        circle: "Circle-022 (Nabigonj)",
+        zone: "Sylhet",
+        address: "Haque Vila, Rajnagar, Hobigonj",
+        phone: "0831-62513"
+    },
+    
+    
+    
+    "Habiganj_Sayestaganj": {
+        circle: "Circle-016 (Hobigonj)",
+        zone: "Sylhet",
+        address: "Haque Vila, Rajnagar, Hobigonj",
+        phone: "0831-62513"
+    },
+
+
+        //Jamalpur
+        
+        
+    "Jamalpur_Baksiganj": {
+        circle: "Circle-009 (Islampur)",
+        zone: "Mymensingh",
+        address: "Ghoshpara, Jamalpur",
+        phone: "0981-64057"
+    },
+    
+    "Jamalpur_Dewanganj": {
+        circle: "Circle-009 (Islampur)",
+        zone: "Mymensingh",
+        address: "Ghoshpara, Jamalpur",
+        phone: "0981-64057"
+    },
+    
+    "Jamalpur_Islampur": {
+        circle: "Circle-009 (Islampur)",
+        zone: "Mymensingh",
+        address: "Ghoshpara, Jamalpur",
+        phone: "0981-64057"
+    },
+    
+    "Jamalpur_Jamalpur Sadar": {
+        circle: "Circle-007 (Jamalpur Sadar)",
+        zone: "Mymensingh",
+        address: "Ghoshpara, Jamalpur",
+        phone: "0981-63290"
+    },
+    
+    "Jamalpur_Melandaha": {
+        circle: "Circle-007 (Jamalpur Sadar)",
+        zone: "Mymensingh",
+        address: "Ghoshpara, Jamalpur",
+        phone: "0981-63290"
+    },
+    
+    
+    
+    
+    "Jamalpur_Madarganj": {
+        circle: "Circle-012 (Sarishabari)",
+        zone: "Mymensingh",
+        address: "Ghoshpara, Jamalpur",
+        phone: "0981-62378"
+    },
+    
+    
+    "Jamalpur_Sarishabari": {
+        circle: "Circle-012 (Sarishabari)",
+        zone: "Mymensingh",
+        address: "Ghoshpara, Jamalpur",
+        phone: "0981-62378"
+    },
+
+
+
+        //Jashore
+        
+         "Jashore_Abhaynagar": {
+        circle: "Circle-10 (Noapara)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+     "Jashore_Bagherpara": {
+        circle: "Circle-03 (Jashore)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    
+    "Jashore_Chougacha": {
+        circle: "Circle-09 (Chougacha)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    
+    "Jashore_Jhikargacha": {
+        circle: "Circle-11 (Jhikorgacha)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    "Jashore_Keshobpur": {
+        circle: "Circle-12 (Keshobpur)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    "Jashore_Jashore Sadar": {
+        circle: "Circle-02 (Jashore)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    
+     "Jashore_Monirampur": {
+        circle: "Circle-05 (Monirampur)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+     "Jashore_Sharsha": {
+        circle: "Circle-04 (Benapole)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    //Jhalokathi
+    
+    
+    
+     "Jhalokathi_Jhalokathi Sadar": {
+        circle: "Circle-005",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Masum Market (1st floor) Shadhonar Moor, Jhalokathi",
+        phone: "0247-8875685"
+    },
+    
+    
+    
+     "Jhalokathi_Kathalia": {
+        circle: "Circle-012 (Nalcity)",
+        zone: "Barishal",
+        address: "House No-433 (1st Floor), T& T Road, Nalchity, Jhalokathi",
+        phone: "0247-8876288"
+    },
+    
+    "Jhalokathi_Nalchity": {
+        circle: "Circle-012 (Nalcity)",
+        zone: "Barishal",
+        address: "House No-433 (1st Floor), T& T Road, Nalchity, Jhalokathi",
+        phone: "0247-8876288"
+    },
+    
+    "Jhalokathi_Rajapur": {
+        circle: "Circle-005",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Masum Market (1st floor) Shadhonar Moor, Jhalokathi",
+        phone: "0247-8875685"
+    },
+    
+    
+    //Jhenaidah
+    
+    
+    "Jhenaidah_Harinakundu": {
+        circle: "Circle-14 (Jhenaidah Salary)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+     "Jhenaidah_Jhenaidah Sadar": {
+        circle: "Circle-13 (Jhenaidah Sadar)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    "Jhenaidah_Kaliganj": {
+        circle: "Circle-15 (Kaliganj)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    "Jhenaidah_Kotchandpur": {
+        circle: "Circle-16 (Kotchandpur)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    "Jhenaidah_Maheshpur": {
+        circle: "Circle-16 (Kotchandpur)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+     "Jhenaidah_Shailkupa": {
+        circle: "Circle-17 (Shailkupa)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    //Joypurhat
+    
+    
+    "Joypurhat_Akkelpur": {
+        circle: "Circle-021 (Gobindagonj)",
+        zone: "Bogura",
+        address: "House No-381, Thana Road, Gobindaganj, Gaibandha",
+        phone: "054175094"
+    },
+    
+    "Joypurhat_Joypurhat Sadar": {
+        circle: "Circle-020",
+        zone: "Bogura",
+        address: "House No-24, Block-B, Housing Estate, Joipurhat",
+        phone: "0571-62328"
+    },
+    
+    
+     "Joypurhat_Kalai": {
+        circle: "Circle-019",
+        zone: "Bogura",
+        address: "Modern Hospital Road, Gaibandha",
+        phone: "0541-52167"
+    },
+    
+    "Joypurhat_Khetlal": {
+        circle: "Circle-021 (Gobindagonj)",
+        zone: "Bogura",
+        address: "House No-381, Thana Road, Gobindaganj, Gaibandha",
+        phone: "054175094"
+    },
+    
+    
+    "Joypurhat_Panchbibi": {
+        circle: "Circle-022 (Pachibibi)",
+        zone: "Bogura",
+        address: "House No-24, Block-B, Housing Estate, Joipurhat",
+        phone: "057151329"
+    },
+    
+    
+    
+    //Khagrachhari
+    
+    
+    "Khagrachhari_Dighinala": {
+        circle: "Circle-066 (Salary)",
+        zone: "03, Chattogram",
+        address: "Shah Jamal Bhaban (1st floor)",
+        phone: "031-2601647"
+    },
+    
+    "Khagrachhari_Guimara": {
+        circle: "Circle-066 (Salary)",
+        zone: "03, Chattogram",
+        address: "Shah Jamal Bhaban (1st floor)",
+        phone: "031-2601647"
+    },
+    
+    "Khagrachhari_Khagrachhari Sadar": {
+        circle: "Circle-066 (Salary)",
+        zone: "03, Chattogram",
+        address: "Shah Jamal Bhaban (1st floor)",
+        phone: "031-2601647"
+    },
+    
+    "Khagrachhari_Lakshmichhari": {
+        circle: "Circle-066 (Salary)",
+        zone: "03, Chattogram",
+        address: "Shah Jamal Bhaban (1st floor)",
+        phone: "031-2601647"
+    },
+    
+    "Khagrachhari_Mahalchhari": {
+        circle: "Circle-066 (Salary)",
+        zone: "03, Chattogram",
+        address: "Shah Jamal Bhaban (1st floor)",
+        phone: "031-2601647"
+    },
+    
+    "Khagrachhari_Manikchhari": {
+        circle: "Circle-066 (Salary)",
+        zone: "03, Chattogram",
+        address: "Shah Jamal Bhaban (1st floor)",
+        phone: "031-2601647"
+    },
+    
+    
+    "Khagrachhari_Matiranga": {
+        circle: "Circle-066 (Salary)",
+        zone: "03, Chattogram",
+        address: "Shah Jamal Bhaban (1st floor)",
+        phone: "031-2601647"
+    },
+    
+    
+    
+    
+    "Khagrachhari_Panchhari": {
+        circle: "Circle-066 (Salary)",
+        zone: "03, Chattogram",
+        address: "Shah Jamal Bhaban (1st floor)",
+        phone: "031-2601647"
+    },
+    
+    
+    
+    "Khagrachhari_Ramgarh": {
+        circle: "Circle-066 (Salary)",
+        zone: "03, Chattogram",
+        address: "Shah Jamal Bhaban (1st floor)",
+        phone: "031-2601647"
+    },
+    
+    
+    //Khulna
+    
+    
+    "Khulna_Batiaghata": {
+        circle: "Circle-09 (Dumuria)",
+        zone: "Khulna",
+        address: "Somobay Bank Bhaban (2nd Floor), Court Road, Chuadanga",
+        phone: "02477787041"
+    },
+    
+    
+    "Khulna_Dakop": {
+        circle: "Circle-09 (Dumuria)",
+        zone: "Khulna",
+        address: "Somobay Bank Bhaban (2nd Floor), Court Road, Chuadanga",
+        phone: "02477787041"
+    },
+    
+    
+    "Khulna_Dighalia": {
+        circle: "Circle-10 (Dighalia)",
+        zone: "Khulna",
+        address: "Mir Tayyab Hossain Road, Shaha Para, Magura",
+        phone: "02477710261"
+    },
+    
+    
+    "Khulna_Dumuria": {
+        circle: "Circle-09 (Dumuria)",
+        zone: "Khulna",
+        address: "Somobay Bank Bhaban (2nd Floor), Court Road, Chuadanga",
+        phone: "02477787041"
+    },
+    
+    "Khulna_Fultola": {
+        circle: "Circle-04 (Fultola)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "024-77702646"
+    },
+    
+    
+    "Khulna_Koyra": {
+        circle: "Circle-06 (Paikgacha)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "02477702583"
+    },
+    
+    
+    "Khulna_Paikgachha": {
+        circle: "Circle-06 (Paikgacha)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "02477702583"
+    },
+    
+    
+    "Khulna_Rupsha": {
+        circle: "Circle-03 (Khulna Sadar)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "02477702223"
+    },
+    
+    
+    "Khulna_Terkhada": {
+        circle: "Circle-03 (Khulna Sadar)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "02477702223"
+    },
+    
+    
+    "Khulna_Daulatpur": {
+        circle: "Circle-03 (Khulna Sadar)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "02477702223"
+    },
+    
+    "Khulna_Khalishpur": {
+        circle: "Circle-05 (Khulna Salary)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "02477700613"
+    },
+    
+    "Khulna_Khan Jahan Ali": {
+        circle: "Circle-03 (Khulna Sadar)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "02477702223"
+    },
+    
+    
+    "Khulna_Kotwali": {
+        circle: "Circle-03 (Khulna Sadar)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "02477702223"
+    },
+    
+    
+    
+    "Khulna_Sonadanga": {
+        circle: "Circle-03 (Khulna Sadar)",
+        zone: "Khulna",
+        address: "Rafazi Mansion, House No- 481, Road, No-21, Mujgunny R/A",
+        phone: "02477702223"
+    },
+    
+    
+    
+    //Kishoreganj
+    
+    
+     "Kishoreganj_Astagram": {
+        circle: "Circle-22 (Karimganj)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+     "Kishoreganj_Bajitpur": {
+        circle: "Circle-21 (Bajitpur)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    "Kishoreganj_Bhairab": {
+        circle: "Circle-14 (Bhairab-1)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    "Kishoreganj_Hossainpur": {
+        circle: "Circle-16 (Hosenpur)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    "Kishoreganj_Itna": {
+        circle: "Circle-22 (Karimganj)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    "Kishoreganj_Karimganj": {
+        circle: "Circle-22 (Karimganj)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    "Kishoreganj_Katiadi": {
+        circle: "Circle-19 (Katiadi)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    "Kishoreganj_Kishoreganj Sadar": {
+        circle: "Circle-13 (Kishoreganj Sadar)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    "Kishoreganj_Kuliarchar": {
+        circle: "Circle-20 (Kuliarchar)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    "Kishoreganj_Mithamain": {
+        circle: "Circle-17 (Nikli)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+     "Kishoreganj_Nikli": {
+        circle: "Circle-17 (Nikli)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    
+    "Kishoreganj_Pakundia": {
+        circle: "Circle-19 (Katiadi)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    
+    "Kishoreganj_Tarail": {
+        circle: "Circle-13 (Kishoreganj Sadar)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    
+    //Kurigram
+    
+    
+    
+    "Kurigram_Bhurungamari": {
+        circle: "Circle-010 (Kurigram Sadar)",
+        zone: "Rangpur",
+        address: "Katabari, Fulbari, Dinajpur",
+        phone: "05327-56386"
+    },
+    
+    
+    "Kurigram_Rajibpur": {
+        circle: "Circle-012 (Chilmari)",
+        zone: "Rangpur",
+        address: "Saodagorpotti, Murshidhat, Setabgonj, Dinajpur",
+        phone: "05325-73250"
+    },
+    
+    "Kurigram_Chilmari": {
+        circle: "Circle-012 (Chilmari)",
+        zone: "Rangpur",
+        address: "Saodagorpotti, Murshidhat, Setabgonj, Dinajpur",
+        phone: "05325-73250"
+    },
+    
+    "Kurigram_Fulbari": {
+        circle: "Circle-010 (Kurigram Sadar)",
+        zone: "Rangpur",
+        address: "Katabari, Fulbari, Dinajpur",
+        phone: "05327-56386"
+    },
+    
+    
+    "Kurigram_Kurigram Sadar": {
+        circle: "Circle-010 (Kurigram Sadar)",
+        zone: "Rangpur",
+        address: "Katabari, Fulbari, Dinajpur",
+        phone: "05327-56386"
+    },
+    
+     "Kurigram_Nageshwari": {
+        circle: "Circle-010 (Kurigram Sadar)",
+        zone: "Rangpur",
+        address: "Katabari, Fulbari, Dinajpur",
+        phone: "05327-56386"
+    },
+    
+    
+     "Kurigram_Rajarhat": {
+        circle: "Circle-010 (Kurigram Sadar)",
+        zone: "Rangpur",
+        address: "Katabari, Fulbari, Dinajpur",
+        phone: "05327-56386"
+    },
+    
+    
+    "Kurigram_Raomari": {
+        circle: "Circle-012 (Chilmari)",
+        zone: "Rangpur",
+        address: "Saodagorpotti, Murshidhat, Setabgonj, Dinajpur",
+        phone: "05325-73250"
+    },
+    
+    
+     "Kurigram_Ulipur": {
+        circle: "Circle-012 (Chilmari)",
+        zone: "Rangpur",
+        address: "Saodagorpotti, Murshidhat, Setabgonj, Dinajpur",
+        phone: "05325-73250"
+    },
+    
+    
+    
+    //kushtia
+    
+    "Kushtia_Bheramara": {
+        circle: "Circle-05 (Bheramara)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    
+    "Kushtia_Daulatpur": {
+        circle: "Circle-04 (Daulatpur)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    
+    "Kushtia_Khoksa": {
+        circle: "Circle-11 (Khoksha)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    
+    "Kushtia_Kumarkhali": {
+        circle: "Circle-09 (Kumarkhali)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    "Kushtia_Kushtia Sadar": {
+        circle: "Circle-03 (Kushtia Sadar)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    
+    "Kushtia_Mirpur": {
+        circle: "Circle-10 (Mirpur)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    
+    //Lakshmipur
+    
+    "Lakshmipur_Lakshmipur Sadar": {
+        circle: "Circle-18 (Lakshmipur Sadar)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    
+    
+    "Lakshmipur_Raipur": {
+        circle: "Circle-20 (Raipur)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    
+    "Lakshmipur_Ramganj": {
+        circle: "Circle-22 (Ramganj)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    
+    "Lakshmipur_Ramgati": {
+        circle: "Circle-21 (Ramgati)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    
+    "Lakshmipur_Kamalnagar": {
+        circle: "Circle-21 (Ramgati)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+
+
+
+        //Lalmonirhat
+        
+        
+        "Lalmonirhat_Aditmari": {
+        circle: "Circle-004 (Lalmonirhat Sadar)",
+        zone: "Rangpur",
+        address: "Ukiler Mor, Nilphamari",
+        phone: "02589955349"
+    },
+    
+    
+     "Lalmonirhat_Hatibandha": {
+        circle: "Circle-005 (Patgram)",
+        zone: "Rangpur",
+        address: "Pouroshova Road, Sayedpur, Nilphamari",
+        phone: "02589956923"
+    },
+    
+    "Lalmonirhat_Kaliganj": {
+        circle: "Circle-005 (Patgram)",
+        zone: "Rangpur",
+        address: "Pouroshova Road, Sayedpur, Nilphamari",
+        phone: "02589956923"
+    },
+    
+    
+     
+        "Lalmonirhat_Lalmonirhat Sadar": {
+        circle: "Circle-004 (Lalmonirhat Sadar)",
+        zone: "Rangpur",
+        address: "Ukiler Mor, Nilphamari",
+        phone: "02589955349"
+    },
+    
+    "Lalmonirhat_Patgram": {
+        circle: "Circle-005 (Patgram)",
+        zone: "Rangpur",
+        address: "Pouroshova Road, Sayedpur, Nilphamari",
+        phone: "02589956923"
+    },
+    
+    
+    //Madaripur
+    
+    "Madaripur_Kalkini": {
+        circle: "Circle-13 (Madaripur Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    "Madaripur_Madaripur Sadar": {
+        circle: "Circle-13 (Madaripur Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    "Madaripur_Dasar": {
+        circle: "Circle-15 (Rajoir)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+     "Madaripur_Rajoir": {
+        circle: "Circle-15 (Rajoir)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+     "Madaripur_Shibchar": {
+        circle: "Circle-14 (Shibchar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    //Magura
+    
+    
+     "Magura_Magura Sadar": {
+        circle: "Circle-18 (Magura Sadar)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    "Magura_Mohammadpur": {
+        circle: "Circle-20 (Mohammadpur)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    
+     "Magura_Shalikha": {
+        circle: "Circle-18 (Magura Sadar)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    
+     "Magura_Sreepur": {
+        circle: "Circle-19 (Sreepur)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    // Manikganj
+    
+    
+     "Manikganj_Daulatpur": {
+        circle: "Circle-547 (Ghior)",
+        zone: "25, Dhaka",
+        address: "90, Nagar Bhaban Road, Manikganj Sadar, Manikganj",
+        phone: ""
+    },
+    
+    "Manikganj_Ghior": {
+        circle: "Circle-547 (Ghior)",
+        zone: "25, Dhaka",
+        address: "90, Nagar Bhaban Road, Manikganj Sadar, Manikganj",
+        phone: ""
+    },
+    
+    "Manikganj_Manikganj Sadar": {
+        circle: "Circle-546 (Manikganj Sadar)",
+        zone: "25, Dhaka",
+        address: "90, Nagar Bhaban Road, Manikganj Sadar, Manikganj",
+        phone: ""
+    },
+    
+    "Manikganj_Saturia": {
+        circle: "Circle-550 (Salary)",
+        zone: "25, Dhaka",
+        address: "Meher villa, 2 Shahid Tozu Sarak, Khalpar, Manikganj",
+        phone: ""
+    },
+    
+     "Manikganj_Singair": {
+        circle: "Circle-549 (Shingair)",
+        zone: "25, Dhaka",
+        address: "Meher villa, 2 Shahid Tozu Sarak, Khalpar, Manikganj",
+        phone: ""
+    },
+    
+    "Manikganj_Harirampur": {
+        circle: "Circle-548 (Shibaloy)",
+        zone: "25, Dhaka",
+        address: "House no: 538, Kalibari Road (Alo Bhaban), Tepra, Shibaloy, Manikganj",
+        phone: ""
+    },
+    
+    "Manikganj_Shibalaya": {
+        circle: "Circle-548 (Shibaloy)",
+        zone: "25, Dhaka",
+        address: "House no: 538, Kalibari Road (Alo Bhaban), Tepra, Shibaloy, Manikganj",
+        phone: ""
+    },
+    
+    //Meherpur
+    
+    "Meherpur_Gangni": {
+        circle: "Circle-20 (Gangni)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+     "Meherpur_Meherpur Sadar": {
+        circle: "Circle-18 (Meherpur Sadar)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    "Meherpur_Mujibnagar": {
+        circle: "Circle-18 (Meherpur Sadar)",
+        zone: "Kushtia",
+        address: "64/1, SB Road, Babar Ali Gate, Chamra Patti, Kustia",
+        phone: ""
+    },
+    
+    
+    //Moulvibazar
+    
+    
+    
+    "Moulvibazar_Barlekha": {
+        circle: "Circle-015 (Kulaura)",
+        zone: "Sylhet",
+        address: "Puran Hospital Road, Moulvibazar",
+        phone: "0861-53024"
+    },
+    
+    "Moulvibazar_Juri": {
+        circle: "Circle-015 (Kulaura)",
+        zone: "Sylhet",
+        address: "Puran Hospital Road, Moulvibazar",
+        phone: "0861-53024"
+    },
+    
+    "Moulvibazar_Kamalganj": {
+        circle: "Circle-014 (Srimangal)",
+        zone: "Sylhet",
+        address: "Puran Hospital Road, Moulvibazar",
+        phone: "0861-53324"
+    },
+    
+    "Moulvibazar_Kulaura": {
+        circle: "Circle-015 (Kulaura)",
+        zone: "Sylhet",
+        address: "Puran Hospital Road, Moulvibazar",
+        phone: "0861-53024"
+    },
+    
+    "Moulvibazar_Moulvibazar Sadar": {
+        circle: "Circle-013 (Moulvibazar)",
+        zone: "Sylhet",
+        address: "Puran Hospital Road, Moulvibazar",
+        phone: "0861-52720"
+    },
+    
+    
+    "Moulvibazar_Rajnagar": {
+        circle: "Circle-013 (Moulvibazar)",
+        zone: "Sylhet",
+        address: "Puran Hospital Road, Moulvibazar",
+        phone: "0861-52720"
+    },
+    
+    "Moulvibazar_Sreemangal": {
+        circle: "Circle-014 (Srimangal)",
+        zone: "Sylhet",
+        address: "Puran Hospital Road, Moulvibazar",
+        phone: "0861-53324"
+    },
+    
+    
+    
+    //Munshiganj
+    
+    
+    "Munshiganj_Gazaria": {
+        circle: "Circle-019)",
+        zone: "Narayanganj",
+        address: "Mridha Tower (2nd Floor), Deovog, Near Jadge Coart, Munshiganj",
+        phone: "7620621"
+    },
+    
+    
+    "Munshiganj_Lowhajong": {
+        circle: "Circle-022 (Sreenagar)",
+        zone: "Narayanganj",
+        address: "Mridha Tower (2nd Floor), Deovog, Near Jadge Coart, Munshiganj",
+        phone: "7620625"
+    },
+    
+    "Munshiganj_Munshiganj Sadar": {
+        circle: "Circle-020",
+        zone: "Narayanganj",
+        address: "Mridha Tower (2nd Floor), Deovog, Near Jadge Coart, Munshiganj",
+        phone: "7620622"
+    },
+    
+    "Munshiganj_Sirajdikhan": {
+        circle: "Circle-021 (Tongibari)",
+        zone: "Narayanganj",
+        address: "Mridha Tower (2nd Floor), Deovog, Near Jadge Coart, Munshiganj",
+        phone: "7620623"
+    },
+    
+    
+     
+    "Munshiganj_Sreenagar": {
+        circle: "Circle-022 (Sreenagar)",
+        zone: "Narayanganj",
+        address: "Mridha Tower (2nd Floor), Deovog, Near Jadge Coart, Munshiganj",
+        phone: "7620625"
+    },
+    
+    
+    "Munshiganj_Tongibari": {
+        circle: "Circle-021 (Tongibari)",
+        zone: "Narayanganj",
+        address: "Mridha Tower (2nd Floor), Deovog, Near Jadge Coart, Munshiganj",
+        phone: "7620623"
+    },
+    
+    
+    //Naogaon
+    
+    
+    "Naogaon_Atray": {
+        circle: "Circle-004",
+        zone: "Rajshahi",
+        address: "UKILPARA, NAOGAON SADAR, NAOGAON",
+        phone: "02588-881063"
+    },
+    
+    "Naogaon_Badolgachi": {
+        circle: "Circle-004",
+        zone: "Rajshahi",
+        address: "UKILPARA, NAOGAON SADAR, NAOGAON",
+        phone: "02588-881063"
+    },
+    
+    
+    "Naogaon_Dhamuirhat": {
+        circle: "Circle-005",
+        zone: "Rajshahi",
+        address: "PALSHA, NAZIPUR POURASAVA, POTNITALA, NAOGAON",
+        phone: "02588-885811"
+    },
+    
+    "Naogaon_Manda": {
+        circle: "Circle-003",
+        zone: "Rajshahi",
+        address: "UKILPARA, NAOGAON SADAR, NAOGAON",
+        phone: "02588-881256"
+    },
+    
+    "Naogaon_Mohadevpur": {
+        circle: "Circle-006 (Mohadebpur)",
+        zone: "Rajshahi",
+        address: "LITCHU BAGAN, MOHADEVPUR, NAOGAON",
+        phone: "02588-885085"
+    },
+    
+    "Naogaon_Naogaon Sadar": {
+        circle: "Circle-003",
+        zone: "Rajshahi",
+        address: "UKILPARA, NAOGAON SADAR, NAOGAON",
+        phone: "02588-881256"
+    },
+  
+  
+  
+  "Naogaon_Niamatpur": {
+        circle: "Circle-006 (Mohadebpur)",
+        zone: "Rajshahi",
+        address: "LITCHU BAGAN, MOHADEVPUR, NAOGAON",
+        phone: "02588-885085"
+    },
+    
+    "Naogaon_Potnitola": {
+        circle: "Circle-005",
+        zone: "Rajshahi",
+        address: "PALSHA, NAZIPUR POURASAVA, POTNITALA, NAOGAON",
+        phone: "02588-885811"
+    },
+    
+    
+    "Naogaon_Porsha": {
+        circle: "Circle-005",
+        zone: "Rajshahi",
+        address: "PALSHA, NAZIPUR POURASAVA, POTNITALA, NAOGAON",
+        phone: "02588-885811"
+    },
+    
+     "Naogaon_Raninagar": {
+        circle: "Circle-004",
+        zone: "Rajshahi",
+        address: "UKILPARA, NAOGAON SADAR, NAOGAON",
+        phone: "02588-881063"
+    },
+    
+    
+    "Naogaon_Sapahar": {
+        circle: "Circle-005",
+        zone: "Rajshahi",
+        address: "PALSHA, NAZIPUR POURASAVA, POTNITALA, NAOGAON",
+        phone: "02588-885811"
+    },
+    
+    //Narail
+    
+    
+    "Narail_Kalia": {
+        circle: "Circle-22 (Lohagara)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    "Narail_Lohagara": {
+        circle: "Circle-22 (Lohagara)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    "Narail_Narail Sadar": {
+        circle: "Circle-21 (Narail Sadar)",
+        zone: "Jashore",
+        address: "112, T.B. Clinic Mor, Rail Road, Jashore-7400",
+        phone: ""
+    },
+    
+    
+    //Narayanganj
+    
+    "Narayanganj_Araihazar": {
+        circle: "Circle-012 (Araihazar)",
+        zone: "Narayanganj",
+        address: "Shahin Bhabon (3rd Floor), Murtuzabad (Dighir Dakhinpar), Bhulta, Rupganj, Narayanganj",
+        phone: ""
+    },
+    
+    
+    "Narayanganj_Bandar": {
+        circle: "Circle-017 (Bhandor)",
+        zone: "Narayanganj",
+        address: "Rokeya Bhaban (3St Floor), Chanmari, Narayanganj",
+        phone: "7646908"
+    },
+    
+    "Narayanganj_Narayanganj Sadar": {
+        circle: "Circle-004",
+        zone: "Narayanganj",
+        address: "HR Complex (5th Floor), East Isdair, Fatullah, Narayanganj",
+        phone: "7645107"
+    },
+    
+    "Narayanganj_Rupganj": {
+        circle: "Circle-011 (Rupgonj)",
+        zone: "Narayanganj",
+        address: "Shahin Bhabon (2nd Floor), Murtuzabad (Dighir Dakhinpar), Bhulta, Rupganj, Narayanganj",
+        phone: ""
+    },
+  
+  
+  
+  "Narayanganj_Sonargaon": {
+        circle: "Circle-016 (Sonargaon)",
+        zone: "Narayanganj",
+        address: "Rokeya Bhaban (1st Floor), Chanmari, Narayangonj",
+        phone: "7645942"
+    },
+    
+    
+    //Narsingdi
+    
+    
+  "Narsingdi_Belabo": {
+        circle: "Circle-11 (Belabo)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    "Narsingdi_Monohardi": {
+        circle: "Circle-04 (Monohardi)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    "Narsingdi_Narsingdi Sadar": {
+        circle: "Circle-02",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    "Narsingdi_Palash": {
+        circle: "Circle-09 (Palash)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    "Narsingdi_Raipura": {
+        circle: "Circle-10 (Raipura)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    "Narsingdi_Shibpur": {
+        circle: "Circle-03 (Shibpur)",
+        zone: "Narsingdi",
+        address: "52/1, Bilasdi, Narsingdi Sadar, Narsingdi",
+        phone: ""
+    },
+    
+    
+    //Natore
+    
+    
+  "Natore_Natore Sadar": {
+        circle: "Circle-020",
+        zone: "Rajshahi",
+        address: "KANAIKHALI (BISHWAS BHABAN, 4TH FLOOR), NATORE SADAR, NATORE",
+        phone: "02588-871501"
+    },
+    
+    "Natore_Singra": {
+        circle: "Circle-021 (Singra)",
+        zone: "Rajshahi",
+        address: "PARA JAYNAGAR, MURGI HATI, SINGRA BAZAR, SINGRA, NATORE",
+        phone: "02588-875719"
+    },
+    
+    "Natore_Bagatipara": {
+        circle: "Circle-020",
+        zone: "Rajshahi",
+        address: "KANAIKHALI (BISHWAS BHABAN, 4TH FLOOR), NATORE SADAR, NATORE",
+        phone: "02588-871501"
+    },
+    
+    
+    "Natore_Baraigram": {
+        circle: "Circle-020",
+        zone: "Rajshahi",
+        address: "KANAIKHALI (BISHWAS BHABAN, 4TH FLOOR), NATORE SADAR, NATORE",
+        phone: "02588-871501"
+    },
+    
+    "Natore_Gurudaspur": {
+        circle: "Circle-020",
+        zone: "Rajshahi",
+        address: "KANAIKHALI (BISHWAS BHABAN, 4TH FLOOR), NATORE SADAR, NATORE",
+        phone: "02588-871501"
+    },
+    
+    "Natore_Lalpur": {
+        circle: "Circle-020",
+        zone: "Rajshahi",
+        address: "KANAIKHALI (BISHWAS BHABAN, 4TH FLOOR), NATORE SADAR, NATORE",
+        phone: "02588-871501"
+    },
+    
+    "Natore_Naldanga": {
+        circle: "Circle-020",
+        zone: "Rajshahi",
+        address: "KANAIKHALI (BISHWAS BHABAN, 4TH FLOOR), NATORE SADAR, NATORE",
+        phone: "02588-871501"
+    },
+  
+  
+  
+  //Netrakona
+  
+  "Netrakona_Atpara": {
+        circle: "Circle-018 (Netrokona Sadar)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-61346"
+    },
+    
+    "Netrakona_Barhatta": {
+        circle: "Circle-019 (Netrokona Salary)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-51113"
+    },
+    
+    "Netrakona_Durgapur": {
+        circle: "Circle-022 (Durgapur)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-51115"
+    },
+    
+    "Netrakona_Kalmakanda": {
+        circle: "Circle-022 (Durgapur)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-51115"
+    },
+    
+    "Netrakona_Khaliajuri": {
+        circle: "Circle-019 (Netrokona Salary)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-51113"
+    },
+    
+    "Netrakona_Kendua": {
+        circle: "Circle-019 (Netrokona Salary)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-51113"
+    },
+  
+  
+  "Netrakona_Modon": {
+        circle: "Circle-018 (Netrokona Sadar)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-61346"
+    },
+  
+  
+  "Netrakona_Mohanganj": {
+        circle: "Circle-020 (Kalmakanda)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-51114"
+    },
+  
+  
+  "Netrakona_Netrakona Sadar": {
+        circle: "Circle-018 (Netrokona Sadar)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-61346"
+    },
+  
+  
+  "Netrakona_Purbadhala": {
+        circle: "Circle-019 (Netrokona Salary)",
+        zone: "Mymensingh",
+        address: "College Road, Satpai, Netrokona",
+        phone: "0951-51113"
+    },
+  
+  
+  
+  //Nilphamari
+  
+  
+  
+  "Nilphamari_Dimla": {
+        circle: "Circle-021 (Domar)",
+        zone: "Rangpur",
+        address: "Vhaulagonj Road, Debigonj, Panchagorh",
+        phone: "05654-56103"
+    },
+    
+    
+    "Nilphamari_Domar": {
+        circle: "Circle-021 (Domar)",
+        zone: "Rangpur",
+        address: "Vhaulagonj Road, Debigonj, Panchagorh",
+        phone: "05654-56103"
+    },
+    
+    
+    "Nilphamari_Jaldhaka": {
+        circle: "Circle-022 (Jaldhaka)",
+        zone: "Rangpur",
+        address: "New Supermarket (2nd Floor), Purbo Churasta, Bangobondhu Road, Pirgonj, Thakurgaon",
+        phone: "02589933187"
+    },
+    
+    "Nilphamari_Kishoreganj": {
+        circle: "Circle-022 (Jaldhaka)",
+        zone: "Rangpur",
+        address: "New Supermarket (2nd Floor), Purbo Churasta, Bangobondhu Road, Pirgonj, Thakurgaon",
+        phone: "02589933187"
+    },
+    
+    "Nilphamari_Nilphamari Sadar": {
+        circle: "Circle-018 (Nilphamari Sadar)",
+        zone: "Rangpur",
+        address: "Naresh Chouhan Road, Ghoshpara, Thakurgaon",
+        phone: "02589931533"
+    },
+    
+    "Nilphamari_Saidpur": {
+        circle: "Circle-019 (Saidpur-1)",
+        zone: "Rangpur",
+        address: "Naresh Chouhan Road, Ghoshpara, Thakurgaon",
+        phone: "02589931105"
+    },
+    
+    //Noakhali
+    
+    "Noakhali_Begumganj": {
+        circle: "Circle-04 (Chowmuhani)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    
+    "Noakhali_Chatkhil": {
+        circle: "Circle-11 (Chatkhil)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    "Noakhali_Companiganj": {
+        circle: "Circle-06 (Companiganj)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    "Noakhali_Hatia": {
+        circle: "Circle-08 (Subarnachar)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    "Noakhali_Kabirhat": {
+        circle: "Circle-10 (Kabirhat)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    "Noakhali_Noakhali Sadar": {
+        circle: "Circle-02 (Noakhali Sadar)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    "Noakhali_Senbagh": {
+        circle: "Circle-09 (Senbag)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    "Noakhali_Sonaimuri": {
+        circle: "Circle-05 (Sonaimuri)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    "Noakhali_Subarnachar": {
+        circle: "Circle-08 (Subarnachar)",
+        zone: "Noakhali",
+        address: "Master House (2nd Floor), Main Road, Maijdee Bazar, Sadar, Noakhali",
+        phone: ""
+    },
+    
+    
+    //Pabna
+    
+    "Pabna_Atghoria": {
+        circle: "Circle-008 (Salary)",
+        zone: "Rajshahi",
+        address: "350/302, JHAWTALA ROAD, GOPALPUR, PABNA",
+        phone: "02588-805224"
+    },
+    
+    
+    "Pabna_Bera": {
+        circle: "Circle-011 (Kasinatpur)",
+        zone: "Rajshahi",
+        address: "HORIDEBPUR, KAZIRHAT ROAD, KASHINATHPUR, BERA, PABNA",
+        phone: "02588-888079"
+    },
+    
+    "Pabna_Bhangura": {
+        circle: "Circle-008 (Salary)",
+        zone: "Rajshahi",
+        address: "350/302, JHAWTALA ROAD, GOPALPUR, PABNA",
+        phone: "02588-805224"
+    },
+    
+    "Pabna_Chatmohor": {
+        circle: "Circle-009",
+        zone: "Rajshahi",
+        address: "350/302, JHAWTALA ROAD, GOPALPUR, PABNA",
+        phone: "02588-805223"
+    },
+    
+    "Pabna_Faridpur": {
+        circle: "Circle-009",
+        zone: "Rajshahi",
+        address: "350/302, JHAWTALA ROAD, GOPALPUR, PABNA",
+        phone: "02588-805223"
+    },
+    
+    "Pabna_Pabna Sadar": {
+        circle: "Circle-007",
+        zone: "Rajshahi",
+        address: "350/302, JHAWTALA ROAD, GOPALPUR, PABNA",
+        phone: "02588-805222"
+    },
+    
+    "Pabna_Santhia": {
+        circle: "Circle-010",
+        zone: "Rajshahi",
+        address: "NIZAM CHAIRMAN BHABAN,2ND FLOOR,SANTHIA BAZAR, SANTHIA, PABNA",
+        phone: "02588-848992"
+    },
+    
+    "Pabna_Sujanagar": {
+        circle: "Circle-008 (Salary)",
+        zone: "Rajshahi",
+        address: "350/302, JHAWTALA ROAD, GOPALPUR, PABNA",
+        phone: "02588-805224"
+    },
+    
+    "Pabna_Iswardi": {
+        circle: "Circle-012 (Iswardi)",
+        zone: "Rajshahi",
+        address: "RAHMAN COLONY,THANA PARA, ISHWARDI, PABNA",
+        phone: "02588-847626"
+    },
+    
+    
+    //Panchagarh
+    
+  "Panchagarh_Atwari": {
+        circle: "Circle-21 (Atwari)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+    
+    "Panchagarh_Boda": {
+        circle: "Circle-20 (Debiganj)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+    
+    "Panchagarh_Debiganj": {
+        circle: "Circle-20 (Debiganj)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+    
+    "Panchagarh_Panchagarh Sadar": {
+        circle: "Circle-18 (Panchagar Sadar)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+    
+    "Panchagarh_Tetulia": {
+        circle: "Circle-19 (Tetulia)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+  
+  
+  //Patuakhali
+  
+  "Patuakhali_Baufal": {
+        circle: "Circle-021",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Kar Bhaban ( Ground floor), Fire Service Road, Patuakhali Sadar, Patuakhali",
+        phone: "0247-8881228"
+    },
+    
+    "Patuakhali_Doshmina": {
+        circle: "Circle-019 (Golachipa)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, House No-510/1 (2nd floor), Fidar Road, Golachipa Bandar, Patuakhali",
+        phone: "0247-8882710"
+    },
+    
+    "Patuakhali_Dumki": {
+        circle: "Circle-018 (Salary)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Kar Bhaban (1st floor), Fire Service Road, Patuakhali Sadar, Patuakhali",
+        phone: "0247-8880792"
+    },
+    
+    "Patuakhali_Golachipa": {
+        circle: "Circle-019 (Golachipa)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, House No-510/1 (2nd floor), Fidar Road, Golachipa Bandar, Patuakhali",
+        phone: "0247-8882710"
+    },
+    
+    "Patuakhali_Kalapara": {
+        circle: "Circle-020 (Khepopara)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Hazi Market (1st Floor), New Bus Stand, Nachnapara, Kalapara, Patuakhali",
+        phone: "0247-8884042"
+    },
+    
+    "Patuakhali_Mirzaganj": {
+        circle: "Circle-021",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Kar Bhaban ( Ground floor), Fire Service Road, Patuakhali Sadar, Patuakhali",
+        phone: "0247-8881228"
+    },
+    
+    "Patuakhali_Patuakhali Sadar": {
+        circle: "Circle-018 (Salary)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Kar Bhaban (1st floor), Fire Service Road, Patuakhali Sadar, Patuakhali",
+        phone: "0247-8880792"
+    },
+    
+    
+    "Patuakhali_Rangabali": {
+        circle: "Circle-018 (Salary)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Kar Bhaban (1st floor), Fire Service Road, Patuakhali Sadar, Patuakhali",
+        phone: "0247-8880792"
+    },
+    
+    
+    //Pirojpur
+    
+    
+    "Pirojpur_Kawkhali": {
+        circle: "Circle-017 (Sawrupkhati)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Manoj Gharamir Bari (2nd floor) College Road, Swarupkathi (Nesarabad), Pirojpur",
+        phone: "0247-8892304"
+    },
+    
+    "Pirojpur_Bhandaria": {
+        circle: "Circle-017 (Sawrupkhati)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Manoj Gharamir Bari (2nd floor) College Road, Swarupkathi (Nesarabad), Pirojpur",
+        phone: "0247-8892304"
+    },
+    
+    "Pirojpur_Pirojpur Sadar": {
+        circle: "Circle-006",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, House No: 330, Kheya Bhaban (1st Floor), Parerhat Road, Pirojpur",
+        phone: "0247-8890392"
+    },
+    
+    "Pirojpur_Mathbaria": {
+        circle: "Circle-017 (Sawrupkhati)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Manoj Gharamir Bari (2nd floor) College Road, Swarupkathi (Nesarabad), Pirojpur",
+        phone: "0247-8892304"
+    },
+    
+    "Pirojpur_Nazirpur": {
+        circle: "Circle-017 (Sawrupkhati)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Manoj Gharamir Bari (2nd floor) College Road, Swarupkathi (Nesarabad), Pirojpur",
+        phone: "0247-8892304"
+    },
+    
+    "Pirojpur_Nesarabad": {
+        circle: "Circle-006",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, House No: 330, Kheya Bhaban (1st Floor), Parerhat Road, Pirojpur",
+        phone: "0247-8890392"
+    },
+    
+    "Pirojpur_Zianagar": {
+        circle: "Circle-017 (Sawrupkhati)",
+        zone: "Barishal",
+        address: "Office of the Deputy Commissioner of Taxes, Manoj Gharamir Bari (2nd floor) College Road, Swarupkathi (Nesarabad), Pirojpur",
+        phone: "0247-8892304"
+    },
+    
+    
+    //Rajbari
+    
+    
+    "Rajbari_Baliakandi": {
+        circle: "Circle-11 (Rajbari Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Rajbari_Goalandaghat": {
+        circle: "Circle-06 (Goalanda)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Rajbari_Kalukhali": {
+        circle: "Circle-12 (Pangsha)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    "Rajbari_Pangsa": {
+        circle: "Circle-12 (Pangsha)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Rajbari_Rajbari Sadar": {
+        circle: "Circle-11 (Rajbari Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    //Rajshahi
+    
+    "Rajshahi_Bagha": {
+        circle: "Circle-017 (Bagha)",
+        zone: "Rajshahi",
+        address: "GLOBI HOUSE, UTTAR MILIK BAGHA, ISWARDI ROAD, BAGHA, RAJSHAHI",
+        phone: "02588-869832"
+    },
+    
+    "Rajshahi_Bagmara": {
+        circle: "Circle-022 (Bhabanigonj)",
+        zone: "Rajshahi",
+        address: "AFSAR PLAZA (3RD FLOOR), CHANPARA, BHABANIGANJ, BAGMARA, RAJSHAHI",
+        phone: "02588-869528"
+    },
+    
+    "Rajshahi_Charghat": {
+        circle: "Circle-017 (Bagha)",
+        zone: "Rajshahi",
+        address: "GLOBI HOUSE, UTTAR MILIK BAGHA, ISWARDI ROAD, BAGHA, RAJSHAHI",
+        phone: "02588-869832"
+    },
+    
+    
+    "Rajshahi_Durgapur": {
+        circle: "Circle-022 (Bhabanigonj)",
+        zone: "Rajshahi",
+        address: "AFSAR PLAZA (3RD FLOOR), CHANPARA, BHABANIGANJ, BAGMARA, RAJSHAHI",
+        phone: "02588-869528"
+    },
+    
+    "Rajshahi_Godagari": {
+        circle: "Circle-014",
+        zone: "Rajshahi",
+        address: "2ND FLOOR, NORTH BLOCK, KAR BHABAN, HELENABAD, RAJSHAHI",
+        phone: "02588-851418"
+    },
+    
+    "Rajshahi_Mohanpur": {
+        circle: "Circle-022 (Bhabanigonj)",
+        zone: "Rajshahi",
+        address: "AFSAR PLAZA (3RD FLOOR), CHANPARA, BHABANIGANJ, BAGMARA, RAJSHAHI",
+        phone: "02588-869528"
+    },
+    
+    
+    "Rajshahi_Poba": {
+        circle: "Circle-014",
+        zone: "Rajshahi",
+        address: "2ND FLOOR, NORTH BLOCK, KAR BHABAN, HELENABAD, RAJSHAHI",
+        phone: "02588-851418"
+    },
+    
+    "Rajshahi_Puthia": {
+        circle: "Circle-002 (Company)",
+        zone: "Rajshahi",
+        address: "2ND FLOOR, NORTH BLOCK, KAR BHABAN, HELENABAD, RAJSHAHI",
+        phone: "0258-8851678"
+    },
+    
+    "Rajshahi_Rajshahi Sadar": {
+        circle: "Circle-002 (Company)",
+        zone: "Rajshahi",
+        address: "2ND FLOOR, NORTH BLOCK, KAR BHABAN, HELENABAD, RAJSHAHI",
+        phone: "0258-8851678"
+    },
+    
+    
+    "Rajshahi_Tanore": {
+        circle: "Circle-019",
+        zone: "Rajshahi",
+        address: "2ND FLOOR, NORTH BLOCK, KAR BHABAN, HELENABAD, RAJSHAHI",
+        phone: "02588-851980"
+    },
+    
+    "Rajshahi_Boalia": {
+        circle: "Circle-019",
+        zone: "Rajshahi",
+        address: "2ND FLOOR, NORTH BLOCK, KAR BHABAN, HELENABAD, RAJSHAHI",
+        phone: "02588-851980"
+    },
+    
+    
+    "Rajshahi_Motihar": {
+        circle: "Circle-019",
+        zone: "Rajshahi",
+        address: "2ND FLOOR, NORTH BLOCK, KAR BHABAN, HELENABAD, RAJSHAHI",
+        phone: "02588-851980"
+    },
+    
+    "Rajshahi_Rajput": {
+        circle: "Circle-014",
+        zone: "Rajshahi",
+        address: "2ND FLOOR, NORTH BLOCK, KAR BHABAN, HELENABAD, RAJSHAHI",
+        phone: "02588-851418"
+    },
+    
+    
+    "Rajshahi_Shah Makhdum": {
+        circle: "Circle-014",
+        zone: "Rajshahi",
+        address: "2ND FLOOR, NORTH BLOCK, KAR BHABAN, HELENABAD, RAJSHAHI",
+        phone: "02588-851418"
+    },
+    
+    //Rangamati
+    
+    "Rangamati_Baghaichhari": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    "Rangamati_Barkal": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    "Rangamati_Belaichhari": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    "Rangamati_Juraichhari": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    "Rangamati_Kaptai": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    "Rangamati_Kawkhali": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    "Rangamati_Langadu": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    "Rangamati_Naniarchar": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    "Rangamati_Rajasthali": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    "Rangamati_Rangamati Sadar": {
+        circle: "Circle-061 (Salary)",
+        zone: "03, Chattogram",
+        address: "Mosjid Market (2nd floor)",
+        phone: "02334456891"
+    },
+    
+    
+    //Rangpur
+    
+    "Rangpur_Badarganj": {
+        circle: "Circle-009 (Badarganj)",
+        zone: "Rangpur",
+        address: "Neemnagor, Balubari, Dinajpur",
+        phone: "02589924796"
+    },
+    
+    "Rangpur_Gangachara": {
+        circle: "Circle-002 (Rangpur Sadar)",
+        zone: "Rangpur",
+        address: "Kar Bhaban (1st Floor), Kachari Bazar, Rangpur",
+        phone: "0521-55783"
+    },
+    
+    "Rangpur_Kaunia": {
+        circle: "Circle-013 (Rangpur Sadar)",
+        zone: "Rangpur",
+        address: "Kar Bhaban (3rd Floor), Kachari Bazar, Rangpur",
+        phone: "0521-62704"
+    },
+    
+    "Rangpur_Mithapukur": {
+        circle: "Circle-014 (Rangpur Pirganj",
+        zone: "Rangpur",
+        address: "RK Road, Khalilgonj, Kurigram",
+        phone: "02589950455"
+    },
+    
+    "Rangpur_Pirgacha": {
+        circle: "Circle-013 (Rangpur Sadar)",
+        zone: "Rangpur",
+        address: "Kar Bhaban (3rd Floor), Kachari Bazar, Rangpur",
+        phone: "0521-62704"
+    },
+    
+    
+    "Rangpur_Pirganj": {
+        circle: "Circle-014 (Rangpur Pirganj",
+        zone: "Rangpur",
+        address: "RK Road, Khalilgonj, Kurigram",
+        phone: "02589950455"
+    },
+    
+    "Rangpur_Rangpur Sadar": {
+        circle: "Circle-002 (Rangpur Sadar)",
+        zone: "Rangpur",
+        address: "Kar Bhaban (1st Floor), Kachari Bazar, Rangpur",
+        phone: "0521-55783"
+    },
+    
+    
+    "Rangpur_Taraganj": {
+        circle: "Circle-009 (Badarganj)",
+        zone: "Rangpur",
+        address: "Neemnagor, Balubari, Dinajpur",
+        phone: "02589924796"
+    },
+    
+    
+    //Satkhira
+    
+    
+    "Satkhira_Assasuni": {
+        circle: "Circle-19 (Shyamnagar)",
+        zone: "Khulna",
+        address: "Forid Tower, Arappur, Bus Stand, Jhenaidah",
+        phone: "02477746123"
+    },
+    
+    "Satkhira_Debhata": {
+        circle: "Circle-21 (Kaliganj)",
+        zone: "Khulna",
+        address: "Soyeba Cottage, 1/1, Sahiuddin Raod, Bosh Para, Meherpur",
+        phone: "0277792051"
+    },
+    
+    "Satkhira_Kalaroa": {
+        circle: "Circle-20 (Kalaroa)",
+        zone: "Khulna",
+        address: "Ismail Manshion, Kaliganj Jhenaidah",
+        phone: "024777748469"
+    },
+    
+    
+    "Satkhira_Kaliganj": {
+        circle: "Circle-21 (Kaliganj)",
+        zone: "Khulna",
+        address: "Soyeba Cottage, 1/1, Sahiuddin Raod, Bosh Para, Meherpur",
+        phone: "0277792051"
+    },
+    
+    "Satkhira_Satkhira Sadar": {
+        circle: "Circle-18 (Satkhira Sadar)",
+        zone: "Khulna",
+        address: "Soyeba Cottage, 1/1, Sahiuddin Raod, Bosh Para, Meherpur",
+        phone: "0277792051"
+    },
+    
+    "Satkhira_Shyamnagar": {
+        circle: "Circle-19 (Shyamnagar)",
+        zone: "Khulna",
+        address: "Forid Tower, Arappur, Bus Stand, Jhenaidah",
+        phone: "02477746123"
+    },
+    
+    
+    "Satkhira_Tala": {
+        circle: "Circle-20 (Kalaroa)",
+        zone: "Khulna",
+        address: "Ismail Manshion, Kaliganj Jhenaidah",
+        phone: "024777748469"
+    },
+    
+    //Shariatpur
+    
+    "Shariatpur_Bhedarganj": {
+        circle: "Circle-17 (Damudya)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Shariatpur_Damudya": {
+        circle: "Circle-17 (Damudya)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+     "Shariatpur_Gosairhat": {
+        circle: "Circle-17 (Damudya)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+     "Shariatpur_Naria": {
+        circle: "Circle-16 (Shariatpur Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Shariatpur_Shariatpur Sadar": {
+        circle: "Circle-16 (Shariatpur Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    "Shariatpur_Zajira": {
+        circle: "Circle-16 (Shariatpur Sadar)",
+        zone: "Faridpur",
+        address: "",
+        phone: ""
+    },
+    
+    
+    //Sherpur
+    
+    "Sherpur_Jhenaigati": {
+        circle: "Circle-011 (Nalitabari)",
+        zone: "Mymensingh",
+        address: "Post Office Road, Sherpur",
+        phone: "0931-61784"
+    },
+    
+    "Sherpur_Nalitabari": {
+        circle: "Circle-011 (Nalitabari)",
+        zone: "Mymensingh",
+        address: "Post Office Road, Sherpur",
+        phone: "0931-61784"
+    },
+    
+    "Sherpur_Nokla": {
+        circle: "Circle-011 (Nalitabari)",
+        zone: "Mymensingh",
+        address: "Post Office Road, Sherpur",
+        phone: "0931-61784"
+    },
+    
+    "Sherpur_Sherpur Sadar": {
+        circle: "Circle-015 (Sherpur Sadar)",
+        zone: "Mymensingh",
+        address: "Post Office Road, Sherpur",
+        phone: "0931-61786"
+    },
+    
+    
+    "Sherpur_Sreebardi": {
+        circle: "Circle-010 (Madhabpur)",
+        zone: "Mymensingh",
+        address: "Post Office Road, Sherpur",
+        phone: "0931-61528"
+    },
+    
+    
+    //Sirajganj
+    
+    "Sirajganj_Belkuchi": {
+        circle: "Circle-009",
+        zone: "Bogura",
+        address: "New Dhaka Road, Malsha Para, Sirajganj",
+        phone: "02588830210"
+    },
+    
+    "Sirajganj_Chauhali": {
+        circle: "Circle-009",
+        zone: "Bogura",
+        address: "New Dhaka Road, Malsha Para, Sirajganj",
+        phone: "02588830210"
+    },
+    
+    "Sirajganj_Kamarkhanda": {
+        circle: "Circle-010",
+        zone: "Bogura",
+        address: "New Dhaka Road, Malsha Para, Sirajganj",
+        phone: "02588830213"
+    },
+    
+    "Sirajganj_Kazipur": {
+        circle: "Circle-011",
+        zone: "Bogura",
+        address: "New Dhaka Road, Malsha Para, Sirajganj",
+        phone: "02588830183"
+    },
+    
+    "Sirajganj_Raiganj": {
+        circle: "Circle-011",
+        zone: "Bogura",
+        address: "New Dhaka Road, Malsha Para, Sirajganj",
+        phone: "02588830183"
+    },
+    
+    "Sirajganj_Shahjadpur": {
+        circle: "Circle-012 (Shajadpur)",
+        zone: "Bogura",
+        address: "Bisic Bus Stand, Nagar Bari Road, Sahjadpru, Sirajganj",
+        phone: "0752164666"
+    },
+    
+    
+    "Sirajganj_Sirajganj Sadar": {
+        circle: "Circle-010",
+        zone: "Bogura",
+        address: "New Dhaka Road, Malsha Para, Sirajganj",
+        phone: "02588830213"
+    },
+    
+    "Sirajganj_Tarash": {
+        circle: "Circle-011",
+        zone: "Bogura",
+        address: "New Dhaka Road, Malsha Para, Sirajganj",
+        phone: "02588830183"
+    },
+    
+    "Sirajganj_Ullapara": {
+        circle: "Circle-010",
+        zone: "Bogura",
+        address: "New Dhaka Road, Malsha Para, Sirajganj",
+        phone: "02588830213"
+    },
+    
+    
+    //Sunamganj
+    
+    "Sunamganj_Biswambarpur": {
+        circle: "Circle-018 (Sunamgonj)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    "Sunamganj_Chatok": {
+        circle: "Circle-020 (Chattak)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    
+    "Sunamganj_Dharamapasha": {
+        circle: "Circle-018 (Sunamgonj)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    "Sunamganj_Diray": {
+        circle: "Circle-019 (Salary)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    
+    "Sunamganj_Dowarabazar": {
+        circle: "Circle-020 (Chattak)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    "Sunamganj_Jagannathpur": {
+        circle: "Circle-019 (Salary)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    "Sunamganj_Jamalganj": {
+        circle: "Circle-018 (Sunamgonj)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    "Sunamganj_Madhyanagar": {
+        circle: "Circle-018 (Sunamgonj)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    "Sunamganj_Sallah": {
+        circle: "Circle-018 (Sunamgonj)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    "Sunamganj_Shantiganj": {
+        circle: "Circle-018 (Sunamgonj)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    "Sunamganj_Sunamganj Sadar": {
+        circle: "Circle-018 (Sunamgonj)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    "Sunamganj_Tahirpur": {
+        circle: "Circle-018 (Sunamgonj)",
+        zone: "Sylhet",
+        address: "Hassan Nagar, Sunamganj",
+        phone: "0871-55389"
+    },
+    
+    
+    //Sylhet
+    
+    "Sylhet_Balaganj": {
+        circle: "Circle-012 (Balagonj)",
+        zone: "Sylhet",
+        address: "Hazi Mosrob Ali Complex(2nd Floor),Tazpur Bazar,Osmaninagar,Sylhet",
+        phone: "0299-6644580"
+    },
+    
+    "Sylhet_Beanibazar": {
+        circle: "Circle-011 (Golapgonj)",
+        zone: "Sylhet",
+        address: "Hazi Asid Ali Complex(3rd Floor),Golapganj,Sylhet",
+        phone: "0822-756288"
+    },
+    
+    "Sylhet_Bishwanath": {
+        circle: "Circle-012 (Balagonj)",
+        zone: "Sylhet",
+        address: "Hazi Mosrob Ali Complex(2nd Floor),Tazpur Bazar,Osmaninagar,Sylhet",
+        phone: "0299-6644580"
+    },
+    
+    "Sylhet_Companiganj": {
+        circle: "Circle-021",
+        zone: "Sylhet",
+        address: "Kazitula Road, Noya Sarak, Sylhet",
+        phone: "0821-723462"
+    },
+    
+    "Sylhet_Fenchuganj": {
+        circle: "Circle-006 (South Surma)",
+        zone: "Sylhet",
+        address: "Kar Bhaban,131 Burhan Uddin Road,Mendibag,Sylhet",
+        phone: "0821-720845"
+    },
+    
+    "Sylhet_Golapganj": {
+        circle: "Circle-011 (Golapgonj)",
+        zone: "Sylhet",
+        address: "Hazi Asid Ali Complex(3rd Floor),Golapganj,Sylhet",
+        phone: "0822-756288"
+    },
+    
+    
+    "Sylhet_Gowainghat": {
+        circle: "Circle-006 (South Surma)",
+        zone: "Sylhet",
+        address: "Kar Bhaban,131 Burhan Uddin Road,Mendibag,Sylhet",
+        phone: "0821-720845"
+    },
+    
+    "Sylhet_Jaintiapur": {
+        circle: "Circle-021",
+        zone: "Sylhet",
+        address: "Kazitula Road, Noya Sarak, Sylhet",
+        phone: "0821-723462"
+    },
+    
+    "Sylhet_Kanaighat": {
+        circle: "Circle-021",
+        zone: "Sylhet",
+        address: "Kazitula Road, Noya Sarak, Sylhet",
+        phone: "0821-723462"
+    },
+    
+    "Sylhet_Osmani Nagar": {
+        circle: "Circle-012 (Balagonj)",
+        zone: "Sylhet",
+        address: "Hazi Mosrob Ali Complex(2nd Floor),Tazpur Bazar,Osmaninagar,Sylhet",
+        phone: "0299-6644580"
+    },
+    
+    
+    "Sylhet_South Surma": {
+        circle: "Circle-006 (South Surma)",
+        zone: "Sylhet",
+        address: "Kar Bhaban,131 Burhan Uddin Road,Mendibag,Sylhet",
+        phone: "0821-720845"
+    },
+    
+    
+    "Sylhet_Zakiganj": {
+        circle: "Circle-011 (Golapgonj)",
+        zone: "Sylhet",
+        address: "Hazi Asid Ali Complex(3rd Floor),Golapganj,Sylhet",
+        phone: "0822-756288"
+    },
+    
+    "Sylhet_Sylhet Sadar": {
+        circle: "Circle-021",
+        zone: "Sylhet",
+        address: "Kazitula Road, Noya Sarak, Sylhet",
+        phone: "0821-723462"
+    },
+    
+    //Tangail
+    
+    "Tangail_Basail": {
+        circle: "Circle-020 (Mirjapur)",
+        zone: "Gazipur",
+        address: "112/5, Al Hadhi Palace, New Baipass, Mirzapur, Tangail",
+        phone: ""
+    },
+    
+    "Tangail_Bhuapur": {
+        circle: "Circle-022 (Ghatail)",
+        zone: "Gazipur",
+        address: "Old Bus stand, Ghatail Sadar Jame Mosjid North â€“West Side, Main Road, Ghatail, Tangail",
+        phone: "0921-64034"
+    },
+    
+    
+    "Tangail_Delduar": {
+        circle: "Circle-020 (Mirjapur)",
+        zone: "Gazipur",
+        address: "112/5, Al Hadhi Palace, New Baipass, Mirzapur, Tangail",
+        phone: ""
+    },
+    
+     "Tangail_Dhonbari": {
+        circle: "Circle-021 (Modhupur)",
+        zone: "Gazipur",
+        address: "Rohima Plaza, Jamalpur Road, Modhupur, Tangail",
+        phone: "9977-54037"
+    },
+    
+    "Tangail_Ghatail": {
+        circle: "Circle-022 (Ghatail)",
+        zone: "Gazipur",
+        address: "Old Bus stand, Ghatail Sadar Jame Mosjid North â€“West Side, Main Road, Ghatail, Tangail",
+        phone: "0921-64034"
+    },
+    
+    "Tangail_Gopalpur": {
+        circle: "Circle-021 (Modhupur)",
+        zone: "Gazipur",
+        address: "Rohima Plaza, Jamalpur Road, Modhupur, Tangail",
+        phone: "9977-54037"
+    },
+    
+    
+    "Tangail_Kalihati": {
+        circle: "Circle-022 (Ghatail)",
+        zone: "Gazipur",
+        address: "Old Bus stand, Ghatail Sadar Jame Mosjid North â€“West Side, Main Road, Ghatail, Tangail",
+        phone: "0921-64034"
+    },
+    
+    
+    "Tangail_Mirzapur": {
+        circle: "Circle-020 (Mirjapur)",
+        zone: "Gazipur",
+        address: "112/5, Al Hadhi Palace, New Baipass, Mirzapur, Tangail",
+        phone: ""
+    },
+    
+    "Tangail_Madhupur": {
+        circle: "Circle-021 (Modhupur)",
+        zone: "Gazipur",
+        address: "Rohima Plaza, Jamalpur Road, Modhupur, Tangail",
+        phone: "9977-54037"
+    },
+    
+    "Tangail_Nagarpur": {
+        circle: "Circle-019",
+        zone: "Gazipur",
+        address: "39, Old Adalat road, Tangail Sadar, Tangail",
+        phone: "9977-52505"
+    },
+    
+    "Tangail_Sakhipur": {
+        circle: "Circle-020 (Mirjapur)",
+        zone: "Gazipur",
+        address: "112/5, Al Hadhi Palace, New Baipass, Mirzapur, Tangail",
+        phone: ""
+    },
+    
+    
+    "Tangail_Tangail Sadar": {
+        circle: "Circle-019",
+        zone: "Gazipur",
+        address: "39, Old Adalat road, Tangail Sadar, Tangail",
+        phone: "9977-52505"
+    },
+    
+    //Thakurgaon
+    
+    "Thakurgaon_Baliadangi": {
+        circle: "Circle-17 (Baliadangi)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+    
+    "Thakurgaon_Haripur": {
+        circle: "Circle-15 (Ranishankail)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+    
+    
+    "Thakurgaon_Pirganj": {
+        circle: "Circle-16 (Pirganj)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+    
+    "Thakurgaon_Ranisankail": {
+        circle: "Circle-15 (Ranishankail)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+    
+    "Thakurgaon_Thakurgaon Sadar": {
+        circle: "Circle-13 (Thakurgaon Sadar)",
+        zone: "Dinajpur",
+        address: "Nimnagar, Balubari, Dinajpur",
+        phone: ""
+    },
+      
+
+   
+    }
+    
+    
+    
+  

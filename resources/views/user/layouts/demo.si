@@ -1,0 +1,525 @@
+<aside class="left-sidebar" data-sidebarbg="skin1">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar" data-sidebarbg="skin1">
+       
+        <style>
+            :root {
+                --sidebar-bg: black;
+                --sidebar-hover: #2d3446;
+                --text-primary: #ffffff;
+                --text-secondary: rgba(255, 255, 255, 0.7);
+                --accent-color: #82C91E;
+                --transition-speed: 0.3s;
+            }
+
+            .left-sidebar {
+                background-color: var(--sidebar-bg);
+                color: var(--text-primary);
+                width: 260px;
+                transition: all var(--transition-speed) ease;
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .scroll-sidebar {
+                background-color: var(--sidebar-bg);
+                height: 100vh;
+                padding: 10px 0;
+                overflow-y: auto;
+            }
+
+            .scroll-sidebar::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            .scroll-sidebar::-webkit-scrollbar-track {
+                background: var(--sidebar-bg);
+            }
+
+            .scroll-sidebar::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 3px;
+            }
+
+            .sidebar-nav {
+                padding: 0;
+            }
+            
+            .sidebar-nav li {
+                list-style: none;
+                margin: 4px 8px;
+            }
+
+            .sidebar-nav li a {
+                text-decoration: none;
+            }
+
+            .hide-menu {
+                font-size: 14px;
+                color: var(--text-secondary);
+                margin-left: 14px;
+                display: block;
+                line-height: 1.4;
+                transition: color var(--transition-speed) ease;
+                 white-space: normal !important;
+                overflow-wrap: break-word !important;
+                 word-break: break-word !important;
+            }
+            
+            .dashboard {
+                font-size: 15px;
+                color: var(--text-primary);
+                margin-left: 44px;
+                display: block;
+                font-weight: 500;
+            }   
+
+            .sidebar-link {
+                position: relative;
+                padding: 10px 16px;
+                display: flex;
+                align-items: center;
+                border-radius: 8px;
+                transition: all var(--transition-speed) ease;
+                margin: 2px 0;
+            }
+
+            .sidebar-link:hover {
+                background-color: var(--sidebar-hover);
+                transform: translateX(4px);
+            }
+
+            .sidebar-link:hover .hide-menu,
+            .sidebar-link:hover i {
+                color: var(--text-primary);
+            }
+
+            .sidebar-link i {
+                position: absolute;
+                left: 16px;
+                font-size: 16px;
+                color: var(--text-secondary);
+                transition: all var(--transition-speed) ease;
+            }
+
+            .nav-header {
+                font-size: 16px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: var(--accent-color);
+                padding: 16px 24px 8px;
+                font-weight: 600;
+                opacity: 0.8;
+            }
+
+            .sidebar-item {
+                position: relative;
+            }
+
+            .sidebar-item.active .sidebar-link {
+                background-color: var(--sidebar-hover);
+            }
+
+            .sidebar-item.active .hide-menu,
+            .sidebar-item.active i {
+                color: var(--accent-color);
+            }
+
+            /* Add responsive adjustments */
+            @media (max-width: 991px) {
+                .left-sidebar {
+                    width: 240px;
+                }
+                
+                .sidebar-link {
+                    padding: 8px 12px;
+                }
+
+                .hide-menu, .dashboard {
+                    font-size: 13px;
+                }
+
+                .nav-header {
+                    padding: 12px 20px 6px;
+                }
+            }
+
+            /* Animation for hover effect */
+            @keyframes slideIn {
+                from {
+                    transform: translateX(0);
+                }
+                to {
+                    transform: translateX(4px);
+                }
+            }
+        </style>
+
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('user.dashboard') }}" aria-expanded="false">
+                        <i class="fas fa-home" style="color: #82C91E"></i>
+                        <span class="dashboard">ড্যাশবোর্ড</span>
+                    </a>
+                </li>
+
+                @if(Auth::guard('web')->user()->role == '1')
+                <li class="nav-header">অ্যাডমিন অপশন</li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('user.users') }}" aria-expanded="false">
+                        <i class="fas fa-users" style="color: #82C91E"></i>
+                        <span class="hide-menu">কাস্টমার লিস্ট</span>
+                    </a>
+                </li>
+                
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('user.add-user') }}" aria-expanded="false">
+                        <i class="fas fa-user-plus" style="color: #82C91E"></i>
+                        <span class="hide-menu">নতুন কাস্টমার</span>
+                    </a>
+                </li>
+                @endif
+                 <li class="nav-header">সাইন কপি অর্ডার - (Ordar System )</li>
+
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-file-signature" style="color: #fff"></i>
+                        <span class="hide-menu">১০/১২/১৭ দিয়ে সাইন </span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-id-card" style="color: #fff"></i>
+                        <span class="hide-menu" style="white-space: normal; word-break: break-word;">
+                            ফরম/নিবন্ধন নং/১৩ডিজিট দিয়ে সাইন
+                        </span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-user-edit" style="color: #fff"></i>
+                        <span class="hide-menu">নাম/ঠিকানা পরিবর্তন সাইন</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-search" style="color: #fff"></i>
+                        <span class="hide-menu">ম্যাচ ফাউন্ড /ডাবল ভোটার অ্রাকটিভ কপি </span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-server" style="color: #fff"></i>
+                        <span class="hide-menu">অফিসিয়াল সারভার কপি 
+                </span>
+                    </a>
+                </li>
+                 <li class="nav-header"> আইডি কার্ড অর্ডার - (Ordar System )</li>
+
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-id-badge" style="color: #fff"></i>
+                        <span class="hide-menu"> ১০/১২/১৭ দিয়ে এনআইডি</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-address-card" style="color: #fff"></i>
+                        <span class="hide-menu">ফরম/নিবন্ধন নং/১৩ডিজিট দিয়ে এনআইডি</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-user-lock" style="color: #fff"></i>
+                        <span class="hide-menu">ইউজার আইডি পাস সেট</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-file-alt" style="color: #fff"></i>
+                        <span class="hide-menu">হারানো ফরম উত্তোলন</span>
+                    </a>
+                </li>
+                 <li class="nav-header"> অটো সার্ভিস</li>
+
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-id-card-alt" style="color: #fff"></i>
+                        <span class="hide-menu">সাইন টু আইডি মেক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-file-pdf" style="color: #fff"></i>
+                        <span class="hide-menu">স্মার্ট পিডিএফ মেক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-server" style="color: #fff"></i>
+                        <span class="hide-menu">সার্ভার কপি</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-exchange-alt" style="color: #fff"></i>
+                        <span class="hide-menu">সাইন টু সারভার কপি মেক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-file-invoice-dollar" style="color: #fff"></i>
+                        <span class="hide-menu">অটো টিন</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-money-bill-wave" style="color: #fff"></i>
+                        <span class="hide-menu">নগদ তথ্য</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-search" style="color: #fff"></i>
+                        <span class="hide-menu">NID ডাটা সার্চ</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-birthday-cake" style="color: #fff"></i>
+                        <span class="hide-menu">DoB ফিন্ডার</span>
+                    </a>
+                </li>
+                 <li class="nav-header">সকল সীম বায়োমেট্রিক- (Ordar System )</li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fab fa-grunt" style="color: #fff"></i>
+                        <span class="hide-menu">জিপি</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-signal" style="color: #fff"></i>
+                        <span class="hide-menu">রবি/এয়ারটেল</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-bolt" style="color: #fff"></i>
+                        <span class="hide-menu">বাংলালিংক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-phone" style="color: #fff"></i>
+                        <span class="hide-menu">টেলিটক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-random" style="color: #fff"></i>
+                        <span class="hide-menu">ব্রিরিলিয়ান্ট নং টু অরজিনাল নং</span>
+                    </a>
+                </li>
+                 <li class="nav-header">সীম নেটওর্য়াক সার্ভিস- (Ordar System )</li>
+
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-list-alt" style="color: #fff"></i>
+                        <span class="hide-menu">Call List</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-map-marker-alt" style="color: #fff"></i>
+                        <span class="hide-menu">Number to Location</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-mobile-alt" style="color: #fff"></i>
+                        <span class="hide-menu">IMEI to Active No</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-university" style="color: #fff"></i>
+                        <span class="hide-menu">Bkash Info</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-money-bill-wave" style="color: #fff"></i>
+                        <span class="hide-menu">Nagad Info</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-rocket" style="color: #fff"></i>
+                        <span class="hide-menu">Rocket Info</span>
+                    </a>
+                </li>
+                 <li class="nav-header">পার্সপোর্ট সেবা-  (Ordar System )</li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-passport" style="color: #fff"></i>
+                        <span class="hide-menu">MRP Passport to Sb Copy</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-id-card-alt" style="color: #fff"></i>
+                        <span class="hide-menu">E-Passport to Delivary Selip</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-address-card" style="color: #fff"></i>
+                        <span class="hide-menu">Nid/Nibondhon No to Passport Info</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-check-circle" style="color: #fff"></i>
+                        <span class="hide-menu">BMET 78% Approve</span>
+                    </a>
+                </li>
+                 <li class="nav-header">টিন সেবা</li>
+
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-file-invoice-dollar" style="color: #fff"></i>
+                        <span class="hide-menu">নিউ টিন আবেদন</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-file-alt" style="color: #fff"></i>
+                        <span class="hide-menu">জিরো রির্টান আবেদন</span>
+                    </a>
+                </li>
+                 <li class="nav-header"> নিবন্ধন ও মৃত্যু নিবন্ধন সেবা </li>
+
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-search" style="color: #fff"></i>
+                        <span class="hide-menu">হারানো নিবন্ধন সার্চ/নিবন্ধন ডাটা</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-plus-square" style="color: #fff"></i>
+                        <span class="hide-menu">নিবন্ধন মেক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-history" style="color: #fff"></i>
+                        <span class="hide-menu">পুরাতন নিবন্ধন মেক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-skull-crossbones" style="color: #fff"></i>
+                        <span class="hide-menu">মৃত্যু নিবন্ধন মেক</span>
+                    </a>
+                </li>
+
+              <!-- 8. Clone Services -->
+                <li class="nav-header">ক্লোন সার্ভিস</li>
+
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-graduation-cap" style="color: #fff"></i>
+                        <span class="hide-menu">SSC সার্টিফিকেট মেক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-landmark" style="color: #fff"></i>
+                        <span class="hide-menu">ভূমি উন্নয়ন কর/দাখিলা</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-id-card" style="color: #fff"></i>
+                        <span class="hide-menu">ড্রাইভিং লাইসেন্স মেক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-passport" style="color: #fff"></i>
+                        <span class="hide-menu">পার্সপোট ক্লোন মেক</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{menuActive(['user.pdo.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.pdo.index') }}">
+                        <i class="fas fa-certificate" style="color: #fff"></i>
+                        <span class="hide-menu">ট্রেনিং সার্টিফিকেট</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{menuActive(['user.police.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.police.index') }}">
+                        <i class="fas fa-shield-alt" style="color: #fff"></i>
+                        <span class="hide-menu">পুলিশ ক্লিয়ারেন্স</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{menuActive(['user.surokkha.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.surokkha.index') }}">
+                        <i class="fas fa-syringe" style="color: #fff"></i>
+                        <span class="hide-menu">সুরক্ষা</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{menuActive(['user.trade.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.trade.index') }}">
+                        <i class="fas fa-store" style="color: #fff"></i>
+                        <span class="hide-menu">ট্রেড লাইসেন্স</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{menuActive(['user.nagorik-sonod.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.nagorik-sonod.create') }}">
+                        <i class="fas fa-file-alt" style="color: #fff"></i>
+                        <span class="hide-menu">নাগরিক সনদ</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{menuActive(['user.uttoradhikarsonod.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.uttoradhikarsonod.index') }}">
+                        <i class="fas fa-file-contract" style="color: #fff"></i>
+                        <span class="hide-menu">উত্তরাধিকারী সনদ</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{menuActive(['user.visa-applications.*'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.visa-applications.index') }}">
+                        <i class="fas fa-plane" style="color: #fff"></i>
+                        <span class="hide-menu">ভিসা আবেদন</span>
+                    </a>
+                </li>
+
+                <!-- Balance & Transactions -->
+                <li class="nav-header">ব্যালেন্স এবং লেনদেন</li>
+                
+                <li class="sidebar-item {{menuActive(['user.recharge'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.recharge') }}" aria-expanded="false">
+                        <i class="fas fa-wallet" style="color: #FFFF00"></i>
+                        <span class="hide-menu">রিচার্জ</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{menuActive(['user.transactions'],3)}}">
+                    <a class="sidebar-link" href="{{ route('user.transactions') }}" aria-expanded="false">
+                        <i class="fas fa-history" style="color: #82C91E"></i>
+                        <span class="hide-menu">লেনদেনের বিবরণ</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>

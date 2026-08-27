@@ -1,0 +1,796 @@
+<aside class="main-sidebar modern-sidebar elevation-4">
+<style>
+.modern-sidebar {
+    background: #FFFFFF !important;
+    width: 260px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1035;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s ease;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.06);
+    border-right: 1px solid #E0E0E0;
+}
+
+.modern-sidebar .sidebar { 
+    scrollbar-width: thin; 
+    scrollbar-color: #E0E0E0 transparent;
+    padding-bottom: 80px !important;
+    background: #F5F5F5;
+}
+.modern-sidebar .sidebar::-webkit-scrollbar { width: 4px; }
+.modern-sidebar .sidebar::-webkit-scrollbar-track { background: transparent; }
+.modern-sidebar .sidebar::-webkit-scrollbar-thumb { background: #E0E0E0; border-radius: 4px; }
+
+.modern-sidebar .brand-link {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 16px 20px !important;
+    height: 72px !important;
+}
+
+.modern-sidebar .nav-sidebar > .nav-item > .nav-link {
+    border-radius: 10px;
+    margin: 2px 12px;
+    padding: 14px 18px;
+    color: #333333;
+    font-size: 24px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+.modern-sidebar .nav-sidebar > .nav-item > .nav-link:hover {
+    background: #F5F5F5;
+    color: #333333;
+}
+.modern-sidebar .nav-sidebar > .nav-item.menu-open > .nav-link,
+.modern-sidebar .nav-sidebar > .nav-item > .nav-link.active {
+    background: linear-gradient(135deg, #0D47A1 0%, #1A237E 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(13,71,161,0.3);
+}
+.modern-sidebar .nav-sidebar > .nav-item.menu-open > .nav-link:hover,
+.modern-sidebar .nav-sidebar > .nav-item > .nav-link.active:hover {
+    background: linear-gradient(135deg, #1A237E 0%, #0D47A1 100%);
+}
+
+.modern-sidebar .nav-sidebar .nav-link .nav-icon {
+    font-size: 18px;
+    width: 28px;
+    text-align: center;
+    color: #1E88E5;
+}
+.modern-sidebar .nav-sidebar > .nav-item.menu-open > .nav-link .nav-icon,
+.modern-sidebar .nav-sidebar > .nav-item > .nav-link.active .nav-icon {
+    color: #FFFFFF;
+}
+.modern-sidebar .nav-sidebar > .nav-item > .nav-link:hover .nav-icon {
+    color: #0D47A1;
+}
+
+.modern-sidebar .nav-treeview {
+    background: transparent;
+    border-radius: 0;
+    margin: 0 12px;
+    padding: 4px 0;
+    border-left: 2px solid #E0E0E0;
+}
+.modern-sidebar .nav-treeview .nav-item {
+    margin: 0;
+}
+.modern-sidebar .nav-treeview .nav-link {
+    padding: 7px 14px 7px 28px;
+    color: #000000;
+    font-size: 21px;
+    font-weight: 600;
+    border-radius: 4px;
+    margin: 1px 0;
+    transition: all 0.15s ease;
+}
+.modern-sidebar .nav-treeview .nav-link:hover {
+    background: #F5F5F5;
+    color: #000000;
+}
+
+.modern-sidebar .nav-header {
+    color: #212121;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px !important;
+    margin: 4px 8px 2px !important;
+    background: #E0E0E0;
+    border-radius: 14px;
+    display: block;
+    width: 140px;
+    text-align: center;
+}
+
+/* আইকন গ্রুপ কালার */
+.modern-sidebar .nav-link .nav-icon.fa-tachometer-alt,
+.modern-sidebar .nav-link .nav-icon.fa-home,
+.modern-sidebar .nav-link .nav-icon.fa-dashboard,
+.modern-sidebar .nav-link .nav-icon.fa-wallet { color: #0D47A1; }
+
+.modern-sidebar .nav-link .nav-icon.fa-id-card,
+.modern-sidebar .nav-link .nav-icon.fa-id-card-alt,
+.modern-sidebar .nav-link .nav-icon.fa-file-alt,
+.modern-sidebar .nav-link .nav-icon.fa-file,
+.modern-sidebar .nav-link .nav-icon.fa-copy,
+.modern-sidebar .nav-link .nav-icon.fa-plus-circle,
+.modern-sidebar .nav-link .nav-icon.fa-globe,
+.modern-sidebar .nav-link .nav-icon.fa-sync-alt,
+.modern-sidebar .nav-link .nav-icon.fa-server { color: #1E88E5; }
+
+.modern-sidebar .nav-link .nav-icon.fa-archive,
+.modern-sidebar .nav-link .nav-icon.fa-folder,
+.modern-sidebar .nav-link .nav-icon.fa-folder-open,
+.modern-sidebar .nav-link .nav-icon.fa-database,
+.modern-sidebar .nav-link .nav-icon.fa-list-ul { color: #FF5722; }
+
+.modern-sidebar .nav-link .nav-icon.fa-car,
+.modern-sidebar .nav-link .nav-icon.fa-truck,
+.modern-sidebar .nav-link .nav-icon.fa-bus,
+.modern-sidebar .nav-link .nav-icon.fa-motorcycle,
+.modern-sidebar .nav-link .nav-icon.fa-shuttle-van { color: #E53935; }
+
+.modern-sidebar .nav-link .nav-icon.fa-certificate,
+.modern-sidebar .nav-link .nav-icon.fa-award,
+.modern-sidebar .nav-link .nav-icon.fa-medal,
+.modern-sidebar .nav-link .nav-icon.fa-trophy,
+.modern-sidebar .nav-link .nav-icon.fa-baby,
+.modern-sidebar .nav-link .nav-icon.fa-briefcase { color: #43A047; }
+
+@media (max-width: 991.98px) {
+    .modern-sidebar {
+        transform: translateX(-100%);
+        box-shadow: none;
+    }
+    body.sidebar-open .modern-sidebar {
+        transform: translateX(0);
+        box-shadow: 4px 0 40px rgba(0,0,0,0.15);
+    }
+}
+</style>
+    <!-- Brand Logo / Header -->
+    <a href="{{route('user.dashboard')}}" class="brand-link bg-white text-start" style="padding-left: 20px;">
+        <img src="{{ asset('assets/images/logo.png') }}"
+             alt="homepage"
+             class="dark-logo" style="height: 68px;"/>
+    </a>
+
+    <!-- Sidebar Scrollable Container -->
+    <div class="sidebar">
+        <style>
+            .main-sidebar {
+                font-family: 'NotoSansBengali', 'SolaimanLipi', sans-serif;
+                width: 260px;
+                min-height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                z-index: 1038;
+                transition: width 0.3s ease-in-out;
+                font-family: 'SolaimanLipi', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            }
+            .brand-link {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 13px 16px;
+                text-decoration: none !important;
+                font-size: 1.8rem;
+                line-height: 1.5;
+            }
+            .sidebar {
+                padding: 12px 0;
+                height: calc(100vh - 72px);
+                overflow-y: auto;
+            }
+            .nav-sidebar > .nav-item { position: relative; }
+            .nav-sidebar .nav-link { position: relative; display: flex; align-items: center; }
+            .nav-sidebar .nav-link p { margin: 0; flex: 1; }
+            .nav-sidebar .nav-link .right { margin-left: auto; transition: transform 0.3s; }
+            .nav-sidebar .nav-item.menu-open .nav-link .right { transform: rotate(-90deg); }
+            .nav-treeview { list-style: none; padding: 0; margin: 0; display: none; }
+            .nav-item.menu-open > .nav-treeview { display: block; }
+            .nav-treeview .nav-link { padding-left: 40px; }</style>
+
+        <!-- Sidebar Menu Elements -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+
+                {{-- ═══════════════════════════════════ --}}
+                {{-- GENERAL --}}
+                {{-- ═══════════════════════════════════ --}}
+                <div class="menu-group">
+
+                <li class="nav-item">
+                    <a class="nav-link {{ menuActive(['user.dashboard'], 3) ? 'active' : '' }}"
+                       href="{{ route('user.dashboard') }}">
+                        <i class="nav-icon fas fa-tachometer-alt" aria-hidden="true"></i>
+                        <p>ড্যাশবোর্ড</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ menuActive(['user.ssl-commerz','user.bkash','user.recharge','user.recharge-form'], 3) ? 'active' : '' }}"
+                       href="{{ route('user.recharge') }}">
+                        <i class="nav-icon fas fa-wallet" aria-hidden="true"></i>
+                        <p>রিচার্জ করুন</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ menuActive(['user.transactions'], 3) ? 'active' : '' }}"
+                       href="{{ route('user.transactions') }}">
+                        <i class="nav-icon fas fa-list-ul" aria-hidden="true"></i>
+                        <p>ট্রানজেকশন হিস্টোরি</p>
+                    </a>
+                </li>
+
+              
+
+                
+                {{-- ═══════════════════════════════════ --}}
+                {{-- AUTO SERVICES --}}
+                {{-- ═══════════════════════════════════ --}}
+                </div>
+
+                <div class="menu-group">
+                <li class="nav-header">অটো সার্ভিস সমূহ</li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ menuActive(['user.search'], 3) ? 'active' : '' }}"
+                       href="{{ route('user.search') }}">
+                        <i class="nav-icon fas fa-list-ul" aria-hidden="true"></i>
+                        <p>অটো সাইন</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs("user.server-copy") || request()->routeIs("user.server-copy-view") ? "active" : "" }}"
+                       href="{{ route("user.server-copy") }}">
+                        <i class="nav-icon fas fa-server" aria-hidden="true"></i>
+                        <p>সার্ভার কপি</p>
+                    </a>
+                </li>
+                {{-- ★ NID Auto Services──────────── --}}
+
+                <li class="nav-item {{ menuActive(['user.nid-card.*','user.smartcard.*'], 3) ? 'menu-open' : '' }}">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <i class="nav-icon fas fa-id-card" aria-hidden="true"></i>
+                        <p>
+                            এন আইডি অটো সেবা
+                            <i class="right fas fa-angle-left" aria-hidden="true"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+
+                        {{-- NID Card Make (level-2 Deep Nested Tree) --}}
+                        <li class="nav-item {{ menuActive(['user.nid-card.*'], 3) ? 'menu-open' : '' }}">
+                            <a href="{{ route('user.nid-card.create', ['type' => 'nid']) }}"
+                                       class="nav-link {{ menuActive(['user.nid-card.create'], 3) ? 'active' : '' }}">
+                                        <i class="nav-icon fas fa-plus-circle" aria-hidden="true"></i>
+                                        <p>এনআইডি কার্ড তৈরি</p>
+                                    </a>
+                        </li>
+                        <li class="nav-item">
+                                    <a href="{{ route('user.nid-card.create', ['type' => 'application']) }}"
+                                       class="nav-link">
+                                        <i class="nav-icon fas fa-plus-circle" aria-hidden="true"></i>
+                                        <p>আবেদন ফরম তৈরি</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('user.nid-card.create', ['type' => 'sign-to-server']) }}"
+                                       class="nav-link">
+                                        <i class="nav-icon fas fa-server" aria-hidden="true"></i>
+                                        <p>সাইন টু সার্ভার মেক</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('user.nid-card.create', ['type' => 'cdms']) }}" class="nav-link">
+                                        <i class="nav-icon fas fa-database" aria-hidden="true"></i>
+                                        <p>সিডিএমএস টু সার্ভার মেক</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('user.nid-card.index') }}" class="nav-link">
+                                        <i class="nav-icon fas fa-list-ul" aria-hidden="true"></i>
+                                        <p>এনআইডি তালিকা</p>
+                                    </a>
+                                </li>
+
+                        {{-- NID Smart Card --}}
+                        @php $smartcard = getServiceMenu('smartcard'); @endphp
+                        <li class="nav-item {{ ($smartcard && !$smartcard->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.smartcard.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($smartcard && $smartcard->status) ? route('user.smartcard.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-id-card-alt" aria-hidden="true"></i>
+                                <p>
+                                    এনআইডি স্মার্ট কার্ড তৈরি
+                                    @if($smartcard && !$smartcard->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif
+                                </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                {{-- ★ Nibondhon Services ───────────── --}}
+                <li class="nav-item {{ menuActive(['user.nibondon.*','user.death_certificate.*'], 3) ? 'menu-open' : '' }}">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <i class="nav-icon fas fa-certificate" aria-hidden="true"></i>
+                        <p>
+                            জন্ম/মৃত্যু নিবন্ধন সেবা 
+                            <i class="right fas fa-angle-left" aria-hidden="true"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @php $nibondon = getServiceMenu('nibondon'); @endphp
+                        <li class="nav-item {{ ($nibondon && !$nibondon->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.nibondon.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($nibondon && $nibondon->status) ? route('user.nibondon.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-baby" aria-hidden="true"></i>
+                                <p>জন্ম নিবন্ধন সনদপত্র @if($nibondon && !$nibondon->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $death = getServiceMenu('death_certificate'); @endphp
+                        <li class="nav-item {{ ($death && !$death->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.death_certificate.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($death && $death->status) ? route('user.death_certificate.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-file-alt" aria-hidden="true"></i>
+                                <p>মৃত্যু নিবন্ধন সনদপত্র @if($death && !$death->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item {{ ($nibondon && !$nibondon->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link"
+                               href="{{ ($nibondon && $nibondon->status) ? route('user.old-birth') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-archive" aria-hidden="true"></i>
+                                <p>পুরাতন নিবন্ধন @if($nibondon && !$nibondon->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- ★ BMET Services ──────────────── --}}
+                <li class="nav-item {{ menuActive(['user.bmet-update.*','bmet.*','user.bmet-ec.*','user.soudi-sonod.*'], 3) ? 'menu-open' : '' }}">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <i class="nav-icon fas fa-briefcase" aria-hidden="true"></i>
+                        <p>
+                            বিএমইটি সেবা
+                            <i class="right fas fa-angle-left" aria-hidden="true"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @php $bmetUpdate = getServiceMenu('bmet-update'); @endphp
+                        <li class="nav-item {{ ($bmetUpdate && !$bmetUpdate->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.bmet-update.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($bmetUpdate && $bmetUpdate->status) ? route('user.bmet-update.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-id-card" aria-hidden="true"></i>
+                                <p>বিএমইটি স্মার্ট কার্ড @if($bmetUpdate && !$bmetUpdate->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $bmetUpd = getServiceMenu('bmet-update'); @endphp
+                        <li class="nav-item {{ ($bmetUpd && !$bmetUpd->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link"
+                               href="{{ ($bmetUpd && $bmetUpd->status) ? route('user.bmet-update.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-sync-alt" aria-hidden="true"></i>
+                                <p>বিএমইটি আপডেট @if($bmetUpd && !$bmetUpd->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $bmet = getServiceMenu('bmet'); @endphp
+                        <li class="nav-item {{ ($bmet && !$bmet->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['bmet.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($bmet && $bmet->status) ? route('bmet.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-globe" aria-hidden="true"></i>
+                                <p>বিএমইটি (BMET) @if($bmet && !$bmet->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $bmetEc = getServiceMenu('bmet-ec'); @endphp
+                        <li class="nav-item {{ ($bmetEc && !$bmetEc->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.bmet-ec.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($bmetEc && $bmetEc->status) ? route('user.bmet-ec.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-file-certificate" aria-hidden="true"></i>
+                                <p>বিএমইটি ইসি @if($bmetEc && !$bmetEc->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $soudi = getServiceMenu('soudi-sonod'); @endphp
+                        <li class="nav-item {{ ($soudi && !$soudi->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.soudi-sonod.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($soudi && $soudi->status) ? route('user.soudi-sonod.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-file-signature" aria-hidden="true"></i>
+                                <p>সৌদি সনদ @if($soudi && !$soudi->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>  
+                    </ul>
+                </li>
+
+                {{-- ★  Sonod & Licenses─────────────── --}}
+                <li class="nav-item {{ menuActive(['user.driving-licenses.*','user.pdo.*','user.trade.*','user.police.*','user.surokkha.*','user.nagorik-sonod.*','user.uttoradhikarsonod.*'], 3) ? 'menu-open' : '' }}">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <i class="nav-icon fas fa-stamp" aria-hidden="true"></i>
+                        <p>
+                            সনদপত্র ও লাইসেন্স সেবা
+                            <i class="right fas fa-angle-left" aria-hidden="true"></i>
+                        </p>
+                    </a>
+                   
+                    <ul class="nav nav-treeview">
+                        @php $driving = getServiceMenu('driving-licenses'); @endphp
+                        <li class="nav-item {{ ($driving && !$driving->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.driving-licenses.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($driving && $driving->status) ? route('user.driving-licenses.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-id-card" aria-hidden="true"></i>
+                                <p>ড্রাইভিং লাইসেন্স @if($driving && !$driving->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $pdo = getServiceMenu('pdo'); @endphp
+                        <li class="nav-item {{ ($pdo && !$pdo->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.pdo.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($pdo && $pdo->status) ? route('user.pdo.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-user-graduate" aria-hidden="true"></i>
+                                <p>ট্রেনিং সার্টিফিকেট @if($pdo && !$pdo->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $trade = getServiceMenu('trade'); @endphp
+                        <li class="nav-item {{ ($trade && !$trade->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.trade.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($trade && $trade->status) ? route('user.trade.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-id-badge" aria-hidden="true"></i>
+                                <p>ট্রেড লাইসেন্স @if($trade && !$trade->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $police = getServiceMenu('police'); @endphp
+                        <li class="nav-item {{ ($police && !$police->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.police.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($police && $police->status) ? route('user.police.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-user-shield" aria-hidden="true"></i>
+                                <p>পুলিশ ভেরিফিকেশন @if($police && !$police->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $surokkha = getServiceMenu('surokkha'); @endphp
+                        <li class="nav-item {{ ($surokkha && !$surokkha->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.surokkha.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($surokkha && $surokkha->status) ? route('user.surokkha.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-shield-virus" aria-hidden="true"></i>
+                                <p>ভ্যাকসিন এন্ট্রি @if($surokkha && !$surokkha->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $nagorik = getServiceMenu('nagorik-sonod'); @endphp
+                        <li class="nav-item {{ ($nagorik && !$nagorik->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.nagorik-sonod.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($nagorik && $nagorik->status) ? route('user.nagorik-sonod.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-file-contract" aria-hidden="true"></i>
+                                <p>নাগরিক সনদ @if($nagorik && !$nagorik->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $uttor = getServiceMenu('uttoradhikarsonod'); @endphp
+                        <li class="nav-item {{ ($uttor && !$uttor->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.uttoradhikarsonod.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($uttor && $uttor->status) ? route('user.uttoradhikarsonod.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-users" aria-hidden="true"></i>
+                                <p>উত্তরাধিকার সনদ @if($uttor && !$uttor->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+                        {{-- ★ বিদ্যুৎ বিল মেক ────────── --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.electricity_bill.index') }}">
+                                <i class="nav-icon fas fa-bolt" aria-hidden="true"></i>
+                                <p>বিদ্যুৎ বিল মেক</p>
+                            </a>
+                            </a>
+                        </li>
+                        {{-- ★ অনলাইন ডিসিআর মেক ────────── --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.dcr.create') }}">
+                                <i class="nav-icon fas fa-file-invoice-dollar" aria-hidden="true"></i>
+                                <p>অনলাইন ডিসিআর মেক</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- ★ Land Services ────────────────── --}}
+                <li class="nav-item {{ menuActive(['user.land.*'], 3) ? 'menu-open' : '' }}">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <i class="nav-icon fas fa-map-marked-alt" aria-hidden="true"></i>
+                        <p>
+                            ভূমি সেবা
+                            <i class="right fas fa-angle-left" aria-hidden="true"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @php $land = getServiceMenu('land'); @endphp
+                        <li class="nav-item {{ ($land && !$land->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.land.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($land && $land->status) ? route('user.land.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-map-marked-alt" aria-hidden="true"></i>
+                                <p>ভূমি উন্নয়ন কর (Land Development) @if($land && !$land->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+                        @php $khatian = getServiceMenu('khatian'); @endphp
+                        <li class="nav-item {{ ($khatian && !$khatian->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.khatian.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($khatian && $khatian->status) ? route('user.khatian.create') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-map" aria-hidden="true"></i>
+                                <p>নাম জারি খতিয়ান @if($khatian && !$khatian->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- ★ TIN Services ─────────────────── --}}
+                <li class="nav-item {{ menuActive(['user.tin.*','user.return.*'], 3) && !Route::is('user.tin.order.index') ? 'menu-open' : '' }}">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <i class="nav-icon fas fa-receipt" aria-hidden="true"></i>
+                        <p>
+                            টিন সংক্রান্ত সেবা 
+                            <i class="right fas fa-angle-left" aria-hidden="true"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @php $tin = getServiceMenu('tin'); @endphp
+                        <li class="nav-item {{ ($tin && !$tin->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.tin.*'], 3) && !Route::is('user.tin.order.index')  ? 'active' : '' }}"
+                               href="{{ ($tin && $tin->status) ? route('user.tin.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-clipboard-check" aria-hidden="true"></i>
+                                <p>অটো টিন সনদপত্র @if($tin && !$tin->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item {{ ($tin && !$tin->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link"
+                               href="{{ ($tin && $tin->status) ? route('user.tin.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-copy" aria-hidden="true"></i>
+                                <p>টিন সার্টিফিকেট ক্লোন @if($tin && !$tin->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $return = getServiceMenu('return'); @endphp
+                        <li class="nav-item {{ ($return && !$return->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.return.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($return && $return->status) ? route('user.return.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-file-invoice-dollar" aria-hidden="true"></i>
+                                <p>রিটার্ন সাবমিট ক্লোন @if($return && !$return->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- ★ Visa Services ────────────────── --}}
+                <li class="nav-item {{ menuActive(['user.application-details.*','user.visa-applications.*','user.evisas.*'], 3) ? 'menu-open' : '' }}">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <i class="nav-icon fas fa-passport" aria-hidden="true"></i>
+                        <p>
+                            ভিসা সংক্রান্ত সেবা 
+                            <i class="right fas fa-angle-left" aria-hidden="true"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @php $apostil = getServiceMenu('application-details'); @endphp
+                        <li class="nav-item {{ ($apostil && !$apostil->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.application-details.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($apostil && $apostil->status) ? route('user.application-details.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-stamp" aria-hidden="true"></i>
+                                <p>অপোস্টিল (Apostil) @if($apostil && !$apostil->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $visa = getServiceMenu('visa-applications'); @endphp
+                        <li class="nav-item {{ ($visa && !$visa->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.visa-applications.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($visa && $visa->status) ? route('user.visa-applications.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-plane-departure" aria-hidden="true"></i>
+                                <p>ভিসা আবেদন @if($visa && !$visa->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+
+                        @php $evisa = getServiceMenu('evisas'); @endphp
+                        <li class="nav-item {{ ($evisa && !$evisa->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.evisas.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($evisa && $evisa->status) ? route('user.evisas.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-file-invoice" aria-hidden="true"></i>
+                                <p>ই-ভিসা (eVisa) @if($evisa && !$evisa->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- ★ Education ─────────────────────── --}}
+                <li class="nav-item {{ menuActive(['user.ssc_certificate.*'], 3) ? 'menu-open' : '' }}">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <i class="nav-icon fas fa-graduation-cap" aria-hidden="true"></i>
+                        <p>
+                            শিক্ষা সনদ পত্র
+                            <i class="right fas fa-angle-left" aria-hidden="true"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @php $ssc = getServiceMenu('ssc_certificate'); @endphp
+                        <li class="nav-item {{ ($ssc && !$ssc->status) ? 'service-disabled' : '' }}">
+                            <a class="nav-link {{ menuActive(['user.ssc_certificate.*'], 3) ? 'active' : '' }}"
+                               href="{{ ($ssc && $ssc->status) ? route('user.ssc_certificate.index') : 'javascript:void(0)' }}">
+                                <i class="nav-icon fas fa-award" aria-hidden="true"></i>
+                                <p>এসএসসি সনদপত্র (SSC) @if($ssc && !$ssc->status)
+                                        <span class="badge-off">বন্ধ</span>
+                                    @endif</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.mark_sheet.index') }}">
+                                <i class="nav-icon fas fa-file-alt" aria-hidden="true"></i>
+                                <p>মার্কশিট (Mark Sheet)</p>
+                        </ul>
+                </li>
+
+                {{-- ORDER MANAGEMENT HEADER --}}
+                </div>
+
+                <div class="menu-group">
+                <li class="nav-header">অর্ডার ম্যানেজমেন্ট</li>
+
+                {{-- ★ NEW ORDER LINKS ─── --}}
+                <li class="nav-item">
+                    <a href="{{ route('user.sign.copy.order.index') }}" class="nav-link {{ menuActive(['user.sign.copy.order.index'], 3) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-file-signature" aria-hidden="true"></i>
+                        <p>সাইন কপি অর্ডার</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('user.nid.order.index') }}" class="nav-link {{ menuActive(['user.nid.order.index'], 3) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-id-card" aria-hidden="true"></i>
+                        <p>আইডি কার্ড অর্ডার</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('user.passport.order.index') }}" class="nav-link {{ menuActive(['user.passport.order.index'], 3) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-passport" aria-hidden="true"></i>
+                        <p>পাসপোর্ট অর্ডার</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('user.sim.conversion.index') }}" class="nav-link {{ menuActive(['user.sim.conversion.index'], 3) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-fingerprint" aria-hidden="true"></i>
+                        <p>সিম বায়োমেট্রিক অর্ডার</p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="{{ route('user.sim.network.index') }}" class="nav-link {{ menuActive(['user.sim.network.index'], 3) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-signal" aria-hidden="true"></i>
+                        <p>সিম নেটওয়ার্ক অর্ডার</p>
+                    </a>
+                </li>
+                <li class="nav-item mb-5">
+                    <a href="{{ route('user.tin.order.index') }}" class="nav-link {{ menuActive(['user.tin.order.index'], 3) ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-file-text" aria-hidden="true"></i>
+                        <p>টিন (TIN) অর্ডার</p>
+                    </a>
+                </li>
+            </div>
+            </ul>
+        </nav>
+
+    </div>
+</aside>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // 1. Existing Treeview Toggle Engine
+        const treeviewlinks = document.querySelectorAll('.nav-sidebar .nav-item > .nav-link');
+        treeviewlinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                const parentListItem = this.parentElement;
+                const hasTreeview = parentListItem.querySelector('.nav-treeview');
+
+                if (hasTreeview) {
+                    e.preventDefault();
+                    const siblings = parentListItem.parentElement.querySelectorAll(':scope > .nav-item.menu-open');
+                    siblings.forEach(function (sibling) {
+                        if (sibling !== parentListItem) {
+                            sibling.classList.remove('menu-open');
+                        }
+                    });
+                    parentListItem.classList.toggle('menu-open');
+                }
+            });
+        });
+
+        // 2. Mobile Device Sidebar Show/Hide Controller
+        const body = document.querySelector('body');
+
+        // Target common AdminLTE button attributes or standard IDs
+        const toggleButtons = document.querySelectorAll('#sidebarToggle, [data-widget="pushmenu"]');
+
+        toggleButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                body.classList.toggle('sidebar-open');
+            });
+        });
+
+        // Close sidebar if user clicks outside of it on the mobile background overlay
+        document.addEventListener('click', function(e) {
+            if (body.classList.contains('sidebar-open')) {
+                const sidebar = document.querySelector('.main-sidebar');
+                const isClickInsideSidebar = sidebar.contains(e.target);
+
+                // Check if the click was on one of the toggle buttons
+                let isToggleClick = false;
+                toggleButtons.forEach(btn => { if(btn.contains(e.target)) isToggleClick = true; });
+
+                if (!isClickInsideSidebar && !isToggleClick) {
+                    body.classList.remove('sidebar-open');
+                }
+            }
+        });
+    });
+</script>

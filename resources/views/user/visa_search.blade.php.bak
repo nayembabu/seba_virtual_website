@@ -1,0 +1,398 @@
+@extends('user.layouts.app')
+
+@section('title') ভিসা ইনফো @endsection
+
+@push('style')
+<link href="https://fonts.cdnfonts.com/css/santeria-signature" rel="stylesheet">
+<style>
+.visa-wrapper-box {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+    padding: 24px;
+    margin-bottom: 24px;
+    border: 1px solid #e2e8f0;
+}
+.visa-header-title {
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 1.45rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 12px;
+}
+.search-btn-gradient {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    color: white !important;
+    font-weight: 600;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+.search-btn-gradient:hover {
+    opacity: 0.95;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+.animation-loader-box {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 0;
+}
+.custom-spinner-ring {
+    width: 55px;
+    height: 55px;
+    border: 5px solid #f1f5f9;
+    border-top: 5px solid #1e3a8a;
+    border-radius: 50%;
+    animation: spin-ring 1s linear infinite;
+}
+@keyframes spin-ring {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.result-display-card {
+    display: none;
+    margin-top: 25px;
+}
+#printable-report {
+    padding: 30px;
+    background: #ffffff;
+    border: 2px solid #1e3a8a;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+#printable-report::before {
+    content: "\f5b0";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    font-size: 260px;
+    color: rgba(30, 58, 138, 0.03);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    z-index: 0;
+    pointer-events: none;
+}
+.report-header-banner {
+    border-bottom: 3px double #1e3a8a;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 1;
+}
+.info-table-design th {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    font-weight: 700;
+    width: 35%;
+    font-size: 0.95rem;
+    border: 1px solid #cbd5e1 !important;
+    padding: 10px 14px;
+}
+.info-table-design td {
+    font-size: 0.95rem;
+    color: #0f172a;
+    border: 1px solid #cbd5e1 !important;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.8);
+}
+.passport-photo-frame {
+    width: 115px;
+    height: 140px;
+    object-fit: cover;
+    border: 3px solid #1e3a8a;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.badge-status-verified {
+    background-color: #10b981;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 11px;
+}
+</style>
+@endpush
+
+@section('content')
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+
+            <!-- Search Card -->
+            <div class="visa-wrapper-box">
+                <h4 class="visa-header-title">
+                    <i class="fa-solid fa-plane-departure text-primary me-2"></i>এয়ারপোর্ট ইমিগ্রেশন ও ভিসা যাচাই
+                </h4>
+
+                <form id="visaFormSubmit">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="passportNo" class="form-label fw-bold text-secondary">পাসপোর্ট নম্বরটি টাইপ করুন</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-passport"></i></span>
+                            <input type="text" class="form-control form-control-lg" id="passportNo" name="passportNo" placeholder="যেমন: A01234567" required style="text-transform: uppercase; font-size:1rem;">
+                        </div>
+                        <div class="form-text text-danger fw-semibold mt-2"><i class="fa-solid fa-circle-info me-1"></i>প্রতিটি রিপোর্টের জন্য অটোমেটিক ১০০/- টাকা চার্জ কাটা হবে।</div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn search-btn-gradient btn-lg"><i class="fa-solid fa-magnifying-glass me-2"></i>অনুসন্ধান করুন</button>
+                    </div>
+                </form>
+
+                <div class="animation-loader-box" id="searchLoader">
+                    <div class="custom-spinner-ring"></div>
+                    <p class="mt-3 fw-bold text-primary">ইমিগ্রেশন সার্ভার থেকে তথ্য ডাউনলোড হচ্ছে, অপেক্ষা করুন...</p>
+                </div>
+            </div>
+
+            <!-- Result Card -->
+            <div class="visa-wrapper-box result-display-card" id="resultContainer">
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3 flex-wrap gap-2">
+                    <h5 class="fw-bold text-success mb-0"><i class="fa-solid fa-shield-cat me-2"></i>অনলাইন ভেরিফিকেশন রিপোর্ট</h5>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-dark fw-semibold" onclick="copyVisaData()"><i class="fa-regular fa-copy me-1"></i>তথ্য কপি করুন</button>
+                        <button class="btn btn-sm btn-danger fw-semibold" onclick="downloadPDFReport()"><i class="fa-solid fa-file-pdf me-1"></i>ডাউনলোড PDF</button>
+                    </div>
+                </div>
+
+                <div id="printable-report">
+                    <div class="report-header-banner text-center">
+                        <div class="mb-2">
+                            <i class="fa-solid fa-plane-up" style="font-size: 2.8rem; color: #1e3a8a; transform: rotate(45deg);"></i>
+                        </div>
+                        <h3 style="color:#1e3a8a; font-weight:800; margin-bottom:2px; letter-spacing: 0.8px; font-size: 1.6rem;">GOVERNMENT IMMIGRATION & VISA REPORT</h3>
+                        <p class="text-muted small mb-0 fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 11px; color:#475569 !important;">Official Smart Verification System</p>
+                    </div>
+
+                    <div class="row align-items-center mb-4 position-relative" style="z-index:1;">
+                        <div class="col-8">
+                            <h4 class="fw-bold text-dark mb-1 text-uppercase" id="res_fullname_top" style="color: #1e3a8a !important; font-size: 1.25rem;">N/A</h4>
+                            <p class="mb-2 text-muted fw-semibold">Candidate Profile</p>
+                            <p class="mb-1 text-muted"><strong>Passport No:</strong> <span id="res_passport" class="text-dark fw-bold"></span></p>
+                            <p class="mb-0 text-muted"><strong>Destination:</strong> <span id="res_country" class="text-dark fw-bold text-uppercase"></span></p>
+                        </div>
+                        <div class="col-4 text-end">
+                            <img id="res_photo" src="{{ asset('assets/images/faces/face8.jpg') }}" class="passport-photo-frame" alt="Photo">
+                        </div>
+                    </div>
+
+                    <div class="table-responsive position-relative" style="z-index:1;">
+                        <table class="table table-bordered info-table-design mb-0">
+                            <tbody>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <td id="res_fullname" class="fw-bold text-uppercase">N/A</td>
+                                </tr>
+                                <tr>
+                                    <th>Date of Birth</th>
+                                    <td id="res_dob" class="fw-bold">N/A</td>
+                                </tr>
+                                <tr>
+                                    <th>BMET Reg Number</th>
+                                    <td id="res_bmet" class="fw-bold text-primary">N/A</td>
+                                </tr>
+                                <tr>
+                                    <th>Visa Number</th>
+                                    <td id="res_visa" class="fw-bold text-success">N/A</td>
+                                </tr>
+                                <tr>
+                                    <th>Clearance Date</th>
+                                    <td id="res_clearance_date">N/A</td>
+                                </tr>
+                                <tr>
+                                    <th>Employer / Sponsor</th>
+                                    <td id="res_employer" class="text-uppercase">N/A</td>
+                                </tr>
+                                <tr>
+                                    <th>Date of Issue</th>
+                                    <td id="res_issue_date">N/A</td>
+                                </tr>
+                                <tr>
+                                    <th>Date of Expiry</th>
+                                    <td id="res_expiry_date">N/A</td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td><span class="badge-status-verified"><i class="fa-solid fa-circle-check me-1"></i> VERIFIED ON CLEARANCE</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center flex-wrap position-relative" style="font-size: 11px; color: #64748b; font-weight: 600; z-index:1;">
+                        <span>Gateway Domain: {{ request()->getHost() }}</span>
+                        <span>Generated On: {{ date('Y-m-d h:i A') }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History -->
+            <div class="visa-wrapper-box">
+                <h5 class="fw-bold text-dark border-bottom pb-2 mb-3"><i class="fa-solid fa-history me-2 text-warning"></i>আপনার সাম্প্রতিক অনুসন্ধান লগ</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped text-center align-middle" style="font-size: 0.88rem;">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>পাসপোর্ট নং</th>
+                                <th>ভিসা নং</th>
+                                <th>অনুসন্ধানের সময়</th>
+                                <th>সার্ভিস চার্জ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history_table_body">
+                            @forelse($histories as $h)
+                            <tr>
+                                <td class="fw-bold text-primary">{{ $h->passport_no }}</td>
+                                <td>{{ $h->visa_no }}</td>
+                                <td>{{ $h->created_at ? $h->created_at->format('d M Y, h:i A') : '' }}</td>
+                                <td><span class="badge bg-danger">-{{ number_format($h->charged_amount, 0) }} ৳</span></td>
+                            </tr>
+                            @empty
+                            <tr><td colspan="4" class="text-muted py-3">এখনো কোনো অনুসন্ধানের ইতিহাস নেই।</td></tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection
+
+@push('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+let globalVisaDataString = "";
+
+document.getElementById('visaFormSubmit').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const passportNo = document.getElementById('passportNo').value.trim();
+    if(!passportNo) return;
+
+    document.getElementById('resultContainer').style.display = 'none';
+    document.getElementById('searchLoader').style.display = 'flex';
+
+    const formData = new FormData();
+    formData.append('passport', passportNo);
+    formData.append('ajax', '1');
+
+    const url = '{{ route("visa.search") }}?ajax=1';
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(res => {
+        document.getElementById('searchLoader').style.display = 'none';
+        
+        if(res.success && res.data) {
+            const d = res.data;
+            
+            globalVisaDataString = `--- OFFICIAL IMMIGRATION REPORT ---\nName: ${d.name || 'N/A'}\nDate of Birth: ${d.DateofBirth || 'N/A'}\nPassport No: ${d.passportNumber || 'N/A'}\nCountry: ${d.jobSeekerCountry || 'N/A'}\nBMET No: ${d.bmetNo || 'N/A'}\nVisa No: ${d.visaNo || 'N/A'}\nEmployer: ${d.employerName || 'N/A'}`;
+
+            document.getElementById('res_fullname_top').innerText = d.name || 'NOT PROVIDED';
+            document.getElementById('res_fullname').innerText = d.name || 'N/A';
+            document.getElementById('res_dob').innerText = d.DateofBirth || 'N/A';
+            document.getElementById('res_passport').innerText = d.passportNumber || 'N/A';
+            document.getElementById('res_country').innerText = d.jobSeekerCountry || 'N/A';
+            document.getElementById('res_bmet').innerText = d.bmetNo || 'N/A';
+            document.getElementById('res_visa').innerText = d.visaNo || 'N/A';
+            document.getElementById('res_clearance_date').innerText = d.clearanceDate || 'N/A';
+            document.getElementById('res_employer').innerText = d.employerName || 'N/A';
+            document.getElementById('res_issue_date').innerText = d.dateOfIssue || 'N/A';
+            document.getElementById('res_expiry_date').innerText = d.dateOfExpiry || 'N/A';
+            
+            if (d.photo && d.photo.length > 50) {
+                document.getElementById('res_photo').src = d.photo.startsWith('data:') ? d.photo : 'data:image/jpeg;base64,' + d.photo;
+            } else {
+                document.getElementById('res_photo').src = '{{ asset("assets/images/faces/face8.jpg") }}';
+            }
+
+            if (res.histories) {
+                updateHistoryTable(res.histories);
+            }
+
+            if (res.new_balance) {
+                let balEl = document.getElementById('live-balance');
+                if (balEl) balEl.innerText = parseFloat(res.new_balance).toFixed(2);
+            }
+
+            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
+        } else {
+            alert(res.message || 'ডাটা পাওয়া যায়নি।');
+        }
+    })
+    .catch(err => {
+        document.getElementById('searchLoader').style.display = 'none';
+        alert("সার্ভার রেসপন্স ত্রুটি! অনুগ্রহ করে আবার চেষ্টা করুন।");
+        console.error(err);
+    });
+});
+
+function updateHistoryTable(histories) {
+    const tbody = document.getElementById('history_table_body');
+    if (!histories || histories.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="text-muted py-3">এখনো কোনো অনুসন্ধানের ইতিহাস নেই।</td></tr>';
+        return;
+    }
+    let html = '';
+    histories.forEach(function(h) {
+        let dateStr = '';
+        if (h.created_at) {
+            try {
+                let d = new Date(h.created_at);
+                const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                dateStr = d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ', ' +
+                    ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+            } catch(e) { dateStr = h.created_at; }
+        }
+        html += '<tr>' +
+            '<td class="fw-bold text-primary">' + (h.passport_no || '') + '</td>' +
+            '<td>' + (h.visa_no || '') + '</td>' +
+            '<td>' + dateStr + '</td>' +
+            '<td><span class="badge bg-danger">-' + (h.charged_amount || '0') + ' ৳</span></td>' +
+            '</tr>';
+    });
+    tbody.innerHTML = html;
+}
+
+function copyVisaData() {
+    if(!globalVisaDataString) return;
+    navigator.clipboard.writeText(globalVisaDataString).then(() => {
+        alert("ভিসা ও প্রার্থীর সমস্ত তথ্য কপি করা হয়েছে!");
+    }).catch(() => {
+        prompt("কপি করতে নিচের টেক্সট সিলেক্ট করে কপি করুন:", globalVisaDataString);
+    });
+}
+
+function downloadPDFReport() {
+    const element = document.getElementById('printable-report');
+    const passportVal = document.getElementById('res_passport').innerText || 'Verification';
+    
+    const opt = {
+        margin:       [10, 10, 10, 10],
+        filename:     'Immigration_Report_' + passportVal + '.pdf',
+        image:        { type: 'jpeg', quality: 0.99 },
+        html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    
+    html2pdf().set(opt).from(element).save();
+}
+</script>
+@endpush

@@ -1,0 +1,142 @@
+<?php
+
+namespace App\Http\Controllers\User;
+
+use App\Http\Controllers\Controller;
+use App\Models\ServiceCharge;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+
+class CvMakerController extends Controller
+{
+    private $user;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+            return $next($request);
+        });
+    }
+
+    public function index()
+    {
+        $data['user'] = $this->user;
+        $data['charge'] = ServiceCharge::getCharge('cv-maker');
+        return view('user.cv-maker', $data);
+    }
+
+    public function preview(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:500',
+        ]);
+
+        $cvData = $this->buildCvData($request);
+        session(['cv_preview_data' => $cvData]);
+
+        $cvType = $request->cv_type ?? 'professional';
+        $viewName = $cvType === 'bd_popular' ? 'user.cv-bd-standard-preview' : 'user.cv-professional-preview';
+
+        return view($viewName, $cvData);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:500',
+            'cv_type' => 'required|in:professional,bd_popular',
+        ]);
+
+        $charge = ServiceCharge::getCharge('cv-maker');
+        if ($this->user->balance < $charge) {
+            return back()->with('error', 'Your balance is insufficient. Please recharge.');
+        }
+        $this->user->balance -= $charge;
+        $this->user->save();
+
+        $cvData = $this->buildCvData($request);
+        $template = $request->cv_type === 'bd_popular' ? 'user.templates.cv-bd-popular' : 'user.templates.cv-professional';
+        $pdf = Pdf::loadView($template, $cvData);
+        $pdf->setPaper('a4', 'portrait');
+        return $pdf->stream('CV_' . preg_replace('/[^A-Za-z0-9]/', '_', $request->name) . '.pdf');
+    }
+
+    private function buildCvData(Request $request)
+    {
+        $cvData = [
+            'name' => $request->name,
+            'title' => $request->title ?? '',
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'linkedin' => $request->linkedin ?? '',
+            'father_name' => $request->father_name ?? '',
+            'mother_name' => $request->mother_name ?? '',
+            'dob' => $request->dob ?? '',
+            'blood_group' => $request->blood_group ?? '',
+            'religion' => $request->religion ?? '',
+            'marital_status' => $request->marital_status ?? '',
+            'nid' => $request->nid ?? '',
+            'objective' => $request->objective ?? '',
+            'skills' => $request->skills ?? '',
+            'hobbies' => $request->hobbies ?? '',
+            'photo_path' => null,
+        ];
+
+        if ($request->hasFile('profile_photo')) {
+            $cvData['photo_path'] = 'data:image/' . $request->file('profile_photo')->getClientOriginalExtension() . ';base64,' . base64_encode(file_get_contents($request->file('profile_photo')->getRealPath()));
+        }
+
+        $cvData['education'] = [];
+        if ($request->has('edu_degree')) {
+            foreach ($request->edu_degree as $i => $deg) {
+                if (!empty($deg)) {
+                    $cvData['education'][] = [
+                        'degree' => $deg,
+                        'institute' => $request->edu_institute[$i] ?? '',
+                        'year' => $request->edu_year[$i] ?? '',
+                        'cgpa' => $request->edu_cgpa[$i] ?? '',
+                        'board' => $request->edu_board[$i] ?? '',
+                        'group' => $request->edu_group[$i] ?? '',
+                    ];
+                }
+            }
+        }
+
+        $cvData['experience'] = [];
+        if ($request->has('exp_role')) {
+            foreach ($request->exp_role as $i => $role) {
+                if (!empty($role)) {
+                    $cvData['experience'][] = [
+                        'role' => $role,
+                        'company' => $request->exp_company[$i] ?? '',
+                        'duration' => $request->exp_duration[$i] ?? '',
+                    ];
+                }
+            }
+        }
+
+        $cvData['references'] = [];
+        if ($request->has('ref_name')) {
+            foreach ($request->ref_name as $i => $rname) {
+                if (!empty($rname)) {
+                    $cvData['references'][] = [
+                        'name' => $rname,
+                        'designation' => $request->ref_designation[$i] ?? '',
+                        'company' => $request->ref_company[$i] ?? '',
+                        'contact' => $request->ref_contact[$i] ?? '',
+                    ];
+                }
+            }
+        }
+        return $cvData;
+    }
+}

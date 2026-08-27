@@ -1,0 +1,249 @@
+<style>
+/* ── গ্লাসমর্ফিজম নেভবার ─────────────────────────── */
+.glass-navbar {
+    font-family: 'SolaimanLipi', 'NotoSansBengali', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    z-index: 1034;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.03);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+}
+
+.glass-navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #2F57C7, #4F7EFF, #2F57C7);
+    background-size: 300% 100%;
+    animation: gradientMove 4s ease infinite;
+}
+
+@keyframes gradientMove {
+    0%,100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.glass-navbar .nav-left { display: flex; align-items: center; gap: 12px; }
+.glass-navbar .nav-center { display: none; }
+.glass-navbar .nav-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+
+/* Hamburger */
+.hamburger-btn {
+    width: 40px; height: 40px;
+    border: none; border-radius: 12px;
+    background: var(--hover);
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.hamburger-btn:hover {
+    background: rgba(47,87,199,0.12);
+    transform: scale(1.05);
+}
+.hamburger-btn:active { transform: scale(0.95); }
+
+/* Logo */
+.nav-logo {
+    height: 42px; width: auto;
+    transition: transform 0.3s ease;
+}
+.nav-logo:hover { transform: scale(1.03); }
+
+/* ── নেভ লিংক ── */
+.nav-quick-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: transparent;
+}
+.nav-quick-link:hover {
+    background: var(--hover);
+    color: var(--primary);
+    text-decoration: none;
+}
+.nav-quick-link i { font-size: 15px; }
+
+/* ── ব্যালেন্স ব্যাজ ── */
+.balance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(47,87,199,0.25);
+    transition: all 0.3s ease;
+}
+.balance-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(47,87,199,0.35);
+}
+.balance-badge i { font-size: 14px; }
+
+/* ── ইউজার ড্রপডাউন ── */
+.user-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px 6px 6px;
+    border-radius: 50px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.user-dropdown-btn:hover {
+    background: var(--hover);
+    border-color: var(--primary);
+}
+.user-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+.user-name { font-size: 13px; font-weight: 600; color: #1e293b; white-space: nowrap; }
+
+/* ── ড্রপডাউন মেনু ── */
+.user-dropdown-menu {
+    font-family: 'SolaimanLipi', 'NotoSansBengali', sans-serif;
+    min-width: 200px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(15,23,42,0.15);
+    padding: 8px;
+    margin-top: 8px !important;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(12px);
+}
+.user-dropdown-menu .dropdown-item {
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #334155;
+    transition: all 0.15s ease;
+}
+.user-dropdown-menu .dropdown-item:hover {
+    background: var(--hover);
+    color: var(--primary);
+}
+.user-dropdown-menu .dropdown-item i {
+    width: 18px;
+    text-align: center;
+    margin-right: 10px;
+    color: var(--text-light);
+}
+.user-dropdown-menu .dropdown-divider {
+    margin: 6px 0;
+    border-color: rgba(0,0,0,0.06);
+}
+
+/* ── ডেস্কটপে নেভ সেন্টার দেখাবে ── */
+@media (min-width: 992px) {
+    .glass-navbar .nav-center { display: flex; align-items: center; margin-left: 24px; gap: 4px; }
+    .glass-navbar { padding: 0 32px; }
+}
+
+/* ── মোবাইল ── */
+@media (max-width: 991.98px) {
+    .glass-navbar { height: 64px; padding: 0 12px; }
+    .nav-logo { height: 34px; }
+    .user-name { display: none; }
+    .balance-badge { padding: 4px 10px; font-size: 12px; }
+}
+
+/* ── সাইডবার ওপেন হলে ওভারলে ── */
+body.sidebar-open .glass-navbar {
+    box-shadow: none;
+}
+</style>
+
+<header class="glass-navbar">
+    <!-- Left: Hamburger + Logo -->
+    <div class="nav-left">
+        <button class="hamburger-btn" id="sidebarToggle" data-widget="pushmenu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a href="{{ route('user.dashboard') }}">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="nav-logo">
+        </a>
+    </div>
+
+    <!-- Center: Quick Links -->
+    <div class="nav-center">
+        <a href="{{ route('user.dashboard') }}" class="nav-quick-link">
+            <i class="fas fa-th-large"></i> <span>ড্যাশবোর্ড</span>
+        </a>
+        <a href="{{ route('user.server-copy') }}" class="nav-quick-link">
+            <i class="fas fa-server"></i> <span>সার্ভার কপি</span>
+        </a>
+        <a href="{{ route('user.applications') }}" class="nav-quick-link">
+            <i class="fas fa-file-alt"></i> <span>অর্ডার</span>
+        </a>
+    </div>
+
+    <!-- Right: Balance + User -->
+    <div class="nav-right">
+        <span class="balance-badge">
+            <i class="fas fa-coins"></i>
+            {{ inum(optional(Auth::guard('web')->user())->balance ?? 0) }}
+        </span>
+
+        <div class="dropdown">
+            <button class="user-dropdown-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="user-avatar">{{ strtoupper(substr(optional(Auth::User())->name ?? 'U', 0, 1)) }}</span>
+                <span class="user-name">{{ optional(Auth::User())->name ?? 'Guest' }}</span>
+                <i class="fas fa-chevron-down" style="font-size:10px; color:#94a3b8; margin-left:4px;"></i>
+            </button>
+
+            <div class="dropdown-menu dropdown-menu-right user-dropdown-menu">
+                <a class="dropdown-item" href="{{ route('user.profile') }}">
+                    <i class="fas fa-user-circle"></i> @lang('Profile')
+                </a>
+                <a class="dropdown-item" href="{{ route('user.updatePassword') }}">
+                    <i class="fas fa-key"></i> @lang('Password')
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" href="{{ route('user.logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('user.logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+        </div>
+    </div>
+</header>

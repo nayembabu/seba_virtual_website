@@ -1,0 +1,106 @@
+@extends('user.layouts.app')
+@section('title')
+    @lang('Server Copy')
+@endsection
+
+@section('content')
+<div class="card card-primary m-0 m-md-4 my-4 m-md-0 shadow">
+    <div class="card-body">
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        <form action="" method="post" class="bn-layout">
+            @csrf
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h4 class="text-center mb-4" style="font-family: 'Solaiman Lipi', Arial, sans-serif;">
+                        <i class="fas fa-server"></i> সার্ভার কপি
+                    </h4>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="bn-text" style="font-family: 'Solaiman Lipi', Arial, sans-serif;">
+                            <i class="fas fa-cog"></i> এপিআই সিলেক্ট করুন
+                        </label>
+                        <select name="api_type" class="form-control" required>
+                            <option value="1">এপিআই ১ (২০৳)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="bn-text" style="font-family: 'Solaiman Lipi', Arial, sans-serif;">
+                            <i class="fas fa-id-card"></i> আইডি/ভোটার নাম্বার (১০ অথবা ১৭ বা ১২ ডিজিট)
+                        </label>
+                        <input class="form-control" type="text" name="nid" value="{{ old('nid') }}" placeholder="1234567890" pattern="[0-9]{10,17}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="bn-text" style="font-family: 'Solaiman Lipi', Arial, sans-serif;">
+                            <i class="fas fa-calendar-alt"></i> জন্ম তারিখ (YYYY-MM-DD)
+                        </label>
+                        <input class="form-control" type="date" name="dob" value="{{ old('dob') }}" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg btn-block">
+                        <i class="fas fa-search"></i> সার্চ করুন
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <hr class="my-4">
+
+        <div class="row">
+            <div class="col-12">
+                <h5 class="mb-3" style="font-family: 'Solaiman Lipi', Arial, sans-serif;">
+                    <i class="fas fa-history"></i> পূর্বের সার্ভার কপি
+                </h5>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped datatable">
+                        <thead>
+                            <tr>
+                                <th>#️⃣</th>
+                                <th>🆔 আইডি নং</th>
+                                <th>👤 নাম</th>
+                                <th>⬇️ ডাউনলোড</th>
+                                <th>⏰ সময়</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($history as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nid_no }}</td>
+                                    <td>{{ $item->name_bn ?? $item->name_en }}</td>
+                                    <td>
+                                        <a href="{{ route('user.server-copy-view') }}?id={{ $item->id }}&type=v1&download=1" class="btn btn-sm btn-success" style="margin:2px">v1</a>
+                                        <a href="{{ route('user.server-copy-view') }}?id={{ $item->id }}&type=v2&download=1" class="btn btn-sm btn-primary" style="margin:2px">v2</a>
+                                        <a href="{{ route('user.server-copy-view') }}?id={{ $item->id }}&type=v3&download=1" class="btn btn-sm btn-warning text-white" style="margin:2px">v3</a>
+                                    </td>
+                                    <td>{{ date('d-m-Y h:i A', strtotime($item->created_at)) }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center">কোন ডাটা পাওয়া যায়নি</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
